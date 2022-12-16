@@ -16,9 +16,9 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import logosss from '../../../2.png'
 
-
-const drawerWidth = 260;
+const drawerWidth = 250;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -178,7 +178,7 @@ const rol= user.rol;
                 color="inherit"
                 startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>U</Avatar>:<SupervisorAccountIcon/> }
                 sx={{
-                padding:"15px",
+                padding:"13px",
                 borderRadius: "8px",
                 border:"2px",
                 }}
@@ -232,7 +232,7 @@ const rol= user.rol;
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <h3>RticketsApp</h3>
+          <img src={logosss} alt="Logo" height={70}/>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
