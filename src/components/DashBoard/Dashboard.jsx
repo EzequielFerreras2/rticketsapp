@@ -4,13 +4,10 @@ import UserDashboard from './UserDashboard/UserDashboard';
 
 const Dashboards = () => {
 
-    const rol =localStorage.getItem("rol")
+    const user = JSON.parse(localStorage.getItem("user"));
 
     return (
-        <div>
-           { rol === "admin"? <AdminDashboard/>:<UserDashboard/>}
-        </div>
-
+            user.rol === "admin"? <AdminDashboard/>:<UserDashboard/> 
     );
 }
 

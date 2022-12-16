@@ -8,11 +8,11 @@ const PrivateRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const status ='authenticated'
+    const user = JSON.parse(localStorage.getItem("user"));
 
     return (
         
-        status === 'authenticated' ? <Outlet/> : <Navigate to='login'/>
+        user.status === 'authenticated' ? <Outlet/> : <Navigate to='login'/>
         
     
     )   ;

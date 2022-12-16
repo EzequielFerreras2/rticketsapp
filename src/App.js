@@ -10,8 +10,21 @@ import InRoute from "./routes/InRoute";
 function App() {
   
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
+
+
+ // not-authenticated //checking //authenticated
+const usuario ={
+
+  rol:"admin",
+  status:"authenticated"
+
+}
+
+localStorage.setItem("user", JSON.stringify(usuario))
  
-const status ="authenticated";
+const user = JSON.parse(localStorage.getItem("user"));
+
+const status =user.status;
 
   const DisplayHeader= (props) =>{
     const isLoggedIn = props.isLoggedIn;
@@ -25,7 +38,8 @@ const status ="authenticated";
   useEffect(() => {
 
     updateNavbar();
- 
+
+    
 
   }, [status]);
 
@@ -36,7 +50,8 @@ const status ="authenticated";
   }
   else{
     setIsNavbarHidden (false);
-    localStorage.setItem("rol", "user")
+    
+    
   }
   }
 

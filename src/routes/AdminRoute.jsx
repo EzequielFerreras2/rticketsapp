@@ -8,11 +8,11 @@ const AdminRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const rol = localStorage.getItem("rol")
+    const user = JSON.parse(localStorage.getItem("user"));
 
     return (
         
-        rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
+        user.rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;
