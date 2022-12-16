@@ -16,7 +16,7 @@ var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 const usuario ={
 
   rol:"user",
-  status:"authenticated"
+  status:"not-authenticated"
 
 }
 
