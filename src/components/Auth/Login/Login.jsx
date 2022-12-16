@@ -1,23 +1,19 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
-import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch, useSelector } from 'react-redux';
 // import { startGoogleSingIn, startLogi } from '../../../store/slices/auth';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
 import logosss from '../../../img/2.png'
 
 function Copyright(props) {
@@ -162,7 +158,7 @@ console.log(email,password)
                     <Grid container>
                       
                       <Grid item>
-                        <Link  to='register'  variant="body2">
+                        <Link  to='/register'  variant="body2">
                           {"No tienes cuenta? Registrate"}
                         </Link>
                       </Grid>

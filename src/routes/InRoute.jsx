@@ -28,7 +28,7 @@ const InRoute = ({updateNavbar}) => {
                     <Route element={<PublicRoute/>}>
                       
                       <Route path="/login" isPrivate={false} element={<Login setNavbar={() =>updateNavbar()}/>}/>
-                      <Route path="/login/register" element={<Register/>}/>
+                      <Route path="/register" element={<Register/>}/>
                       
                     </Route>
 
