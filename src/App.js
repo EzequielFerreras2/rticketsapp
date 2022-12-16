@@ -15,7 +15,7 @@ var [isNavbarHidden, setIsNavbarHidden] = useState(false);
  // not-authenticated //checking //authenticated
 const usuario ={
 
-  rol:"admin",
+  rol:"user",
   status:"authenticated"
 
 }
