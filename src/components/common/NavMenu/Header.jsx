@@ -177,7 +177,11 @@ const rol= user.rol;
                 onClick={openMenu}
                 color="inherit"
                 startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>U</Avatar>:<SupervisorAccountIcon/> }
-                
+                sx={{
+                padding:"15px",
+                borderRadius: "8px",
+                border:"2px",
+                }}
               >
                 User
 
