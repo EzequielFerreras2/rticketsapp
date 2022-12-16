@@ -9,19 +9,11 @@ import { mainSideBarItems } from './consts/navbarItems';
 import {useNavigate} from "react-router-dom";
 import { Typography } from '@mui/material';
 
+
 export default function SideMenu(props) {
   const navigate = useNavigate();
     const open = props.open;
 
-    const boxSX = {
-      "&:hover": {
-        border: "1px solid #00FF00",
-        color: 'blue',
-        backgroundColor: 'lightblue'
-      },
-    };
-
-   
   return (
     <div>
         <Divider />

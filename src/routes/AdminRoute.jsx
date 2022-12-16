@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { Navigate, Outlet,} from 'react-router-dom';
 
 
@@ -16,20 +16,6 @@ const AdminRoute = (updateNavbar) => {
         
     
     )   ;
-
-    // return(
-
-    //     <Routes>
-            
-    //         <Route path="/home" element={<Home setNavbar={() =>updateNavbar()}/>}/>
-    //         <Route path="/admindashboard" element={<AdminDashboard />}/>
-    //         <Route path="/userdashboard" element={<UserDashBoard />}/>
-    //         
-    //         <Route path="/" element={<Home/>}/>
-    //         {/* <Route path='*' element={<PageNotFound/>}/> */}
-            
-    //     </Routes>
-    // )
 }
 
 export default AdminRoute;

@@ -6,7 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SideBar from './SideBar';
@@ -17,8 +16,6 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import { grey } from '@mui/material/colors';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 
 const drawerWidth = 260;
@@ -97,15 +94,12 @@ const [open, setOpen] = React.useState(false);
 const [anchorEl, setAnchorEl] = React.useState(null);
 
 
+const user = JSON.parse(localStorage.getItem("user"));
 
-const status ='authenticated'
-const rol='user'
-
-
-
+const status = user.status;
+const rol= user.rol;
 
 
-const [openAccountModal,setOpenAccountModal]=React.useState(false);
 
 
 
@@ -119,7 +113,6 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
 
   const handleAccount =() =>{
 
-    setOpenAccountModal(true);
     handleClose();
 
   }
@@ -166,7 +159,7 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
             <MenuOpenIcon/>
           </IconButton>
 
-          
+
           <Typography variant="h6" sx={{ flexGrow: 1 }} component="div">
             aaaa
           </Typography>

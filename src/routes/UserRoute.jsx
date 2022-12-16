@@ -4,7 +4,7 @@ import { Navigate, Outlet,} from 'react-router-dom';
 
 
 
-const PrivateRoute = (updateNavbar) => {
+const UserRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
@@ -12,11 +12,12 @@ const PrivateRoute = (updateNavbar) => {
 
     return (
         
-        user.status === 'authenticated' ? <Outlet/> : <Navigate to='login'/>
+        user.rol === 'user' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;
 
+  
 }
 
-export default PrivateRoute;
+export default UserRoute;

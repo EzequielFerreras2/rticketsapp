@@ -13,7 +13,7 @@ import CreateCases from "../components/Cases/CreateCases/CreateCases";
 import Dashboards from "../components/DashBoard/Dashboard";
 import Homes from "../components/Home/Home";
 import Cases from "../components/Cases/Cases" 
-import UserRoute from "./UserRoutes";
+import UserRoute from "./UserRoute";
 import Login from "../components/Auth/Login/Login";
 
 const InRoute = ({updateNavbar}) => {

@@ -39,7 +39,6 @@ const status =user.status;
 
     updateNavbar();
 
-    
 
   }, [status]);
 
