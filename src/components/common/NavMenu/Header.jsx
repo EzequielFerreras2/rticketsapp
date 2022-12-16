@@ -16,7 +16,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import logosss from '../../../2.png'
+import logosss from '../../../img/2.png'
 
 const drawerWidth = 250;
 

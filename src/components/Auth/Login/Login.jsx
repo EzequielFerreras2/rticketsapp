@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
-import logosss from '../../../2.png'
+import logosss from '../../../img/2.png'
 
 function Copyright(props) {
   return (
@@ -89,7 +89,7 @@ console.log(email,password)
                 sm={4}
                 md={7}
                 sx={{
-                  backgroundImage: 'url(https://images5.alphacoders.com/118/1181492.jpg)',
+                  backgroundImage: 'url(https://9to5mac.com/wp-content/uploads/sites/6/2018/06/mojave-night.jpg)',
                   backgroundRepeat: 'no-repeat',
                   backgroundColor: (t) =>
                     t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
