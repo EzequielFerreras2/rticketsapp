@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
-
+import logosss from '../../../2.png'
 
 function Copyright(props) {
   return (
@@ -107,9 +107,7 @@ console.log(email,password)
                     alignItems: 'center',
                   }}
                 >
-                  <Avatar sx={{ m: 1, bgcolor: '#0d47a1' , borderRadius: "8px",border:"2px", }}>
-                    <VpnKeyTwoToneIcon />
-                  </Avatar>
+                    <img src={logosss} alt="Logo" height={100}/>
                   <Typography component="h1" variant="h5">
                     LogIn
                   </Typography>
