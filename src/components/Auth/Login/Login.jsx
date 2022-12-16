@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { startGoogleSingIn, startLogi } from '../../../store/slices/auth';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
 
 
 function Copyright(props) {
@@ -107,11 +107,11 @@ console.log(email,password)
                     alignItems: 'center',
                   }}
                 >
-                  <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
+                  <Avatar sx={{ m: 1, bgcolor: '#0d47a1' , borderRadius: "8px",border:"2px", }}>
+                    <VpnKeyTwoToneIcon />
                   </Avatar>
                   <Typography component="h1" variant="h5">
-                    Sign in
+                    LogIn
                   </Typography>
                   
                   <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate  sx={{ mt: 1 }}>
@@ -144,9 +144,10 @@ console.log(email,password)
                           fullWidth
                           variant="contained"
                           sx={{ mt: 3, mb: 2 }}
+                          style={{ background: '#0d47a1' }}
                         //   disabled={isAuthenticating}
                         >
-                          Sign In
+                          LogIn
                         </Button>
                         {/* <Button
                           startIcon={<GoogleIcon/>}
