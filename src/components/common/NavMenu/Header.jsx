@@ -14,11 +14,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { grey } from '@mui/material/colors';
-const drawerWidth = 240;
+
+
+const drawerWidth = 260;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -145,6 +147,7 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
         <AppBar  style={{ background: '#0d47a1' }} open={open}>
         <Toolbar variant="regular">
           <IconButton
+           
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -152,7 +155,12 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
             sx={{
               marginRight: 5,
               ...(open && { display: 'none' }),
+              borderRadius: "8px",
+              border:"2px",
+              backgroundColor: '#1976d2'
             }}
+            size="large"
+           
           >
             <MenuOpenIcon/>
           </IconButton>
@@ -172,7 +180,7 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
                 aria-haspopup="true"
                 onClick={openMenu}
                 color="inherit"
-                startIcon={<SupervisorAccountIcon/> }
+                startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>U</Avatar>:<SupervisorAccountIcon/> }
                 
               >
                 User

@@ -1,14 +1,12 @@
 import React from 'react'
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-
+import DashboardCustomizeTwoToneIcon from '@mui/icons-material/DashboardCustomizeTwoTone';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import DescriptionIcon from '@mui/icons-material/Description';
-
+import HistoryEduTwoToneIcon from '@mui/icons-material/HistoryEduTwoTone';
 
 
 
@@ -17,16 +15,16 @@ import DescriptionIcon from '@mui/icons-material/Description';
 export const mainSideBarItems =  [
     {
         id:0,
-        icon:<DashboardIcon/>,
+        icon:<DashboardCustomizeTwoToneIcon style={{ fill: '#0072ea' }}/>,
         label:'Dashboard',
         route:'Dashboard',
         hidden:false
     },
     {
         id:1,
-        icon:<DescriptionIcon/>,
-        label:'Casos',
-        route:'Cases',
+        icon:<HistoryEduTwoToneIcon style={{ fill: '#0072ea' }}/>,
+        label:'Categoria De Casos',
+        route:'CasesCategory',
         hidden:false
     },
     {
