@@ -36,6 +36,7 @@ const status ="authenticated";
   }
   else{
     setIsNavbarHidden (false);
+    localStorage.setItem("rol", "user")
   }
   }
 

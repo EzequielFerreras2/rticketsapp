@@ -2,9 +2,9 @@ import React from 'react';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
 import UserDashboard from './UserDashboard/UserDashboard';
 
-const Dashboard = () => {
+const Dashboards = () => {
 
-    const rol ="admin"
+    const rol =localStorage.getItem("rol")
 
     return (
         <div>
@@ -14,4 +14,4 @@ const Dashboard = () => {
     );
 }
 
-export default Dashboard;
+export default Dashboards;

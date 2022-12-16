@@ -5,7 +5,7 @@ import { Navigate, Outlet, } from 'react-router-dom';
 const PublicRoute = (updateNavbar) => {
     
     // const {status} =useSelector(store => store.auth)
-    const status ="authenticated"
+    const status ='authenticated'
 
        // not-authenticated //checking //authenticated
     return ( status === 'not-authenticated'  ? <Outlet/> : <Navigate to="/home"/>)   ;

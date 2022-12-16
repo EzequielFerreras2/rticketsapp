@@ -8,7 +8,7 @@ const AdminRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const rol ="admin"
+    const rol = localStorage.getItem("rol")
 
     return (
         

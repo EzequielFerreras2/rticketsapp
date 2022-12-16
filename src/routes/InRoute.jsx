@@ -1,4 +1,3 @@
-import { Cases, Dashboard, Home, Login } from "@mui/icons-material";
 import { Route, Routes } from "react-router-dom";
 import Register from "../components/Auth/Register/Register";
 import Layout from "../Layout";
@@ -11,6 +10,11 @@ import AdminDashboard from "../components/DashBoard/AdminDashboard/AdminDashboar
 import UserDashboard from "../components/DashBoard/UserDashboard/UserDashboard";
 import Account from "../components/Auth/Account/Account";
 import CreateCases from "../components/Cases/CreateCases/CreateCases";
+import Dashboards from "../components/DashBoard/Dashboard";
+import Homes from "../components/Home/Home";
+import Cases from "../components/Cases/Cases" 
+import UserRoute from "./UserRoutes";
+import Login from "../components/Auth/Login/Login";
 
 const InRoute = ({updateNavbar}) => {
     return (
@@ -20,18 +24,22 @@ const InRoute = ({updateNavbar}) => {
                   
                   <Route path="/" element={<Layout/>}>
 
+                    {/* Public Route*/}
                     <Route element={<PublicRoute/>}>
+                      
                       <Route path="/login" isPrivate={false} element={<Login setNavbar={() =>updateNavbar()}/>}/>
                       <Route path="/login/register" element={<Register/>}/>
                       
                     </Route>
-                       
+
+                    {/* Private Route*/}   
                     <Route element={<PrivateRoute/>}>
 
-                      <Route path="/dashboard" element={<Dashboard/>}/>
+                      <Route path="/dashboard" element={<Dashboards/>}/>
                       <Route path="/createcases" element={<CreateCases/>}/>
-                      <Route path="/home" element={<Home setNavbar={() =>updateNavbar()}/>}/>
+                      <Route path="/home" element={<Homes setNavbar={() =>updateNavbar()}/>}/>
 
+                        {/* Admin Route*/}
                       <Route element={<AdminRoute/>} >
                           
                           <Route path="/admindashboard" element={<AdminDashboard />}/>
@@ -41,11 +49,17 @@ const InRoute = ({updateNavbar}) => {
                       </Route>
 
 
-                      <Route path="/userdashboard" element={<UserDashboard />}/>
-                          
+                         {/* User Route*/}
+                        <Route element={<UserRoute/>} >
+                            
+                            <Route path="/userdashboard" element={<UserDashboard />}/>
+
+                        </Route>
+
+                      
                       <Route path="/cases" element={<Cases/>}/>
                      
-                      </Route>
+                    </Route>
 
                     
                   </Route>

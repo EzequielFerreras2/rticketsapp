@@ -165,8 +165,10 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
           >
             <MenuOpenIcon/>
           </IconButton>
+
+          
           <Typography variant="h6" sx={{ flexGrow: 1 }} component="div">
-            RticketsApp
+            aaaa
           </Typography>
           
           
@@ -233,7 +235,7 @@ const [openAccountModal,setOpenAccountModal]=React.useState(false);
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <h3>aaa</h3>
+          <h3>RticketsApp</h3>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>

@@ -4,15 +4,15 @@ import { Navigate, Outlet,} from 'react-router-dom';
 
 
 
-const PrivateRoute = (updateNavbar) => {
+const UserRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const status ='authenticated'
+    const rol = localStorage.getItem("rol")
 
     return (
         
-        status === 'authenticated' ? <Outlet/> : <Navigate to='login'/>
+        rol === 'user' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;
@@ -32,4 +32,4 @@ const PrivateRoute = (updateNavbar) => {
     // )
 }
 
-export default PrivateRoute;
+export default UserRoute;
