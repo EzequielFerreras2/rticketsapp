@@ -13,6 +13,14 @@ export default function SideMenu(props) {
   const navigate = useNavigate();
     const open = props.open;
 
+    const boxSX = {
+      "&:hover": {
+        border: "1px solid #00FF00",
+        color: 'blue',
+        backgroundColor: 'lightblue'
+      },
+    };
+
    
   return (
     <div>
@@ -25,6 +33,7 @@ export default function SideMenu(props) {
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  
                 }}
                 
               >
@@ -33,7 +42,7 @@ export default function SideMenu(props) {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
-            
+                    
                   }}
 
                   

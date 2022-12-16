@@ -2,6 +2,7 @@ import { CssBaseline } from "@mui/material";
 import { Box } from "@mui/system";
 import {useEffect, useState } from "react";
 import Header from "./components/common/NavMenu/Header";
+import InRoute from "./routes/InRoute";
 
 
 
@@ -52,7 +53,7 @@ const status ="authenticated";
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               
               <br/>
-              <h1>Hola</h1>
+              <InRoute updateNavbar={()=>updateNavbar()}/>
                
           </Box>
        </Box>

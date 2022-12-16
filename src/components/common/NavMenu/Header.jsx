@@ -18,6 +18,7 @@ import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { grey } from '@mui/material/colors';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 
 const drawerWidth = 260;
@@ -98,7 +99,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
 
 const status ='authenticated'
-const rol='admin'
+const rol='user'
 
 
 
