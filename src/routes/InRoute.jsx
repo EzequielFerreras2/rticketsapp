@@ -19,7 +19,7 @@ import Login from "../components/Auth/Login/Login";
 const InRoute = ({updateNavbar}) => {
     return (
         <>
-        <br/>
+       
             <Routes> 
                   
                   <Route path="/" element={<Layout/>}>
