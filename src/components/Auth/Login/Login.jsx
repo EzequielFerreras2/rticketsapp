@@ -16,6 +16,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import logosss from '../../../img/2.png'
 
+import {useAtuhStore} from '../../../store/auth/useAuthStore'
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -36,6 +38,9 @@ const dispatch = useDispatch();
 const  {status,errorMessage} = useSelector((state) => state.auth);
 const isAuthenticating = React.useMemo( ()=> status ==='checking', [status]);
 
+
+const{startLogin}=useAtuhStore();
+
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
@@ -50,7 +55,10 @@ const { register, handleSubmit, formState: { errors },  } = useForm({
 
 const onSubmit=({email,password})=>{
 
-console.log(email,password)
+  startLogin({email,password});
+  
+
+
 
 
 //   dispatch(startLogi({email,password}))
