@@ -9,11 +9,11 @@ const UserRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const {rol}= useAtuhStore();
+    const {user}= useAtuhStore();
 
     return (
         
-        rol === 'user' ? <Outlet/> : <Navigate to='home'/>
+        user.rol === 'user' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;

@@ -7,14 +7,11 @@ import InRoute from "./routes/InRoute";
 import { useAtuhStore } from "./store/auth/useAuthStore";
 
 
-
-
 function App() {
   
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 
-const {status, rol ,checkToken}= useAtuhStore();
-
+const {status, checkToken}= useAtuhStore();
 
 
 useEffect(() => {
@@ -39,11 +36,6 @@ useEffect(() => {
     }
   };
 
-
- 
-
-
-
   const updateNavbar =()=>
   {
     
@@ -56,7 +48,6 @@ useEffect(() => {
   }
 };
 
-  
 
 if( status === 'checking' ){
       Swal.fire({
@@ -73,9 +64,6 @@ if( status === 'checking' ){
     }
 
 
-  
- 
-  
 
   return (
 

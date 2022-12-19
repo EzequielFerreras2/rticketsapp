@@ -7,7 +7,7 @@ import { chekingCredentials, clearErrorMessage, logIn, logOut } from './authSlic
 
 export const useAtuhStore = () =>{
 
-    const {status, user,errorMessage } =  useSelector( state => state.auth );
+    const {status, user, errorMessage } =  useSelector( state => state.auth );
     const dispatch = useDispatch();
 
     const startLogin = async({email,password}) =>{
@@ -140,6 +140,14 @@ else{
 
 };
 
+
+const startLogOut =()=>{
+
+    dispatch(logOut("Fin de la Secion"))
+    localStorage.clear();
+
+
+};
     return{
 
         //Propieties
@@ -150,7 +158,8 @@ else{
         //Methos
         startLogin,
         startRegister,
-        checkToken
+        checkToken,
+        startLogOut
     };
 
 

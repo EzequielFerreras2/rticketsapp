@@ -5,11 +5,11 @@ import UserDashboard from './UserDashboard/UserDashboard';
 
 const Dashboards = () => {
 
-    const {rol}= useAtuhStore();
+    const {user}= useAtuhStore();
 
     return (
-        
-           rol === "admin"? <AdminDashboard/>:<UserDashboard/> 
+
+          user.rol === "Admin"? <AdminDashboard/>:<UserDashboard/> 
     );
 }
 

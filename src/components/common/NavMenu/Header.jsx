@@ -91,19 +91,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const Header = () => {
 const theme = useTheme();
 const [open, setOpen] = React.useState(false);
-
 const [anchorEl, setAnchorEl] = React.useState(null);
+const {status,rol,user,startLogOut}= useAtuhStore();
+const letter= user.name?.charAt(0);
 
-
-const user = JSON.parse(localStorage.getItem("user"));
-
-const {status,rol}= useAtuhStore();
-
-
-
-
-
-  
   const openMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -122,6 +113,7 @@ const {status,rol}= useAtuhStore();
     
     // logout();
     // navigate('/login')
+    startLogOut();
     console.log("LogOut")
     // window.location.reload();
 
@@ -176,14 +168,14 @@ const {status,rol}= useAtuhStore();
                 aria-haspopup="true"
                 onClick={openMenu}
                 color="inherit"
-                startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>U</Avatar>:<SupervisorAccountIcon/> }
+                startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>{letter}</Avatar>:<SupervisorAccountIcon/> }
                 sx={{
                 padding:"13px",
                 borderRadius: "8px",
                 border:"2px",
                 }}
               >
-                User
+                {user.name}
 
               </Button>
               
@@ -208,7 +200,7 @@ const {status,rol}= useAtuhStore();
                     <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: 'black'}}><AccountBoxIcon/> Mi Cuenta</MenuItem>
                     
                     {
-                      rol==='admin'
+                      user.rol==='admin'
                       ?
                        <div>
                        <MenuItem   style={{ textDecoration: 'none' , color: 'black'}}><SupervisorAccountIcon/> Administrar Cuentas</MenuItem>

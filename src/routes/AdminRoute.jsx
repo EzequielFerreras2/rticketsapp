@@ -9,11 +9,11 @@ const AdminRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const {rol}= useAtuhStore();
+    const {user}= useAtuhStore();
 
     return (
         
-        rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
+        user.rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;
