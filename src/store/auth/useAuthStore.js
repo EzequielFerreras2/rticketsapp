@@ -36,8 +36,6 @@ export const useAtuhStore = () =>{
 
             const{data} = response;
 
-            console.log(data)
-
             dispatch(logOut(data.msg));
 
             if(data.ok === false)
@@ -51,17 +49,17 @@ export const useAtuhStore = () =>{
 
             setTimeout(() => {
                 dispatch(clearErrorMessage());
-            }, 1000);
-
-            
-        
-            
-
-            
+            }, 1000);    
         }
 
     };
 
+    const starRegister =async({name,email,password,departament,company}) =>{
+
+
+
+
+    };
 
     return{
 

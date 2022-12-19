@@ -50,9 +50,9 @@ export default function SignUp() {
   
   const{status}=useAtuhStore();
   const isAuthenticating = useMemo( ()=> status ==='checking', [status]);
-  const [company, setCompany] = useState([])
-  const [departament, setDepartament] = useState([])
-  const open = false;
+  const [company, setCompany] = useState("")
+  const [departament, setDepartament] = useState("")
+ const [close, setclose] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -64,6 +64,10 @@ export default function SignUp() {
   const  handledepartamentChange = (event) => {
     setDepartament(event.target.value);
   };
+
+  const onClosee =()=>{
+    setclose(true)
+  }
 
   const onSubmit = (data) => {
    
@@ -138,20 +142,22 @@ export default function SignUp() {
                     <InputLabel id="company">Compañia</InputLabel>
                     <Select
                       labelId="company"
-                      multiple
-                      
                       id="company"
                       value={company}
                       {...register("company")}
                       label="Compañia"
                       onChange={handleSelectChange}
                       error={!!errors.company}
-                      helperText={errors.company?.message}
+                     
                     >
                       {
-                        companyList.map((company)=>(
-                          <MenuItem key={company} value={company}>{company}</MenuItem>
-                        ))};
+                        companyList.map((company)=>{
+                          return (
+                            <MenuItem key={company} value={company}>{company} </MenuItem>
+                          );
+                          })
+                          
+                          };
                       
                     </Select>
                   </FormControl>
@@ -163,17 +169,22 @@ export default function SignUp() {
                     <InputLabel id="departament">Departamento</InputLabel>
                     <Select
                       labelId="departament"
-                      multiple
+                     
                       id="departament"
                       value={departament}
                       {...register("departament")}
                       label="departament"
                       onChange={handledepartamentChange}
+                      error={!!errors.departament}
+                      
                     >
                       {
-                        departamentList.map((departament)=>(
-                          <MenuItem key={departament} value={departament}>{departament}</MenuItem>
-                        ))};
+                        departamentList.map((departament)=>{
+                          return (
+                            <MenuItem key={departament} value={departament}>{departament}</MenuItem>
+                          );
+                          })
+                        };
                       
                     </Select>
                   </FormControl>
