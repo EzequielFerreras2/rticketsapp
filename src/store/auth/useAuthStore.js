@@ -57,7 +57,6 @@ export const useAtuhStore = () =>{
     const startRegister =async({name,email,password,departament,company}) =>{
 
 
-        console.log(name,email,password,departament,company)
 
         try {
 
