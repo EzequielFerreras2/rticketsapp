@@ -13,7 +13,7 @@ const UserRoute = (updateNavbar) => {
 
     return (
         
-        user.rol === 'user' ? <Outlet/> : <Navigate to='home'/>
+        user.rol === 'User' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;

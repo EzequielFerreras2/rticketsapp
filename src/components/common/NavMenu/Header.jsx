@@ -18,6 +18,7 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 250;
 
@@ -94,6 +95,8 @@ const [open, setOpen] = React.useState(false);
 const [anchorEl, setAnchorEl] = React.useState(null);
 const {status,rol,user,startLogOut}= useAtuhStore();
 const letter= user.name?.charAt(0);
+const navigate = useNavigate();
+
 
   const openMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -104,6 +107,12 @@ const letter= user.name?.charAt(0);
 
   const handleAccount =() =>{
 
+    handleClose();
+
+  }
+  const handleCategoryCases =() =>{
+
+    navigate('/cases/category')
     handleClose();
 
   }
@@ -197,19 +206,20 @@ const letter= user.name?.charAt(0);
                     
                   >
             
-                    <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: 'black'}}><AccountBoxIcon/> Mi Cuenta</MenuItem>
+                    <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: '#0072ea'}}><AccountBoxIcon/> Mi Cuenta</MenuItem>
                     
                     {
-                      user.rol==='admin'
+                      user.rol==='Admin'
                       ?
                        <div>
-                       <MenuItem   style={{ textDecoration: 'none' , color: 'black'}}><SupervisorAccountIcon/> Administrar Cuentas</MenuItem>
+                       <MenuItem   style={{ textDecoration: 'none' , color: '#0072ea'}}><SupervisorAccountIcon/> Administrar Cuentas</MenuItem>
+                       <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><SupervisorAccountIcon/> Categoria de Casos</MenuItem>
                        </div>
                       :
                        <div></div>
                     }
                     
-                    <MenuItem onClick={handleLogout} style={{ textDecoration: 'none' , color: 'black'}} ><LogoutIcon/> Logout</MenuItem>
+                    <MenuItem onClick={handleLogout} style={{ textDecoration: 'none' , color: '#ff4569'}} ><LogoutIcon/> Logout</MenuItem>
                     
                   </Menu>
               </>     

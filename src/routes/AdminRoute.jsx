@@ -13,7 +13,7 @@ const AdminRoute = (updateNavbar) => {
 
     return (
         
-        user.rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
+        user.rol === 'Admin' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;
