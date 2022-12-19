@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useEffect, useMemo} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
-import { useDispatch, useSelector } from 'react-redux';
+
 // import { startGoogleSingIn, startLogi } from '../../../store/slices/auth';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -34,48 +34,23 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login({setNavbar}) {
-const dispatch = useDispatch();
-const  {status,errorMessage} = useSelector((state) => state.auth);
-const isAuthenticating = React.useMemo( ()=> status ==='checking', [status]);
 
-
-const{startLogin}=useAtuhStore();
-
+const{startLogin,status}=useAtuhStore();
+const isAuthenticating = useMemo( ()=> status ==='checking', [status]);
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
  
 });
 
-
-
 const { register, handleSubmit, formState: { errors },  } = useForm({
   resolver: yupResolver(schema),
 });
 
 const onSubmit=({email,password})=>{
-
   startLogin({email,password});
-  
-
-
-
-
-//   dispatch(startLogi({email,password}))
-//         if(!!errorMessage){
-//           Swal.fire({
-//             position: 'center',
-//             icon: 'error',
-//             title: 'Error...',
-//             text: errorMessage,
-          
-//           })
-//         }
 };
 
-// const onGoogleSingIn =()=>{
-//   dispatch(startGoogleSingIn())
-// };
 
 
   return (
@@ -147,22 +122,10 @@ const onSubmit=({email,password})=>{
                           variant="contained"
                           sx={{ mt: 3, mb: 2 }}
                           style={{ background: '#0d47a1' }}
-                        //   disabled={isAuthenticating}
+                          disabled={isAuthenticating}
                         >
                           LogIn
                         </Button>
-                        {/* <Button
-                          startIcon={<GoogleIcon/>}
-                          fullWidth
-                          variant="outlined"
-                          sx={{  mb: 2 }}
-                          onClick={() => onGoogleSingIn()}
-                          disabled={isAuthenticating}
-                        >
-                          Google Sign In
-                        </Button> */}
-                  
-
                     <Grid container>
                       
                       <Grid item>

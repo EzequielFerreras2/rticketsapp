@@ -17,29 +17,29 @@ initialState: {
     logIn:(state,{payload})=>{
 
         state.status='authenticated'; // not-authenticated //checking //authenticated
-        state.user= payload.user;
+        state.user= payload;
         state.errorMessage= undefined;
-
     },
 
     logOut:(state,{payload})=>{
 
         state.status='not-authenticated'; // not-authenticated //checking //authenticated
         state.user = {};
-        state.errorMessage= payload?.errorMessage;
-
+        state.errorMessage= payload;
     },
 
-    chekingCredentials:(state)=>{
+    chekingCredentials:(state,{payload})=>{
 
         state.status='checking'; // not-authenticated //checking //authenticated
         state.user={};
+        state.errorMessage=payload;
+    },
+    clearErrorMessage:(state)=>{
+
         state.errorMessage=undefined;
-
-
     }
  }
 });
 
 // Action creators are generated for each case reducer function
-export const { logIn,logOut,chekingCredentials } = authSlice.actions;
+export const { logIn,logOut,chekingCredentials,clearErrorMessage } = authSlice.actions;
