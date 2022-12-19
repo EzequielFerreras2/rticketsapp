@@ -41,18 +41,18 @@ export default function SignUp() {
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    displayName: yup.string().required().max(60),
+    name: yup.string().required().max(60),
     company: yup.string().required().max(60),
     departament: yup.string().required().max(60),
     password: yup.string().min(8).max(32).required(),
     confPassword: yup.string().min(8).max(32).required(),
   });
   
-  const{status}=useAtuhStore();
+  const{status,startRegister}=useAtuhStore();
   const isAuthenticating = useMemo( ()=> status ==='checking', [status]);
   const [company, setCompany] = useState("")
   const [departament, setDepartament] = useState("")
- const [close, setclose] = useState(false);
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -65,9 +65,7 @@ export default function SignUp() {
     setDepartament(event.target.value);
   };
 
-  const onClosee =()=>{
-    setclose(true)
-  }
+
 
   const onSubmit = (data) => {
    
@@ -86,7 +84,7 @@ export default function SignUp() {
     else
     {
 
-      console.log(data)
+      startRegister(data)
       
     }
   };
@@ -112,14 +110,14 @@ export default function SignUp() {
               <Grid item xs={12} >
 
                 <TextField
-                 {...register("displayName")}
-                  name="displayName"
+                 {...register("name")}
+                  name="name"
                   fullWidth
-                  id="displayName"
+                  id="name"
                   label="Nombre Completo"
                   autoFocus
-                  error={!!errors.displayName}
-                  helperText={errors.displayName?.message}
+                  error={!!errors.name}
+                  helperText={errors.name?.message}
                 />
               </Grid>
              

@@ -54,9 +54,49 @@ export const useAtuhStore = () =>{
 
     };
 
-    const starRegister =async({name,email,password,departament,company}) =>{
+    const startRegister =async({name,email,password,departament,company}) =>{
 
 
+        console.log(name,email,password,departament,company)
+
+        try {
+
+            dispatch(chekingCredentials());
+            const rol="user"
+            const {data} = await rticketsApp.post('/auth/register',{name,email,password,departament,company,rol})
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('rol',data.rol);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            dispatch(
+            
+                logIn({
+                    id:data.uid,
+                    name:data.name,
+                    email:data.email,
+                    rol:data.rol,
+                    departament:data.departament,
+                    company:data.company
+                }
+                ));
+            
+        } catch ({response}) {
+
+            const{data} = response;
+            dispatch(logOut(data.msg));
+
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+
+            setTimeout(() => {
+                dispatch(clearErrorMessage());
+            }, 1000);    
+        }
 
 
     };
@@ -69,7 +109,8 @@ export const useAtuhStore = () =>{
         errorMessage,
 
         //Methos
-        startLogin
+        startLogin,
+        startRegister
     };
 
 
