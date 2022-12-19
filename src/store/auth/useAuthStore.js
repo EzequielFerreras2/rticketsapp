@@ -7,7 +7,7 @@ import { chekingCredentials, clearErrorMessage, logIn, logOut } from './authSlic
 
 export const useAtuhStore = () =>{
 
-    const {status, user,errorMessage } =  useSelector( state => state );
+    const {status, user,errorMessage } =  useSelector( state => state.auth );
     const dispatch = useDispatch();
 
     const startLogin = async({email,password}) =>{
@@ -100,6 +100,46 @@ export const useAtuhStore = () =>{
 
     };
 
+
+const checkToken = async() =>{
+
+const token = localStorage.getItem('token');
+
+if(!token)
+{
+    return dispatch(logOut('Token no Valido o Expirado'));
+}
+else{
+
+    try {
+        const {data} = await rticketsApp.get('/auth/renew');
+        localStorage.setItem('token', data.token);
+            localStorage.setItem('rol',data.rol);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            dispatch(
+            
+                logIn({
+                    id:data.uid,
+                    name:data.name,
+                    email:data.email,
+                    rol:data.rol,
+                    departament:data.departament,
+                    company:data.company
+                }
+                ));
+        
+    } catch ({response}) {
+
+        const{data} = response;
+        localStorage.clear();
+        dispatch(logOut(data.msg));
+        
+        
+    }
+}
+
+};
+
     return{
 
         //Propieties
@@ -109,7 +149,8 @@ export const useAtuhStore = () =>{
 
         //Methos
         startLogin,
-        startRegister
+        startRegister,
+        checkToken
     };
 
 

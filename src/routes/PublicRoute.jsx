@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navigate, Outlet, } from 'react-router-dom';
+import { useAtuhStore } from '../store/auth/useAuthStore';
 
 const PublicRoute = (updateNavbar) => {
     
     // const {status} =useSelector(store => store.auth)
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {status}= useAtuhStore();
 
        // not-authenticated //checking //authenticated
-    return ( user.status === 'not-authenticated'  ? <Outlet/> : <Navigate to="/home"/>)   ;
+    return ( status === 'not-authenticated'  ? <Outlet/> : <Navigate to="/home"/>)   ;
 
     
 }

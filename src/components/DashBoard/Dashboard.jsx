@@ -1,13 +1,15 @@
 import React from 'react';
+import { useAtuhStore } from '../../store/auth/useAuthStore';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
 import UserDashboard from './UserDashboard/UserDashboard';
 
 const Dashboards = () => {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {rol}= useAtuhStore();
 
     return (
-            user.rol === "admin"? <AdminDashboard/>:<UserDashboard/> 
+        
+           rol === "admin"? <AdminDashboard/>:<UserDashboard/> 
     );
 }
 

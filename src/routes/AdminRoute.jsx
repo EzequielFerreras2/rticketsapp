@@ -1,6 +1,7 @@
 import React from 'react';
 //import { useSelector } from 'react-redux';
 import { Navigate, Outlet,} from 'react-router-dom';
+import { useAtuhStore } from '../store/auth/useAuthStore';
 
 
 
@@ -8,11 +9,11 @@ const AdminRoute = (updateNavbar) => {
 
     // const {status} =useSelector(store => store.auth)
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {rol}= useAtuhStore();
 
     return (
         
-        user.rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
+        rol === 'admin' ? <Outlet/> : <Navigate to='home'/>
         
     
     )   ;

@@ -17,6 +17,7 @@ import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import logosss from '../../../img/2.png'
+import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 const drawerWidth = 250;
 
@@ -96,8 +97,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
 const user = JSON.parse(localStorage.getItem("user"));
 
-const status = user.status;
-const rol= user.rol;
+const {status,rol}= useAtuhStore();
 
 
 

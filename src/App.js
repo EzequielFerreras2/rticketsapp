@@ -1,8 +1,10 @@
 import { CssBaseline } from "@mui/material";
 import { Box } from "@mui/system";
 import {useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import Header from "./components/common/NavMenu/Header";
 import InRoute from "./routes/InRoute";
+import { useAtuhStore } from "./store/auth/useAuthStore";
 
 
 
@@ -11,20 +13,22 @@ function App() {
   
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 
+const {status, rol ,checkToken}= useAtuhStore();
 
- // not-authenticated //checking //authenticated
-const usuario ={
 
-  rol:"user   ",
-  status:"not-authenticated"
 
-}
+useEffect(() => {
 
-localStorage.setItem("user", JSON.stringify(usuario))
- 
-const user = JSON.parse(localStorage.getItem("user"));
+  updateNavbar();
 
-const status =user.status;
+}, [status]);
+
+
+useEffect(() => {
+  checkToken();
+ }, []);
+
+
 
   const DisplayHeader= (props) =>{
     const isLoggedIn = props.isLoggedIn;
@@ -35,28 +39,41 @@ const status =user.status;
     }
   };
 
-  useEffect(() => {
 
-    updateNavbar();
-
-
-  }, [status]);
+ 
 
 
-  const updateNavbar =()=>{
+
+  const updateNavbar =()=>
+  {
+    
   if (status === 'checking' || status === 'not-authenticated'){
     setIsNavbarHidden (true);
   }
+
   else{
     setIsNavbarHidden (false);
-    
-    
   }
-  }
+};
 
   
 
+if( status === 'checking' ){
+      Swal.fire({
+        title: `${status}...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
+    else{
 
+      Swal.close();
+    }
+
+
+  
  
   
 
