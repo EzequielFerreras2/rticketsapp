@@ -97,48 +97,17 @@ const [open, setOpen] = React.useState(false);
 const [anchorEl, setAnchorEl] = React.useState(null);
 const {status,rol,user,startLogOut}= useAtuhStore();
 const letter= user.name?.charAt(0);
+const openMenu = (event) => {setAnchorEl(event.currentTarget);};
+const handleClose = () => {setAnchorEl(null);};
+const handleDrawerOpen = () => {setOpen(true);};
+const handleDrawerClose = () => {setOpen(false);};
 const navigate = useNavigate();
 
+const handleAccount =() =>{navigate('/account');handleClose();};
+const handleAdminAccount =() =>{navigate('/adminaccount');handleClose();};
+const handleCategoryCases =() =>{navigate('/cases/category');handleClose();};  
+const handleLogout = () =>{startLogOut();};
 
-  const openMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleAccount =() =>{
-
-    handleClose();
-
-  }
-  const handleCategoryCases =() =>{
-
-    navigate('/cases/category')
-    handleClose();
-
-  }
-  
-
-  const handleLogout = () =>{
-    
-    // logout();
-    // navigate('/login')
-    startLogOut();
-    console.log("LogOut")
-    // window.location.reload();
-
-
-
-  };
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
     return (
         <div>
         <AppBar  style={{ background: '#0d47a1' }} open={open}>
@@ -214,7 +183,7 @@ const navigate = useNavigate();
                       user.rol==='Admin'
                       ?
                        <div>
-                       <MenuItem   style={{ textDecoration: 'none' , color: '#0072ea'}}><PeopleAltTwoToneIcon sx={{mr:1}}/> Administrar Cuentas</MenuItem>
+                       <MenuItem onClick={()=>handleAdminAccount()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><PeopleAltTwoToneIcon sx={{mr:1}}/> Administrar Cuentas</MenuItem>
                        <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><CategoryTwoToneIcon sx={{mr:1}}/> Categoria de Casos</MenuItem>
                        </div>
                       :
