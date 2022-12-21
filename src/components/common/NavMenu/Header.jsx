@@ -12,7 +12,8 @@ import SideBar from './SideBar';
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import LogoutIcon from '@mui/icons-material/Logout';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
+import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
 import { Avatar, Button } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
@@ -207,20 +208,20 @@ const navigate = useNavigate();
                     
                   >
             
-                    <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: '#0072ea'}}><AccountBoxIcon/> Mi Cuenta</MenuItem>
+                    <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: '#0072ea'}}><AccountBoxTwoToneIcon sx={{mr:1}} />Mi Cuenta</MenuItem>
                     
                     {
                       user.rol==='Admin'
                       ?
                        <div>
-                       <MenuItem   style={{ textDecoration: 'none' , color: '#0072ea'}}><SupervisorAccountIcon/> Administrar Cuentas</MenuItem>
-                       <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><CategoryTwoToneIcon/> Categoria de Casos</MenuItem>
+                       <MenuItem   style={{ textDecoration: 'none' , color: '#0072ea'}}><PeopleAltTwoToneIcon sx={{mr:1}}/> Administrar Cuentas</MenuItem>
+                       <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><CategoryTwoToneIcon sx={{mr:1}}/> Categoria de Casos</MenuItem>
                        </div>
                       :
                        <div></div>
                     }
                     
-                    <MenuItem onClick={handleLogout} style={{ textDecoration: 'none' , color: '#ff4569'}} ><LogoutIcon/> Logout</MenuItem>
+                    <MenuItem onClick={handleLogout} style={{ textDecoration: 'none' , color: '#ff4569'}} ><LogoutIcon sx={{mr:1}}/> Logout</MenuItem>
                     
                   </Menu>
               </>     
