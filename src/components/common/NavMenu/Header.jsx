@@ -19,6 +19,7 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import { useNavigate } from 'react-router-dom';
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
 
 const drawerWidth = 250;
 
@@ -213,7 +214,7 @@ const navigate = useNavigate();
                       ?
                        <div>
                        <MenuItem   style={{ textDecoration: 'none' , color: '#0072ea'}}><SupervisorAccountIcon/> Administrar Cuentas</MenuItem>
-                       <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><SupervisorAccountIcon/> Categoria de Casos</MenuItem>
+                       <MenuItem onClick={()=>handleCategoryCases()}  style={{ textDecoration: 'none' , color: '#0072ea'}}><CategoryTwoToneIcon/> Categoria de Casos</MenuItem>
                        </div>
                       :
                        <div></div>

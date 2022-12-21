@@ -17,8 +17,9 @@ import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import {companyList,departamentList} from './compAndDepartList'
+
 
 
 
