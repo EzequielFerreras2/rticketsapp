@@ -15,9 +15,11 @@ export const useAccountStore =()=> {
         try {
 
             const {data} = await rticketsApp.get('/account');
-            const account = data.Account;
+            const {Account} = data;
 
-            dispatch(getUsers(account));
+             console.log(Account)
+
+            dispatch(getUsers(Account));
 
             
         } catch ({response}) {

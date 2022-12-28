@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import ChangePassAccModal from './AccountModals/ChangePassAccModal';
 
 const AmdAccTable = ({Account}) => {
+  const [openChangePassModal, setOpenChangePassModal] = useState(false);
+  const [getAccount, setGetAccount] = useState([]);
 
+  const getAcc = (rowValue) =>{
+    setGetAccount(rowValue.row)
+    setOpenChangePassModal(true)
+  };
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
@@ -13,19 +21,25 @@ const AmdAccTable = ({Account}) => {
         { field: 'rol', headerName: 'Rol', width: 130 },
         { field: 'departament', headerName: 'Departamento', width: 200 },
         { field: 'company', headerName: 'Compañia', width: 200 },
-        { field: 'Acciones',width: 80,
+        { field: 'Acciones',width: 150,
               renderCell:(rowValue) =>{
                   return(
                       <>
-  
-                      <IconButton
-                    
-                      aria-label="upload picture" 
-                      component="label"
-                      
-                      >
-                      <SyncLockTwoToneIcon/>
-                      </IconButton>
+                        <IconButton
+                          color='primary'
+                          aria-label="Cambiar Contraseña" 
+                          component="label" 
+                          onClick={() => getAcc(rowValue)} 
+                        >
+                          <SyncLockTwoToneIcon/>
+                        </IconButton>
+                        <IconButton 
+                        color="error" 
+                        aria-label="Borrar Usuario" 
+                        component="label"
+                        >
+                          <DeleteTwoToneIcon />
+                        </IconButton>
                       </>
                       
                   )
@@ -40,9 +54,17 @@ const AmdAccTable = ({Account}) => {
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        checkboxSelection
+       
+      />
+
+      <ChangePassAccModal 
+      open ={openChangePassModal} 
+      onClose={() => setOpenChangePassModal(false)}  
+      getAccount={getAccount}
       />
     </div>
+
+    
   )
 }
 

@@ -1,6 +1,6 @@
 export const companyList =[
 
-    'AutoCamiones',
+    'Auto Camiones',
     'Reid & Compañia',
     'Agencias Generales',
     'Reid Divicion Agricola'
