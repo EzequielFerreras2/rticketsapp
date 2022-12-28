@@ -16,7 +16,7 @@ import Cases from "../components/Cases/Cases"
 import UserRoute from "./UserRoute";
 import Login from "../components/Auth/Login/Login";
 import CategoryCases from "../components/Cases/CategoryCases/CategoryCases";
-import AdminAccount from "../components/Auth/Account/AdminAccount";
+import AdminAccount from "../components/Auth/Account/AdminAccount/AdminAccount";
 
 const InRoute = ({updateNavbar}) => {
     return (

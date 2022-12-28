@@ -3,7 +3,7 @@ import React from 'react';
 const CreateCases = () => {
     return (
         <div>
-            <h1>CreateCases</h1>
+            <h1>Create Cases</h1>
         </div>
     );
 }

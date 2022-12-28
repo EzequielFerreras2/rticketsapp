@@ -10,6 +10,8 @@ export const useAtuhStore = () =>{
     const {status, user, errorMessage } =  useSelector( state => state.auth );
     const dispatch = useDispatch();
 
+    
+
     const startLogin = async({email,password}) =>{
 
         dispatch(chekingCredentials());
@@ -55,8 +57,6 @@ export const useAtuhStore = () =>{
     };
 
     const startRegister =async({name,email,password,departament,company}) =>{
-
-
 
         try {
 

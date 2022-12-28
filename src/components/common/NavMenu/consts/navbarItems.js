@@ -23,8 +23,8 @@ export const mainSideBarItems =  [
     {
         id:1,
         icon:<HistoryEduTwoToneIcon style={{ fill: '#0072ea' }}/>,
-        label:'Crear De Casos',
-        route:'CreateCases',
+        label:'Crear Casos',
+        route:'createcases',
         hidden:false
     },
     {
