@@ -1,5 +1,7 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
+import IconButton from '@mui/material/IconButton';
+import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 
 const AmdAccTable = ({Account}) => {
 
@@ -11,6 +13,24 @@ const AmdAccTable = ({Account}) => {
         { field: 'rol', headerName: 'Rol', width: 130 },
         { field: 'departament', headerName: 'Departamento', width: 200 },
         { field: 'company', headerName: 'Compañia', width: 200 },
+        { field: 'Acciones',width: 80,
+              renderCell:(rowValue) =>{
+                  return(
+                      <>
+  
+                      <IconButton
+                    
+                      aria-label="upload picture" 
+                      component="label"
+                      
+                      >
+                      <SyncLockTwoToneIcon/>
+                      </IconButton>
+                      </>
+                      
+                  )
+              }
+          }
       ];
 
   return (
