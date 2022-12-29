@@ -66,6 +66,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
             
             
             reset();
+            onClose();
         }
     };
 

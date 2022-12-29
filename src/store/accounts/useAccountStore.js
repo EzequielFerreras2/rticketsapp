@@ -32,13 +32,31 @@ export const useAccountStore =()=> {
 
     }
 
-const onUdateUsers = async(data)=>{
+const onUdateUsers = async(val)=>{
 
  try {
 
-    const {Account}= await rticketsApp.put(`/account/${data.id}`,data);
+    const {data} = await rticketsApp.put(`/account/${val.id}`,val);
 
-    console.log(Account);
+    console.log(data)
+
+    if (data.ok === true)
+    {
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Cambio de Contraseña Correcto',
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+    }
+
+    
+
+    
+
     
  } catch ({response})
  {
