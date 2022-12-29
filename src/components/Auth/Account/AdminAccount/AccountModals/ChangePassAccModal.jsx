@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import BasicModal from '../../../../common/BasicModal/BasicModal'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
-
+import Swal from 'sweetalert2'
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
@@ -27,7 +27,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         password: Yup.string().required('Campo requerido').min(8, 'La contraseña debe ser mayor a 8 Caracteres')
         .max(36, 'La contraseña debe ser menor a 36 Caracteres'),
         confPassword: Yup.string().required('Campo requerido').min(8, 'La contraseña debe ser mayor a 8 Caracteres')
-        .max(36, 'La contraseña debe ser menor a 36 Caracteres'),
+        .max(36, 'La contraseña debe ser menor a 36 Caracteres').oneOf([Yup.ref('password')], 'Las contraseñas deben ser iguales'),
           
     });
 
@@ -41,16 +41,28 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         resolver: yupResolver(validationSchema)
     });
 
-    const handleChange = (value) => {
-        
-        setValues(value)
-    };
+    
 
     const saveChanges = (data) => {
         
-        console.log(getAccount)
-        console.log(data)
-        reset();
+
+        if(data.password !== data.confPassword)
+        {
+               
+        }
+        else
+        {
+
+            setValue("name", getAccount.name)
+            setValue("email", getAccount.email)
+            setValue("departament", getAccount.departament)
+            setValue("company", getAccount.company)
+            
+            
+            reset();
+            
+
+        }
     };
 
 
@@ -94,7 +106,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         helperText={errors.password?.message}
                         
                         type="password"
-                        onChange={(event) => handleChange({ ...values, password: event.target.value })}
+                       
                     />
                     <TextField
                         placeholder="confPassword"
@@ -104,7 +116,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         error={errors.confPassword ? true : false}
                         helperText={errors.confPassword?.message}
                         type="password"
-                        onChange={(event) => handleChange({ ...values, confPassword: event.target.value })}
+                      
                     />
                     
                 </Box>
