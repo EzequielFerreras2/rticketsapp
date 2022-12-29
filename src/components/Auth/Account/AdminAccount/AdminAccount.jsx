@@ -5,7 +5,7 @@ import AmdAccTable from './AmdAccTable';
 
 const AdminAccount = () => {
 
-const {account,onGetUsers} = useAccountStore();
+const {account,onGetUsers,onUdateUsers} = useAccountStore();
 
 
 useEffect(() => {
@@ -19,7 +19,7 @@ useEffect(() => {
     <div>
       <h1>Administar Cuentas</h1>
       <br/>
-      <AmdAccTable Account={account}/>
+      <AmdAccTable Account={account}  onUdateUsers={onUdateUsers}/>
     </div>
 
   )

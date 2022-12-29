@@ -5,7 +5,7 @@ import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ChangePassAccModal from './AccountModals/ChangePassAccModal';
 
-const AmdAccTable = ({Account}) => {
+const AmdAccTable = ({Account,onUdateUsers}) => {
   const [openChangePassModal, setOpenChangePassModal] = useState(false);
   const [getAccount, setGetAccount] = useState([]);
 
@@ -61,6 +61,7 @@ const AmdAccTable = ({Account}) => {
       open ={openChangePassModal} 
       onClose={() => setOpenChangePassModal(false)}  
       getAccount={getAccount}
+     
       />
     </div>
 

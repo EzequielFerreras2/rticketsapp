@@ -13,21 +13,13 @@ export const useAccountStore =()=> {
     const onGetUsers =async() =>{
 
         try {
-
             const {data} = await rticketsApp.get('/account');
             const {Account} = data;
-
-             console.log(Account)
-
             dispatch(getUsers(Account));
-
-            
-        } catch ({response}) {
-
+        } 
+        catch ({response})
+         {
             const{data} = response;
-
-           
-
             if(data.ok === false)
             {
                 Swal.fire({
@@ -40,7 +32,33 @@ export const useAccountStore =()=> {
 
     }
 
+const onUdateUsers = async(data)=>{
 
+ try {
+
+    const {Account}= await rticketsApp.put(`/account/${data.id}`,data);
+
+    console.log(Account);
+    
+ } catch ({response})
+ {
+    const{data} = response;
+    if(data.ok === false)
+    {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: `${data.msg}.!!!`,
+          })
+    };
+    }
+
+
+
+
+    dispatch(getUsers(account));
+
+}
 
     return{
 
@@ -49,7 +67,8 @@ export const useAccountStore =()=> {
        
 
         //Methos
-        onGetUsers
+        onGetUsers,
+        onUdateUsers
     };
 
 }

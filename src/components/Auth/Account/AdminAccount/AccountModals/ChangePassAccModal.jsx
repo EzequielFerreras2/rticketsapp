@@ -6,8 +6,11 @@ import BasicModal from '../../../../common/BasicModal/BasicModal'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import Swal from 'sweetalert2'
+import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
+
+    const {onUdateUsers} = useAccountStore();
 
     const [values, setValues] = useState([]);
 
@@ -52,16 +55,17 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         }
         else
         {
-
             setValue("name", getAccount.name)
             setValue("email", getAccount.email)
             setValue("departament", getAccount.departament)
             setValue("company", getAccount.company)
+
+            data.id= getAccount.id;
+            data.rol=getAccount.rol
+            onUdateUsers(data);
             
             
             reset();
-            
-
         }
     };
 
