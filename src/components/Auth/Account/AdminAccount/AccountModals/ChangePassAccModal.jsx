@@ -1,4 +1,4 @@
-import { Grid, TextField } from '@mui/material';
+import { FormControl, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
@@ -7,10 +7,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import Swal from 'sweetalert2'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
     const {changePassword} = useAccountStore();
+
+    const [showPassword, setShowPassword] = React.useState(false);
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => {event.preventDefault();};
+
 
     const [values, setValues] = useState([]);
 
@@ -55,16 +62,13 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         }
         else
         {
-            setValue("name", getAccount.name)
-            setValue("email", getAccount.email)
-            setValue("departament", getAccount.departament)
-            setValue("company", getAccount.company)
-
+            setValue("name", getAccount.name);
+            setValue("email", getAccount.email);
+            setValue("departament", getAccount.departament);
+            setValue("company", getAccount.company);
             data.id= getAccount.id;
-            data.rol=getAccount.rol
+            data.rol=getAccount.rol;
             changePassword(data);
-            
-            
             reset();
             onClose();
         }
@@ -72,13 +76,10 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
 
     useEffect(() => {
-        
         if (open){
-
-            setValues(getAccount)
-           
+            setValues(getAccount);
         } 
-    }, [open])
+    }, [open]);
 
 
     const getContent = () => (
@@ -102,27 +103,56 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         variant="standard"
                     />
                     <h4>Cambiar Contraseña</h4>
-                    <TextField
-                        placeholder="Password"
-                        name="Password"
-                        label="Password"
-                        {...register('password')}
-                        error={errors.password ? true : false}
-                        helperText={errors.password?.message}
-                        
-                        type="password"
-                       
-                    />
-                    <TextField
-                        placeholder="confPassword"
-                        name="confPassword"
-                        label="confPassword"
-                        {...register('confPassword')}
-                        error={errors.confPassword ? true : false}
-                        helperText={errors.confPassword?.message}
-                        type="password"
-                      
-                    />
+                    
+
+                    <FormControl  variant="outlined">
+                        <InputLabel htmlFor="Password">Password</InputLabel>
+                        <OutlinedInput
+                            placeholder="Password"
+                            name="Password"
+                            label="Password"
+                            {...register('password')}
+                            error={errors.password ? true : false}
+                            type={showPassword ? 'text' : 'password'}
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                                >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                        />
+                        </FormControl>
+
+                        <FormControl  variant="outlined">
+                        <InputLabel htmlFor="Password">Conf. Password</InputLabel>
+                        <OutlinedInput
+                            placeholder="Conf. Password"
+                            name="confPassword"
+                            label="confPassword"
+                            {...register('confPassword')}
+                            error={errors.confPassword ? true : false}
+                            helperText={errors.confPassword?.message}
+                            type={showPassword ? 'text' : 'password'}
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                                >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                        />
+                        </FormControl>
                     
                 </Box>
             </Grid>
