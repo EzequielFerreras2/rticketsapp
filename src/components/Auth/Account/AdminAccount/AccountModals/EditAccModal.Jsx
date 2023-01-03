@@ -7,106 +7,98 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import Swal from 'sweetalert2'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
-import {rolList} from '../AccountModals/List/rolList'
+import {rolList} from '../../../../../helpers/List/rolList'
 import { Password } from '@mui/icons-material';
+import {companyList,departamentList} from '../../../../../helpers/List/compAndDepartList'
 
 
 const EditAccModal = ({open, onClose, getAccount}) => {
 
+    //Enviar update
+    const {onUdateUsers} = useAccountStore();
+
+    // estados De la aplicacion
     const [rol, setRol] = useState("")
     const [company, setCompany] = useState("")
     const [departament, setDepartament] = useState("")
-
-    const {onUdateUsers} = useAccountStore();
-
     const [values, setValues] = useState([]);
-
+        
+    //estilo Modal
     const modalStyles = {
-        inputFields: {
-            display: 'flex',
-            flexDirection: 'column',
-            marginTop: '20px',
-            marginBottom: '15px',
-            '.MuiFormControl-root': {
-                marginBottom: '20px',
+            inputFields: {
+                display: 'flex',
+                flexDirection: 'column',
+                marginTop: '20px',
+                marginBottom: '15px',
+                '.MuiFormControl-root': {
+                    marginBottom: '20px',
+                },
             },
-        },
     };
 
+
+    //validaciones de Cambo
     const validationSchema = Yup.object().shape({
-        
+            
         name: Yup.string().required('Campo requerido').max(120, 'Nombre muy largo'),
         email: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
         departament: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
         rol: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
         company: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-        
-          
+            
+            
     });
 
+    //Carga de datos desde la tabla.
+    const account = async(data) =>{
 
- const account = async(data) =>{
+        const acc = await data;
 
-    const acc = await data;
+        if(acc.length === 0)
+        {
+            console.log("emty")   
+        }
+        else{
 
-    if(acc.length === 0)
-    {
+            setValues(acc)
+            setRol(acc.rol)
+            setCompany(acc.company)
+            setDepartament(acc.departament)
+        }   
+    };
 
-        console.log("emty")
-        
-    }
-    else{
-
-
-        setValues(acc)
-        setRol(acc.rol)
-    }
-
-    
- }
-
+    //cargar Datos Desde La Tabla
 
     useEffect(() => {
-     
         account(getAccount);
-
-
     }, [open])
 
-
-    // useEffect(() => {
-
-    //     if(values.rol !== undefined || values !== [])
-    //     {
-    //         console.log(values)
-    //     }
-      
-      
-    // }, [values])
-    
-    
-
+    //useFrom
     const {
-        register,
-        handleSubmit,
-        reset,
-        setValue,
-        formState: { errors },
-    } = useForm({
-        resolver: yupResolver(validationSchema)
-    });
+            register,
+            handleSubmit,
+            reset,
+            setValue,
+            formState: { errors },
+    } = useForm({resolver: yupResolver(validationSchema)});
 
-    const handleSelectChange = (event) => {
-        setRol(event.target.value);
-        
-      };
+    //cargar info de los desde el select 
+    const handleSelectRolChange = (event) => {setRol(event.target.value);};
+    const handleSelectDepartamentChange = (event) => {setDepartament(event.target.value);};
+    const handleSelectCompanyChange = (event) => {setCompany(event.target.value);};
 
-      const saveChanges =(data) =>{
+    const saveChanges =(data) =>{
 
-        data.password = getAccount.password
-        console.log(data);
+        setValue("name", data.name)
+        setValue("email", data.email)
+        setValue("departament", data.departament)
+        setValue("company", data.company)
+        data.id= getAccount.id;
+        // data.password = getAccount.password
+        onUdateUsers(data);
+        onClose();
 
-      }
+    };
 
     const getContent = () => (
         <Grid container spacing={2}>
@@ -138,7 +130,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                         value={rol}
                         {...register("rol")}
                         label="Rol"
-                        onChange={handleSelectChange}
+                        onChange={handleSelectRolChange}
                         error={!!errors.company}
                         
                     >
@@ -157,23 +149,52 @@ const EditAccModal = ({open, onClose, getAccount}) => {
             </Grid>
             <Grid item xs={6}>
                 <Box sx={modalStyles.inputFields}>
-                    <TextField
-                       
-                        id="departament"
-                        label="Departamento"
-                        {...register('departament')}
-                        value={values.departament}
-                        
-                       
-                    />
-                    <TextField
+                <FormControl fullWidth>
+                    <InputLabel id="company">Compañia</InputLabel>
+                    <Select
+                      labelId="company"
+                      id="company"
+                      value={company}
+                      {...register("company")}
+                      label="Compañia"
+                      onChange={handleSelectCompanyChange}
+                      error={!!errors.company}
                      
-                        id="company"
-                        label="Compañia"
-                        {...register('company')}
-                        value={values.company}
-                        
-                    />
+                    >
+                      {
+                        companyList.map((company)=>{
+                          return (
+                            <MenuItem key={company} value={company}>{company} </MenuItem>
+                          );
+                          })
+                          
+                          };
+                      
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="departament">Departamento</InputLabel>
+                    <Select
+                      labelId="departament"
+                     
+                      id="departament"
+                      value={departament}
+                      {...register("departament")}
+                      label="departament"
+                      onChange={handleSelectDepartamentChange}
+                      error={!!errors.departament}
+                      
+                    >
+                      {
+                        departamentList.map((departament)=>{
+                          return (
+                            <MenuItem key={departament} value={departament}>{departament}</MenuItem>
+                          );
+                          })
+                        };
+                      
+                    </Select>
+                  </FormControl>
                 </Box>
             </Grid>
         </Grid>
@@ -183,13 +204,15 @@ const EditAccModal = ({open, onClose, getAccount}) => {
 
 
   return (
-    <div><BasicModal
-    open={open}
-    onClose={onClose}
-    title="Cambiar Contraseña"
-    subTitle=""
-    content={getContent()}
-    onSubmit={handleSubmit(saveChanges)}/></div>
+    <div>
+        <BasicModal
+        open={open}
+        onClose={onClose}
+        title="Cambiar Contraseña"
+        subTitle=""
+        content={getContent()}
+        onSubmit={handleSubmit(saveChanges)}/>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
-    const {onUdateUsers} = useAccountStore();
+    const {changePassword} = useAccountStore();
 
     const [values, setValues] = useState([]);
 
@@ -62,7 +62,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
             data.id= getAccount.id;
             data.rol=getAccount.rol
-            onUdateUsers(data);
+            changePassword(data);
             
             
             reset();

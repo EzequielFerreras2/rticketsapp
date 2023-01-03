@@ -18,7 +18,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {companyList,departamentList} from './compAndDepartList'
+import {companyList,departamentList} from '../../../helpers/List/compAndDepartList'
 
 
 
