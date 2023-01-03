@@ -133,30 +133,29 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         </FormControl>
 
                         <FormControl  variant="outlined">
-                        <InputLabel htmlFor="Password">Conf. Password</InputLabel>
-                        <OutlinedInput
-                            placeholder="Conf. Password"
-                            name="confPassword"
-                            label="confPassword"
-                            {...register('confPassword')}
-                            error={errors.confPassword ? true : false}
-                            helperText={errors.confPassword?.message}
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                >
-                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                            }
-                        />
+                            <InputLabel htmlFor="Password">Conf. Password</InputLabel>
+                            <OutlinedInput
+                                placeholder="Conf. Password"
+                                name="confPassword"
+                                label="confPassword"
+                                {...register('confPassword')}
+                                error={errors.confPassword ? true : false}
+                                helperText={errors.confPassword?.message}
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                    >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                                }
+                            />
                         </FormControl>
-                    
                 </Box>
             </Grid>
             <Grid item xs={6}>
