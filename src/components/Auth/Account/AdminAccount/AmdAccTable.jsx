@@ -4,14 +4,29 @@ import IconButton from '@mui/material/IconButton';
 import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ChangePassAccModal from './AccountModals/ChangePassAccModal';
+import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+import EditAccModal from './AccountModals/EditAccModal';
 
 const AmdAccTable = ({Account,onUdateUsers}) => {
   const [openChangePassModal, setOpenChangePassModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [getAccount, setGetAccount] = useState([]);
 
-  const getAcc = (rowValue) =>{
+
+  const openChangePass = (rowValue) =>{
     setGetAccount(rowValue.row)
     setOpenChangePassModal(true)
+  };
+
+  const openEdit = (rowValue) =>{
+    setGetAccount(rowValue.row)
+    setOpenEditModal(true)
+  };
+
+  const openDelete = (rowValue) =>{
+    setGetAccount(rowValue.row)
+    setOpenDeleteModal(true)
   };
 
     const columns = [
@@ -29,14 +44,23 @@ const AmdAccTable = ({Account,onUdateUsers}) => {
                           color='primary'
                           aria-label="Cambiar Contraseña" 
                           component="label" 
-                          onClick={() => getAcc(rowValue)} 
+                          onClick={() => openChangePass(rowValue) } 
                         >
                           <SyncLockTwoToneIcon/>
                         </IconButton>
+                        <IconButton
+                          color='primary'
+                          aria-label="Editar Usuario" 
+                          component="label" 
+                          onClick={() => openEdit(rowValue)} 
+                        >
+                          <ModeEditTwoToneIcon/>
+                        </IconButton>
                         <IconButton 
-                        color="error" 
-                        aria-label="Borrar Usuario" 
-                        component="label"
+                          color="error" 
+                          aria-label="Borrar Usuario" 
+                          component="label"
+                          onClick={() => openDelete(rowValue)} 
                         >
                           <DeleteTwoToneIcon />
                         </IconButton>
@@ -52,16 +76,20 @@ const AmdAccTable = ({Account,onUdateUsers}) => {
       <DataGrid
         rows={Account}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-       
+        pageSize={10}
+        rowsPerPageOptions={[10]}
       />
 
       <ChangePassAccModal 
       open ={openChangePassModal} 
       onClose={() => setOpenChangePassModal(false)}  
       getAccount={getAccount}
-     
+      />
+
+       <EditAccModal 
+      open ={openEditModal} 
+      onClose={() => setOpenEditModal(false)}  
+      getAccount={getAccount}
       />
     </div>
 

@@ -46,7 +46,7 @@ const onUdateUsers = async(val)=>{
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Cambio de Contraseña Correcto',
+            title: 'Usuario Actualizado.',
             showConfirmButton: false,
             timer: 2000
           })

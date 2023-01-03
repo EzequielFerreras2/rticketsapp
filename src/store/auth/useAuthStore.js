@@ -61,7 +61,7 @@ export const useAtuhStore = () =>{
         try {
 
             dispatch(chekingCredentials());
-            const rol="user"
+            const rol="User"
             const {data} = await rticketsApp.post('/auth/register',{name,email,password,departament,company,rol})
             localStorage.setItem('token', data.token);
             localStorage.setItem('rol',data.rol);
