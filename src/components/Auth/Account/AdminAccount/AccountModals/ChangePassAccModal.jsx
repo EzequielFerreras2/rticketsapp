@@ -12,15 +12,18 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
+    //update Data
     const {changePassword} = useAccountStore();
 
+    //password visibility Control
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {event.preventDefault();};
 
-
+    //Valores
     const [values, setValues] = useState([]);
 
+    //Estilo del Modal
     const modalStyles = {
         inputFields: {
             display: 'flex',
@@ -33,6 +36,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         },
     };
 
+    //validaciones formulario
     const validationSchema = Yup.object().shape({
         password: Yup.string().required('Campo requerido').min(8, 'La contraseña debe ser mayor a 8 Caracteres')
         .max(36, 'La contraseña debe ser menor a 36 Caracteres'),
@@ -41,6 +45,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
           
     });
 
+    //useForm
     const {
         register,
         handleSubmit,
@@ -54,8 +59,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
     
 
     const saveChanges = (data) => {
-        
-
         if(data.password !== data.confPassword)
         {
                
@@ -182,10 +185,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         </Grid>
         
     );
-
-
-
-
 
   return (
     <div> 
