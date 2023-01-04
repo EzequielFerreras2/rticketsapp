@@ -16,7 +16,7 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
-import { useNavigate } from 'react-router-dom';
+
 
 import Account from '../../Auth/Account/Account';
 
@@ -93,17 +93,15 @@ const Header = () => {
 const theme = useTheme();
 const [open, setOpen] = React.useState(false);
 const [anchorEl, setAnchorEl] = React.useState(null);
-const {status,rol,user,startLogOut}= useAtuhStore();
+const {status,user}= useAtuhStore();
 const letter= user.name?.charAt(0);
 const openMenu = (event) => {setAnchorEl(event.currentTarget);};
 const handleClose = () => {setAnchorEl(null);};
 const handleDrawerOpen = () => {setOpen(true);};
 const handleDrawerClose = () => {setOpen(false);};
-const navigate = useNavigate();
 
-const handleAdminAccount =() =>{navigate('/adminaccount');handleClose();};
-const handleCategoryCases =() =>{navigate('/cases/category');handleClose();};  
-const handleLogout = () =>{startLogOut();};
+
+
 
     return (
         <div>

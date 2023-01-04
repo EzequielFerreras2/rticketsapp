@@ -1,6 +1,6 @@
-import { FormControl, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { FormControl, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import BasicModal from '../../../../common/BasicModal/BasicModal'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -19,9 +19,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {event.preventDefault();};
-
-    //Valores
-    const [values, setValues] = useState([]);
 
     //Estilo del Modal
     const modalStyles = {
@@ -77,6 +74,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
             setValue("departament", getAccount.departament);
             setValue("company", getAccount.company);   
         } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
 
 
@@ -125,6 +123,14 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         />
                         </FormControl>
 
+                        {errors.password &&
+                        <Typography style={{ color: "Red"}} variant="caption" display="block" gutterBottom>
+                        {errors.password?.message}
+                        </Typography>
+                        }
+
+                        <br/>
+
                         <FormControl  variant="outlined">
                             <InputLabel htmlFor="Password">Conf. Password</InputLabel>
                             <OutlinedInput
@@ -148,6 +154,12 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                                 }
                             />
                         </FormControl>
+                        {errors.confPassword &&
+                        <Typography style={{ color: "Red"}} variant="caption" display="block" gutterBottom>
+                        {errors.confPassword?.message}
+                        </Typography>
+                        }
+
                 </Box>
             </Grid>
             <Grid item xs={6}>

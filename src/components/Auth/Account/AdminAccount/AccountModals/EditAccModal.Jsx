@@ -66,6 +66,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
 
     useEffect(() => {
         account(getAccount);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open])
 
     //useFrom

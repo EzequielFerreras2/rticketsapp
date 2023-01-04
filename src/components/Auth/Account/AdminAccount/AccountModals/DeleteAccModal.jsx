@@ -17,8 +17,9 @@ const DeleteAccModal = ({open, onClose, getAccount}) => {
   useEffect(() => {
     if (open){
       setValues(getAccount);
-    }; 
-  }, [open])
+    };
+
+  }, [open,getAccount])
   
 
 const getContent= () =>(
@@ -41,7 +42,7 @@ const getContent= () =>(
         </Grid>
       </Grid>
 
-        <Button variant='outlined'  sx={{ color: "white", backgroundColor: 'Red'}}>
+        <Button variant='outlined'  sx={{ color: "Red"}}>
             HHHH
         </Button>
     

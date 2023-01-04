@@ -37,7 +37,7 @@ const Account = ({handleClose}) => {
 
 
 
-  const getAcc =()=>{const data = acc.filter(res => res.id === user.id); data.map((res) =>{setAccount(res);})};
+  const getAcc =()=>{const data = acc.filter(res => res.id === user.id); data.map((res) =>{return setAccount(res);})};
    
     return (
         <div>

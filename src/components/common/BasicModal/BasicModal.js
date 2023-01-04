@@ -2,10 +2,9 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
 import { modalStyles } from './styles';
 import Button from '@mui/material/Button';
-import { ButtonGroup } from '@mui/material';
+
 
 const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit,name,variant,colors,startIcons }) => {
 

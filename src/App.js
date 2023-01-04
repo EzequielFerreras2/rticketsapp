@@ -20,12 +20,14 @@ useEffect(() => {
 
   updateNavbar();
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [status]);
 
 
 useEffect(() => {
   checkToken();
   onGetUsers();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
 
