@@ -197,8 +197,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
     content={getContent()}
     onSubmit={handleSubmit(saveChanges)}
     name="Cambiar Contraseña"
-    variant="contained"
-    colors="success"
+    colors="#43a047"
     startIcons={<SyncLockTwoToneIcon/>}
     />
    

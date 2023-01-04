@@ -1,62 +1,118 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import {Button, ButtonGroup, Card,CardContent, Grid, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAccountStore } from '../../../store/accounts/useAccountStore';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
+import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
+import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
+import LogoutIcon from '@mui/icons-material/Logout';
 
+const Account = ({handleClose}) => {
 
-const Account = () => {
-
-    const {user} = useAtuhStore();
-    const {account,onGetUsers} = useAccountStore();
+    const {user,status,rol,startLogOut} = useAtuhStore();
+    const {account} = useAccountStore();
     const [acc, setAcc] = useState([]);
+    const [Account, setAccount] = useState([]);
+    const navigate = useNavigate();
+    const letter= user.name?.charAt(0);
 
-    useEffect(() => {
-        onGetUsers();
-        setAcc(account);
-    }, []);
-
-    useEffect(() => {
-        
-        getAccount();
-   
-    }, [acc])
+    const handleAdminAccount =() =>{navigate('/adminaccount');handleClose();};
+    const handleCategoryCases =() =>{navigate('/cases/category');handleClose();};  
+    const handleLogout = () =>{startLogOut();};
 
 
-    const getAccount =async() =>{
-       
+  useEffect(() => {
+    setAcc(account)
+  }, [account]);
 
-            const us= await acc.filter(res => res.id === user.id);
-            us.map(res=>{setAcc(res);});
-            console.log(acc)
+  useEffect(() => {
+  
+    getAcc();
     
-       
-    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [acc]);
 
+
+
+  const getAcc =()=>{const data = acc.filter(res => res.id === user.id); data.map(res =>{setAccount(res);})};
    
     return (
         <div>
             <br/>
             
-             <Card sx={{ maxWidth: 345 }}>
-                <Stack direction="row" justifyContent={"center"} spacing={2}>
+             
+             <Grid 
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={1}
+              
+            >
+              <Grid item xs={3}>
+              <Stack direction="row" justifyContent="center" spacing={2}>
                 <Avatar
-                alt="Remy Sharp"
+                alt={letter}
                 src="/static/images/avatar/1.jpg"
-                sx={{ width: 80, height: 80}}
+                sx={{ width: 80, height: 80 ,color: "white", backgroundColor: '#0d47a1'}}
                 />
+        
+             
                 </Stack>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {acc.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {acc.email}
-        </Typography>
-      </CardContent>
-      
-    </Card>
+              
+              </Grid>
+              
+              <Grid  item xs={3}>
+              <Typography  sx={{textAlign:"center"}} variant="h5" >
+                    {Account.name}
+                  </Typography>
+                  <Typography sx={{textAlign:"center"}} variant="body2"   color="text.secondary">
+                    {Account.email}
+                  </Typography>
+                  <Typography sx={{textAlign:"center"}} variant="body2"  color="text.secondary">
+                    {Account.company}
+                  </Typography>
+                  <Typography sx={{textAlign:"center"}}  variant="body2"  color="text.secondary">
+                    {Account.departament}
+                  </Typography>
+              </Grid>
+
+                  
+
+               
+                  <Grid sx={{m:1}} item xs={3}
+             
+                  >
+                  {
+                    user.rol==="Admin"?
+
+                    <ButtonGroup variant="outlined"  >
+                      <Button onClick={()=>handleAdminAccount()} 
+                      variant="outlined" size="medium" startIcon={<PeopleAltTwoToneIcon />}  sx={{ color: "white", backgroundColor: '#0d47a1'}}>Administrar Cuentas
+                      </Button>
+                      <Button onClick={()=>handleCategoryCases()} 
+                      variant="outlined"  size="medium" startIcon={<CategoryTwoToneIcon />}  sx={{ color: "white", backgroundColor: '#0d47a1'}}>Categorias de Casos
+                      </Button>
+                      
+                    </ButtonGroup>
+                    :
+                    <div></div>
+                  }
+                  
+                  
+                  
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button onClick={()=>handleLogout()} variant="outlined" size="medium" startIcon={<LogoutIcon />}  sx={{ color: "white", backgroundColor: 'Red',mt:1}}>LogOut</Button>
+                  </Grid>
+                 
+              
+                
+              </Grid>
+                
+              
         </div>
     );
 }

@@ -4,10 +4,12 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 import { modalStyles } from './styles';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
+import { ButtonGroup } from '@mui/material';
 
 const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit,name,variant,colors,startIcons }) => {
 
+    
     return (
         <Modal open={open} onClose={onClose} >
             <Box sx={modalStyles.wrapper}>
@@ -22,15 +24,18 @@ const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit,name,var
                 </Typography>
                 {content}
                 <Box sx={modalStyles.buttons}>
+                    
                     <Button
-                        variant={variant}
+                        variant='outlined'
                         onClick={onSubmit}
-                        color={colors}
                         startIcon={startIcons}
+                        size="medium"  
+                        sx={{ color: "white", backgroundColor: `${colors}`}}
                     >
                         {name}
                     </Button>
-                    <Button onClick={onClose}>Cancel</Button>
+                    <Button onClick={onClose} variant='outlined' size="medium"  sx={{ color: "white", backgroundColor: 'Red'}} >Cancel</Button>
+                    
                 </Box>
             </Box>
         </Modal>

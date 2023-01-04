@@ -208,10 +208,15 @@ const EditAccModal = ({open, onClose, getAccount}) => {
         <BasicModal
         open={open}
         onClose={onClose}
-        title="Cambiar Contraseña"
+        title="Editar Usuario"
         subTitle=""
         content={getContent()}
-        onSubmit={handleSubmit(saveChanges)}/>
+        onSubmit={handleSubmit(saveChanges)}
+        name="Editar"
+ 
+        colors="#43a047"
+        />
+        
     </div>
   )
 }

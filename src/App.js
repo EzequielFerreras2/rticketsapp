@@ -4,6 +4,7 @@ import {useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Header from "./components/common/NavMenu/Header";
 import InRoute from "./routes/InRoute";
+import { useAccountStore } from "./store/accounts/useAccountStore";
 import { useAtuhStore } from "./store/auth/useAuthStore";
 
 
@@ -12,6 +13,7 @@ function App() {
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 
 const {status, checkToken,}= useAtuhStore();
+const {onGetUsers}= useAccountStore();
 
 
 useEffect(() => {
@@ -23,6 +25,7 @@ useEffect(() => {
 
 useEffect(() => {
   checkToken();
+  onGetUsers();
  }, []);
 
 

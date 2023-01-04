@@ -3,8 +3,9 @@ import BasicModal from '../../../../common/BasicModal/BasicModal'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { Grid} from '@mui/material';
-import { Box } from "@mui/system";
+import {  Grid} from '@mui/material';
+import Button from '@mui/material/Button';
+
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 
 const DeleteAccModal = ({open, onClose, getAccount}) => {
@@ -39,6 +40,11 @@ const getContent= () =>(
         </Stack>
         </Grid>
       </Grid>
+
+        <Button variant='outlined'  sx={{ color: "white", backgroundColor: 'Red'}}>
+            HHHH
+        </Button>
+    
   </>
 
 );
@@ -58,8 +64,8 @@ const saveChanges =(data)=>{
         content={getContent()}
         onSubmit={()=>saveChanges(values)}
         name="Eliminar"
-        variant="contained"
-        colors="error"
+        colors="#b2102f"
+        
         startIcons={<DeleteIcon />}
         />
         
