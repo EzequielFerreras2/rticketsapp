@@ -6,6 +6,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ChangePassAccModal from './AccountModals/ChangePassAccModal';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import EditAccModal from './AccountModals/EditAccModal';
+import DeleteAccModal from './AccountModals/DeleteAccModal';
 
 const AmdAccTable = ({Account,onUdateUsers}) => {
   const [openChangePassModal, setOpenChangePassModal] = useState(false);
@@ -73,6 +74,7 @@ const AmdAccTable = ({Account,onUdateUsers}) => {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
+
       <DataGrid
         rows={Account}
         columns={columns}
@@ -86,11 +88,18 @@ const AmdAccTable = ({Account,onUdateUsers}) => {
       getAccount={getAccount}
       />
 
-       <EditAccModal 
+      <EditAccModal 
       open ={openEditModal} 
       onClose={() => setOpenEditModal(false)}  
       getAccount={getAccount}
       />
+
+      <DeleteAccModal
+      open ={openDeleteModal} 
+      onClose={() => setOpenDeleteModal(false)}  
+      getAccount={getAccount}
+      />
+      
     </div>
 
     

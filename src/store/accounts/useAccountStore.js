@@ -11,7 +11,6 @@ export const useAccountStore =()=> {
     const dispatch = useDispatch();
 
     const onGetUsers =async() =>{
-
         try {
             const {data} = await rticketsApp.get('/account');
             const {Account} = data;
@@ -29,20 +28,13 @@ export const useAccountStore =()=> {
                   })
             };
             }
-
-    }
+    };
 
 const onUdateUsers = async(val)=>{
-
  try {
-
     const {data} = await rticketsApp.put(`/account/updateacoount/${val.id}`,val);
-
-    console.log(data)
-
     if (data.ok === true)
     {
-
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -50,13 +42,7 @@ const onUdateUsers = async(val)=>{
             showConfirmButton: false,
             timer: 2000
           })
-
     }
-
-
-    
-
-    
  } catch ({response})
  {
     const{data} = response;
@@ -69,27 +55,14 @@ const onUdateUsers = async(val)=>{
           })
     };
     }
-
-
-
-
     dispatch(getUsers(account));
-
 };
 
-
-
     const changePassword = async(val)=>{
-
         try {
-       
            const {data} = await rticketsApp.put(`/account/changepassword/${val.id}`,val);
-       
-           console.log(data)
-       
            if (data.ok === true)
            {
-       
                Swal.fire({
                    position: 'top-end',
                    icon: 'success',
@@ -97,10 +70,7 @@ const onUdateUsers = async(val)=>{
                    showConfirmButton: false,
                    timer: 2000
                  })
-       
            }
-       
-        
         } catch ({response})
         {
            const{data} = response;
@@ -113,15 +83,36 @@ const onUdateUsers = async(val)=>{
                  })
            };
            }
-       
-       
-       
-       
            dispatch(getUsers(account));
-       
     };
 
-
+    const onDeleteUsers = async(val)=>{
+        try {
+           const {data} = await rticketsApp.delete(`/account/${val.id}`,);
+           if (data.ok === true)
+           {
+               Swal.fire({
+                   position: 'top-end',
+                   icon: 'success',
+                   title: 'Usuario Eliminado.',
+                   showConfirmButton: false,
+                   timer: 2000
+                 })
+           }
+        } catch ({response})
+        {
+           const{data} = response;
+           if(data.ok === false)
+           {
+               Swal.fire({
+                   icon: 'error',
+                   title: 'Error',
+                   text: `${data.msg}.!!!`,
+                 })
+           };
+           }
+           dispatch(getUsers(account));
+       };
 
     return{
 
@@ -132,7 +123,8 @@ const onUdateUsers = async(val)=>{
         //Methos
         onGetUsers,
         onUdateUsers,
-        changePassword
+        changePassword,
+        onDeleteUsers
     };
 
 }

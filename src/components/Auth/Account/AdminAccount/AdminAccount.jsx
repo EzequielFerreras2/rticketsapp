@@ -5,21 +5,18 @@ import AmdAccTable from './AmdAccTable';
 
 const AdminAccount = () => {
 
-const {account,onGetUsers,onUdateUsers} = useAccountStore();
-
+const {account,onGetUsers} = useAccountStore();
 
 useEffect(() => {
- 
-    onGetUsers()
-
-}, [])
+    onGetUsers();
+}, []);
 
 
   return (
     <div>
       <h1>Administar Cuentas</h1>
       <br/>
-      <AmdAccTable Account={account}  onUdateUsers={onUdateUsers}/>
+      <AmdAccTable Account={account}  />
     </div>
 
   )

@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import { modalStyles } from './styles';
 import { Button } from '@mui/material';
 
-const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit }) => {
+const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit,name,variant,colors,startIcons }) => {
 
     return (
         <Modal open={open} onClose={onClose} >
@@ -23,10 +23,12 @@ const BasicModal = ({ open, onClose, title, subTitle, content, onSubmit }) => {
                 {content}
                 <Box sx={modalStyles.buttons}>
                     <Button
-                        variant="contained"
+                        variant={variant}
                         onClick={onSubmit}
+                        color={colors}
+                        startIcon={startIcons}
                     >
-                        Submit
+                        {name}
                     </Button>
                     <Button onClick={onClose}>Cancel</Button>
                 </Box>

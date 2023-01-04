@@ -9,6 +9,8 @@ import Swal from 'sweetalert2'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
@@ -193,7 +195,13 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
     title="Cambiar Contraseña"
     subTitle=""
     content={getContent()}
-    onSubmit={handleSubmit(saveChanges)}/>
+    onSubmit={handleSubmit(saveChanges)}
+    name="Cambiar Contraseña"
+    variant="contained"
+    colors="success"
+    startIcons={<SyncLockTwoToneIcon/>}
+    />
+   
 
 </div>
     
