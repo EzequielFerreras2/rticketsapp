@@ -9,7 +9,6 @@ export const useAtuhStore = () =>{
 
     const {status, user, errorMessage } =  useSelector( state => state.auth );
     const dispatch = useDispatch();
-
     
 
     const startLogin = async({email,password}) =>{
@@ -116,6 +115,7 @@ else{
         localStorage.setItem('token', data.token);
             localStorage.setItem('rol',data.rol);
             localStorage.setItem('token-init-date', new Date().getTime());
+
             dispatch(
             
                 logIn({

@@ -11,7 +11,7 @@ function App() {
   
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 
-const {status, checkToken}= useAtuhStore();
+const {status, checkToken,}= useAtuhStore();
 
 
 useEffect(() => {

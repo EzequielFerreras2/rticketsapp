@@ -21,6 +21,7 @@ import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import { useNavigate } from 'react-router-dom';
 import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
+import Account from '../../Auth/Account/Account';
 
 const drawerWidth = 250;
 
@@ -162,6 +163,7 @@ const handleLogout = () =>{startLogOut();};
               
                     <Menu
                     id="menu-appbar"
+                    
                     anchorEl={anchorEl}
                     anchorOrigin={{
                       vertical: 'top',
@@ -176,7 +178,8 @@ const handleLogout = () =>{startLogOut();};
                     onClose={handleClose}
                     
                   >
-            
+                    <Account/>
+
                     <MenuItem onClick={()=>handleAccount()} style={{ textDecoration: 'none' , color: '#0072ea'}}><AccountBoxTwoToneIcon sx={{mr:1}} />Mi Cuenta</MenuItem>
                     
                     {

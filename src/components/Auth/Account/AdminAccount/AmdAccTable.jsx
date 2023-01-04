@@ -8,7 +8,8 @@ import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import EditAccModal from './AccountModals/EditAccModal';
 import DeleteAccModal from './AccountModals/DeleteAccModal';
 
-const AmdAccTable = ({Account,onUdateUsers}) => {
+const AmdAccTable = ({Account}) => {
+  
   const [openChangePassModal, setOpenChangePassModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -32,7 +33,7 @@ const AmdAccTable = ({Account,onUdateUsers}) => {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
-        { field: 'name', headerName: 'Nombre', width: 200 },
+        { field: 'name', headerName: 'Nombre', width: 250 },
         { field: 'email', headerName: 'Email', width: 300 },
         { field: 'rol', headerName: 'Rol', width: 130 },
         { field: 'departament', headerName: 'Departamento', width: 200 },
