@@ -9,17 +9,15 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SideBar from './SideBar';
-import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import LogoutIcon from '@mui/icons-material/Logout';
-import PeopleAltTwoToneIcon from '@mui/icons-material/PeopleAltTwoTone';
-import { Avatar, Button } from '@mui/material';
+import { Button } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import { useNavigate } from 'react-router-dom';
-import CategoryTwoToneIcon from '@mui/icons-material/CategoryTwoTone';
+
 import Account from '../../Auth/Account/Account';
 
 const drawerWidth = 250;
@@ -147,7 +145,9 @@ const handleLogout = () =>{startLogOut();};
                 aria-haspopup="true"
                 onClick={openMenu}
                 color="inherit"
-                startIcon={status ==='authenticated' ? <Avatar sx={{marginRight: 1}}>{letter}</Avatar>:<SupervisorAccountIcon/> }
+                startIcon={
+                status ==='authenticated' ? <Avatar alt={letter} sx={{marginRight: 1, color: "white", backgroundColor: '#1976d2'}}/>
+                :<SupervisorAccountIcon/> }
                 sx={{
                 padding:"13px",
                 borderRadius: "8px",

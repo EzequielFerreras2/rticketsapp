@@ -5,11 +5,9 @@ import { useForm } from 'react-hook-form';
 import BasicModal from '../../../../common/BasicModal/BasicModal'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
-import Swal from 'sweetalert2'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 
 const ChangePassAccModal = ({open, onClose, getAccount}) => {
@@ -61,16 +59,8 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
     
 
     const saveChanges = (data) => {
-        if(data.password !== data.confPassword)
+        if(data.password === data.confPassword)
         {
-               
-        }
-        else
-        {
-            setValue("name", getAccount.name);
-            setValue("email", getAccount.email);
-            setValue("departament", getAccount.departament);
-            setValue("company", getAccount.company);
             data.id= getAccount.id;
             data.rol=getAccount.rol;
             changePassword(data);
@@ -82,7 +72,10 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
 
     useEffect(() => {
         if (open){
-            setValues(getAccount);
+            setValue("name", getAccount.name);
+            setValue("email", getAccount.email);
+            setValue("departament", getAccount.departament);
+            setValue("company", getAccount.company);   
         } 
     }, [open]);
 
@@ -96,7 +89,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         id="name"
                         label="Nombre"
                         {...register('name')}
-                        value={values.name}
                         variant="standard"
                     />
                     <TextField
@@ -104,7 +96,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         id="email"
                         label="Email"
                         {...register('email')}
-                        value={values.email}
                         variant="standard"
                     />
                     <h4>Cambiar Contraseña</h4>
@@ -142,7 +133,6 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                                 label="confPassword"
                                 {...register('confPassword')}
                                 error={errors.confPassword ? true : false}
-                                helperText={errors.confPassword?.message}
                                 type={showPassword ? 'text' : 'password'}
                                 endAdornment={
                                 <InputAdornment position="end">
@@ -167,19 +157,14 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
                         id="departament"
                         label="Departamento"
                         {...register('departament')}
-                        value={values.departament}
                         variant="standard"
-                        color="success"
-                       
                     />
                     <TextField
                         disabled
                         id="company"
                         label="Compañia"
                         {...register('company')}
-                        value={values.company}
                         variant="standard"
-                        color="success"
                     />
                 </Box>
             </Grid>

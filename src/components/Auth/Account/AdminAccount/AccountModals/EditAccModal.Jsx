@@ -5,10 +5,8 @@ import { useForm } from 'react-hook-form';
 import BasicModal from '../../../../common/BasicModal/BasicModal'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
-import Swal from 'sweetalert2'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 import {rolList} from '../../../../../helpers/List/rolList'
-import { Password } from '@mui/icons-material';
 import {companyList,departamentList} from '../../../../../helpers/List/compAndDepartList'
 
 
@@ -21,7 +19,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
     const [rol, setRol] = useState("")
     const [company, setCompany] = useState("")
     const [departament, setDepartament] = useState("")
-    const [values, setValues] = useState([]);
+  
         
     //estilo Modal
     const modalStyles = {
@@ -54,13 +52,10 @@ const EditAccModal = ({open, onClose, getAccount}) => {
 
         const acc = await data;
 
-        if(acc.length === 0)
+        if(acc.length !== 0)
         {
-            console.log("emty")   
-        }
-        else{
-
-            setValues(acc)
+            setValue("name", data.name)
+            setValue("email", data.email)
             setRol(acc.rol)
             setCompany(acc.company)
             setDepartament(acc.departament)
@@ -77,20 +72,18 @@ const EditAccModal = ({open, onClose, getAccount}) => {
     const {
             register,
             handleSubmit,
-            reset,
             setValue,
             formState: { errors },
     } = useForm({resolver: yupResolver(validationSchema)});
 
-    //cargar info de los desde el select 
+    //cargar info de los desde el select
+    
     const handleSelectRolChange = (event) => {setRol(event.target.value);};
     const handleSelectDepartamentChange = (event) => {setDepartament(event.target.value);};
     const handleSelectCompanyChange = (event) => {setCompany(event.target.value);};
 
     const saveChanges =(data) =>{
-
-        setValue("name", data.name)
-        setValue("email", data.email)
+        
         setValue("departament", data.departament)
         setValue("company", data.company)
         data.id= getAccount.id;
@@ -109,7 +102,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                         id="name"
                         label="Nombre"
                         {...register('name')}
-                        value={values.name}
+                        
                         
                     />
                     <TextField
@@ -117,7 +110,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                         id="email"
                         label="Email"
                         {...register('email')}
-                        value={values.email}
+                        
                         
                     />
                     
