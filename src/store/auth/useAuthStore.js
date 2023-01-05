@@ -20,6 +20,7 @@ export const useAtuhStore = () =>{
             const {data} = await rticketsApp.post('/auth/login',{email,password})
             localStorage.setItem('token', data.token);
             localStorage.setItem('rol',data.rol);
+            localStorage.setItem('id',data.uid);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(
             

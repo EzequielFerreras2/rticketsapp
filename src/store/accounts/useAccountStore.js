@@ -37,7 +37,7 @@ const onUdateUsers = async(val)=>{
     if (data.ok === true)
     {
         Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'success',
             title: 'Usuario Actualizado.',
             showConfirmButton: false,
@@ -65,7 +65,7 @@ const onUdateUsers = async(val)=>{
            if (data.ok === true)
            {
                Swal.fire({
-                   position: 'top-end',
+                   position: 'center',
                    icon: 'success',
                    title: 'Contraseña Actualizada.',
                    showConfirmButton: false,
@@ -93,7 +93,7 @@ const onUdateUsers = async(val)=>{
            if (data.ok === true)
            {
                Swal.fire({
-                   position: 'top-end',
+                   position: 'center',
                    icon: 'success',
                    title: 'Usuario Eliminado.',
                    showConfirmButton: false,
