@@ -5,7 +5,7 @@ name: 'account',
 
  initialState: {
 
-  accounts:{},
+  accounts:[],
   errorMessage: undefined,
   account:{},
   
