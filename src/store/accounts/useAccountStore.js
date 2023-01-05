@@ -1,13 +1,14 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import { getUsers } from './accountSlice';
+import { getUsers, setUser } from './accountSlice';
+
 
 
 
 export const useAccountStore =()=> {
 
-    const { account  } =  useSelector( state => state.account );
+    const { account,accounts } =  useSelector( state => state.account );
     const dispatch = useDispatch();
 
     const onGetUsers =async() =>{
@@ -55,7 +56,7 @@ const onUdateUsers = async(val)=>{
           })
     };
     }
-    dispatch(getUsers(account));
+    dispatch(getUsers(accounts));
 };
 
     const changePassword = async(val)=>{
@@ -83,7 +84,7 @@ const onUdateUsers = async(val)=>{
                  })
            };
            }
-           dispatch(getUsers(account));
+           dispatch(getUsers(accounts));
     };
 
     const onDeleteUsers = async(val)=>{
@@ -111,20 +112,31 @@ const onUdateUsers = async(val)=>{
                  })
            };
            }
-           dispatch(getUsers(account));
+           dispatch(getUsers(accounts));
        };
+
+       const setUsers=async(val)=>{
+
+        const {data} = await rticketsApp.get(`/account/${val}`);
+        const acc= data.Account;
+
+        dispatch(setUser(acc));
+
+        };
 
     return{
 
         //Propieties
         account,
+        accounts,
        
 
         //Methos
         onGetUsers,
         onUdateUsers,
         changePassword,
-        onDeleteUsers
+        onDeleteUsers,
+        setUsers
     };
 
 }

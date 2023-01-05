@@ -63,6 +63,7 @@ export const useAtuhStore = () =>{
             const rol="User"
             const {data} = await rticketsApp.post('/auth/register',{name,email,password,departament,company,rol})
             localStorage.setItem('token', data.token);
+            localStorage.setItem('id',data.uid);
             localStorage.setItem('rol',data.rol);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(
@@ -107,13 +108,16 @@ const token = localStorage.getItem('token');
 if(!token)
 {
     return dispatch(logOut('Token no Valido o Expirado'));
+    
 }
 else{
 
     try {
         const {data} = await rticketsApp.get('/auth/renew');
-        localStorage.setItem('token', data.token);
+
+            localStorage.setItem('token', data.token);
             localStorage.setItem('rol',data.rol);
+            localStorage.setItem('id',data.uid);
             localStorage.setItem('token-init-date', new Date().getTime());
 
             dispatch(

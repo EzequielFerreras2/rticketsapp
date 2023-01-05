@@ -5,20 +5,28 @@ name: 'account',
 
  initialState: {
 
-  account:{},
+  accounts:{},
   errorMessage: undefined,
+  account:{},
+  
  
  },
   reducers: {
 
     getUsers: (state, {payload} ) => {
 
-      state.account = payload;
+      state.accounts = payload;
       state.errorMessage= undefined;
 
    },
+
+   setUser: (state, {payload} ) => {
+
+    state.account = payload;
+    state.errorMessage= undefined;
+ },
  }
 });
 
 // Action creators are generated for each case reducer function
-export const { getUsers } = accountsSlice.actions;
+export const { getUsers,setUser } = accountsSlice.actions;

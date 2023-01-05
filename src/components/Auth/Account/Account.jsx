@@ -14,7 +14,6 @@ const Account = ({handleClose}) => {
 
     const {user,startLogOut} = useAtuhStore();
     const {account} = useAccountStore();
-    const [acc, setAcc] = useState([]);
     const [Account, setAccount] = useState([]);
     const navigate = useNavigate();
     const letter= user.name?.charAt(0);
@@ -23,21 +22,11 @@ const Account = ({handleClose}) => {
     const handleCategoryCases =() =>{navigate('/cases/category');handleClose();};  
     const handleLogout = () =>{startLogOut();};
 
-
   useEffect(() => {
-    setAcc(account)
+    setAccount(account)
   }, [account]);
 
-  useEffect(() => {
   
-    getAcc();
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [acc]);
-
-
-
-  const getAcc =()=>{const data = acc.filter(res => res.id === user.id); data.map((res) =>{return setAccount(res);})};
    
     return (
         <div>
