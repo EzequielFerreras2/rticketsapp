@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import BasicModal from '../../../../common/BasicModal/BasicModal'
-import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
@@ -38,6 +37,7 @@ const [category, setCategory] = useState({});
        
         setValue('category', category.category)
         
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [category]);
     
     const validationSchema = Yup.object().shape({

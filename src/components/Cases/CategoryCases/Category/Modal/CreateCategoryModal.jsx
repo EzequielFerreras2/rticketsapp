@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import BasicModal from '../../../../common/BasicModal/BasicModal'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { useForm } from 'react-hook-form';
@@ -36,7 +36,6 @@ const {
     register,
     handleSubmit,
     reset,
-    setValue,
     formState: { errors },
 } = useForm({
     resolver: yupResolver(validationSchema)

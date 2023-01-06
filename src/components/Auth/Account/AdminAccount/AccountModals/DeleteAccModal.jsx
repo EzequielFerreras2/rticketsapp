@@ -3,9 +3,7 @@ import BasicModal from '../../../../common/BasicModal/BasicModal'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import {  Grid} from '@mui/material';
-import Button from '@mui/material/Button';
-
+import { Grid} from '@mui/material';
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 
 const DeleteAccModal = ({open, onClose, getAccount}) => {

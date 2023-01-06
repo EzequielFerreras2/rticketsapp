@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -7,8 +7,6 @@ import Box from '@mui/material/Box';
 import Category from './Category/Category';
 import SubCategory from './SubCategory/SubCategory';
 import Cases from '../CategoryCases/Cases/Cases';
-import { useCateoryStore } from '../../../store/category/useCategoryStore';
-
 
 function TabPanel(props) {
   
@@ -38,11 +36,6 @@ TabPanel.propTypes = {
 };
 
 function a11yProps(index) {
-
-
-  
-
-
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -51,10 +44,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
 
-  const [value, setValue] = React.useState(0);
-
-
-
+const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
