@@ -8,7 +8,7 @@ export const useCateoryStore =()=> {
     const { Category } =  useSelector( state => state.category );
     const dispatch = useDispatch();
 
-    const ongetCateory =async() =>{
+    const ongetCategory =async() =>{
 
         try {
             const {data} = await rticketsApp.get('/cases/category');
@@ -31,15 +31,15 @@ export const useCateoryStore =()=> {
             
     };
 
-    const onCreateCateory = async(val)=>{
+    const onCreateCategory = async(val)=>{
     
     };
 
-    const onUpdateCateory = async(val)=>{
+    const onUpdateCategory = async(val)=>{
     
     };
 
-    const onDeleteCateory = async(val)=>{
+    const onDeleteCategory = async(val)=>{
         
     };
 
@@ -47,9 +47,9 @@ export const useCateoryStore =()=> {
         //Propieties
         Category,
         //Methos
-        ongetCateory,
-        onCreateCateory,
-        onUpdateCateory,
-        onDeleteCateory,
+        ongetCategory,
+        onCreateCategory,
+        onUpdateCategory,
+        onDeleteCategory,
     };
 }

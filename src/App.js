@@ -6,6 +6,7 @@ import Header from "./components/common/NavMenu/Header";
 import InRoute from "./routes/InRoute";
 import { useAccountStore } from "./store/accounts/useAccountStore";
 import { useAtuhStore } from "./store/auth/useAuthStore";
+import { useCateoryStore } from "./store/category/useCategoryStore";
 
 
 function App() {
@@ -14,7 +15,7 @@ var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 const accId = localStorage.getItem("id")
 const {status,checkToken,}= useAtuhStore();
 const {setUsers}= useAccountStore();
-
+const {ongetCategory}= useCateoryStore();
 
 useEffect(() => {
 
@@ -27,6 +28,7 @@ useEffect(() => {
 useEffect(() => {
   checkToken();
   setUsers(accId);
+  ongetCategory();
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
