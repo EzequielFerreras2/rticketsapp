@@ -42,9 +42,6 @@ const getContent= () =>(
         </Grid>
       </Grid>
 
-        <Button variant='outlined'  sx={{ color: "Red"}}>
-            HHHH
-        </Button>
     
   </>
 
