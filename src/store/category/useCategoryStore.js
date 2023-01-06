@@ -59,7 +59,7 @@ export const useCateoryStore =()=> {
             };
             }
             
-            dispatch(getCategory(Category));
+            ongetCategory();
     };
 
     const onUpdateCategory = async(val)=>{
@@ -89,7 +89,7 @@ export const useCateoryStore =()=> {
             };
             }
     
-        dispatch(getCategory(Category));
+            ongetCategory();
     };
 
     const onDeleteCategory = async(val)=>{
@@ -118,7 +118,7 @@ export const useCateoryStore =()=> {
             };
             }
     
-        dispatch(getCategory(Category));
+            ongetCategory();
         
     };
 

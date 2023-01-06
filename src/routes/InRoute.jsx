@@ -12,7 +12,7 @@ import Account from "../components/Auth/Account/Account";
 import CreateCases from "../components/Cases/CreateCases/CreateCases";
 import Dashboards from "../components/DashBoard/Dashboard";
 import Homes from "../components/Home/Home";
-import Cases from "../components/Cases/Cases" 
+import Cases from "../components/Cases/CreateCases/Cases" 
 import UserRoute from "./UserRoute";
 import Login from "../components/Auth/Login/Login";
 import CategoryCases from "../components/Cases/CategoryCases/CategoryCases";

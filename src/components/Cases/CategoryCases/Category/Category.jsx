@@ -4,6 +4,7 @@ import {useCateoryStore} from '../../../../store/category/useCategoryStore';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import CategoryTable from './CategoryTable';
+import CreateCategoryModal from './Modal/CreateCategoryModal';
 
 const Category = () => {
 
@@ -17,7 +18,7 @@ useEffect(() => { setCategory(Category);}, [Category]);
 
   const addCategory = () =>{
 
-    console.log("addCategory");
+    setOpenCreateModal(true);
   }
 
   return (
@@ -40,6 +41,12 @@ useEffect(() => { setCategory(Category);}, [Category]);
         </Grid>
           
       </Box>
+
+       {/*Modal*/}
+      <CreateCategoryModal 
+        open ={openCreateModal} 
+        onClose={() => setOpenCreateModal(false)}
+    />
     </div>
   )
 }

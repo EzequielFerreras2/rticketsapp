@@ -3,9 +3,28 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+import CreateCategoryModal from './Modal/CreateCategoryModal';
 
 
-const columns = [
+
+
+const CategoryTable = ({Category}) => {
+
+const [openEditModal, setOpenEditModal] = useState(false);
+const [openDeleteModal, setOpenDeleteModal] = useState(false);
+const [getCategory, setGetCategory] = useState({});
+
+const openEdit = (rowValue) =>{
+    setGetCategory(rowValue.row)
+    setOpenEditModal(true)
+};
+
+const openDelete = (rowValue) =>{
+    setGetCategory(rowValue.row)
+    setOpenDeleteModal(true)
+};
+
+  const columns = [
     { field: 'id', headerName: 'ID', width: 250 },
     { field: 'category', headerName: 'Categoria', width: 250 },
     { field: 'Acciones',width: 150,
@@ -16,7 +35,7 @@ const columns = [
                       color='primary'
                       aria-label="Editar Usuario" 
                       component="label" 
-                    //   onClick={() => openEdit(rowValue)} 
+                      onClick={() => openEdit(rowValue)} 
                     >
                       <ModeEditTwoToneIcon/>
                     </IconButton>
@@ -24,7 +43,7 @@ const columns = [
                       color="error" 
                       aria-label="Borrar Usuario" 
                       component="label"
-                    //   onClick={() => openDelete(rowValue)} 
+                      onClick={() => openDelete(rowValue)} 
                     >
                       <DeleteTwoToneIcon />
                     </IconButton>
@@ -35,13 +54,6 @@ const columns = [
       }
   ];
 
-const CategoryTable = ({Category}) => {
-
-const [openEditModal, setOpenEditModal] = useState(false);
-const [openDeleteModal, setOpenDeleteModal] = useState(false);
-
-
-
   return (
     <div style={{marginTop:2, height:400, width: '100%' }}>
     <DataGrid
@@ -50,6 +62,11 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
         pageSize={10}
         rowsPerPageOptions={[10]}
       />
+    <CreateCategoryModal 
+        open ={openEditModal} 
+        onClose={() => setOpenEditModal(false)}
+        getCategory={getCategory} 
+    />
     </div>
   )
 }
