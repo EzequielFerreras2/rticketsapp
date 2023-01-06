@@ -7,7 +7,6 @@ initialState: {
  
     status:'checking', // not-authenticated //checking //authenticated
     user:{},
-    pruebas:'',
     errorMessage: undefined,
 
  },

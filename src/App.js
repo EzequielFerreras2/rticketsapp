@@ -14,7 +14,7 @@ function App() {
 var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 const accId = localStorage.getItem("id")
 const {status,checkToken,}= useAtuhStore();
-const {setUsers}= useAccountStore();
+const {setUsers,onGetUsers}= useAccountStore();
 const {ongetCategory}= useCateoryStore();
 
 useEffect(() => {
@@ -27,6 +27,7 @@ useEffect(() => {
 
 useEffect(() => {
   checkToken();
+  onGetUsers()
   setUsers(accId);
   ongetCategory();
  // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,8 +55,6 @@ useEffect(() => {
     setIsNavbarHidden (false);
   }
 };
-
-
 if( status === 'checking' ){
       Swal.fire({
         title: `${status}...`,
@@ -69,9 +68,6 @@ if( status === 'checking' ){
 
       Swal.close();
     }
-
-
-
   return (
 
       <main className="App" ><Box sx={{ display: 'flex' }}>

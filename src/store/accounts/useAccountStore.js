@@ -44,6 +44,7 @@ const onUdateUsers = async(val)=>{
             timer: 2000
           })
     }
+    onGetUsers();
  } catch ({response})
  {
     const{data} = response;
@@ -56,7 +57,6 @@ const onUdateUsers = async(val)=>{
           })
     };
     }
-    dispatch(getUsers(accounts));
 };
 
     const changePassword = async(val)=>{
@@ -72,6 +72,7 @@ const onUdateUsers = async(val)=>{
                    timer: 2000
                  })
            }
+           onGetUsers();
         } catch ({response})
         {
            const{data} = response;
@@ -84,7 +85,6 @@ const onUdateUsers = async(val)=>{
                  })
            };
            }
-           dispatch(getUsers(accounts));
     };
 
     const onDeleteUsers = async(val)=>{
@@ -100,6 +100,7 @@ const onUdateUsers = async(val)=>{
                    timer: 2000
                  })
            }
+           onGetUsers();
         } catch ({response})
         {
            const{data} = response;
@@ -112,7 +113,6 @@ const onUdateUsers = async(val)=>{
                  })
            };
            }
-           dispatch(getUsers(accounts));
        };
 
        const setUsers=async(val)=>{

@@ -5,11 +5,7 @@ import AmdAccTable from './AmdAccTable';
 
 const AdminAccount = () => {
 
-const {accounts,onGetUsers} = useAccountStore();
-
-useEffect(() => {
-    onGetUsers();
-}, []);
+const {accounts} = useAccountStore();
 
 
   return (
