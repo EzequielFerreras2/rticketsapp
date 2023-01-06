@@ -44,7 +44,8 @@ export const useCateoryStore =()=> {
                 showConfirmButton: false,
                 timer: 2000
             })
-            }   
+            }
+            ongetCategory();   
         } 
         catch ({response})
          {
@@ -59,7 +60,7 @@ export const useCateoryStore =()=> {
             };
             }
             
-            ongetCategory();
+            
     };
 
     const onUpdateCategory = async(val)=>{
@@ -75,7 +76,9 @@ export const useCateoryStore =()=> {
                     showConfirmButton: false,
                     timer: 2000
                   })
+                  
             }
+            ongetCategory();
          } catch ({response})
          {
             const{data} = response;
@@ -89,7 +92,7 @@ export const useCateoryStore =()=> {
             };
             }
     
-            ongetCategory();
+            
     };
 
     const onDeleteCategory = async(val)=>{
@@ -105,6 +108,7 @@ export const useCateoryStore =()=> {
                     timer: 2000
                   })
             }
+            ongetCategory();
          } catch ({response})
          {
             const{data} = response;
@@ -118,7 +122,7 @@ export const useCateoryStore =()=> {
             };
             }
     
-            ongetCategory();
+            
         
     };
 
