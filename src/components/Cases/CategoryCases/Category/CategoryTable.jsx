@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
-import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 
@@ -37,6 +36,11 @@ const columns = [
   ];
 
 const CategoryTable = ({Category}) => {
+
+const [openEditModal, setOpenEditModal] = useState(false);
+const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+
 
   return (
     <div style={{marginTop:2, height:400, width: '100%' }}>

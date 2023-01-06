@@ -7,8 +7,12 @@ import CategoryTable from './CategoryTable';
 
 const Category = () => {
 
+//States
 const {Category }= useCateoryStore();
 const [category, setCategory] = useState([]);
+const [openCreateModal, setOpenCreateModal] = useState(false);
+
+//Effects
 useEffect(() => { setCategory(Category);}, [Category]);
 
   const addCategory = () =>{
