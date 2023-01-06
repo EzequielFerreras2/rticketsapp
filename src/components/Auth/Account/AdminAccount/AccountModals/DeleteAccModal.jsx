@@ -12,7 +12,7 @@ const DeleteAccModal = ({open, onClose, getAccount}) => {
 
     //Eliminar
     const {onDeleteUsers} = useAccountStore();
-  const [values, setValues] = useState({})
+    const [values, setValues] = useState({})
 
   useEffect(() => {
     if (open){

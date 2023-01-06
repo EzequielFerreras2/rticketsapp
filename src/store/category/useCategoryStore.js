@@ -42,7 +42,8 @@ export const useCateoryStore =()=> {
                 icon: 'success',
                 title: 'Categoria Creada.',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
+                
             })
             }
             ongetCategory();   

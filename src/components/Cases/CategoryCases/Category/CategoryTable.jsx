@@ -3,7 +3,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import CreateCategoryModal from './Modal/CreateCategoryModal';
+import EditCategoryModal from './Modal/EditCategoryModal';
+import DeleteCategoryModal from './Modal/DeleteCategoryModal';
 
 
 
@@ -62,9 +63,14 @@ const openDelete = (rowValue) =>{
         pageSize={10}
         rowsPerPageOptions={[10]}
       />
-    <CreateCategoryModal 
+    <EditCategoryModal
         open ={openEditModal} 
         onClose={() => setOpenEditModal(false)}
+        getCategory={getCategory} 
+    />
+    <DeleteCategoryModal
+        open ={openDeleteModal} 
+        onClose={() => setOpenDeleteModal(false)}
         getCategory={getCategory} 
     />
     </div>

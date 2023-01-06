@@ -7,9 +7,11 @@ import * as Yup from 'yup'
 import { Grid, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { useCateoryStore } from '../../../../../store/category/useCategoryStore';
+
+
 const CreateCategoryModal = ({open,onClose}) => {
 
-const {category,ongetCategory,onCreateCategory }= useCateoryStore();
+const {onCreateCategory}= useCateoryStore();
 
 
 //Estilo del Modal
