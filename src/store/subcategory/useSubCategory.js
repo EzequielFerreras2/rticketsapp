@@ -12,8 +12,8 @@ export const useSubCategoryStore =()=> {
 
         try {
             const {data} = await rticketsApp.get('/cases/subcategory');
-            const {subcategory} = data;
-            dispatch(getSubCategory(subcategory));
+            const {subCategory} = data;
+            dispatch(getSubCategory(subCategory));
         } 
         catch ({response})
          {
