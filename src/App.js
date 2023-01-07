@@ -7,6 +7,7 @@ import InRoute from "./routes/InRoute";
 import { useAccountStore } from "./store/accounts/useAccountStore";
 import { useAtuhStore } from "./store/auth/useAuthStore";
 import { useCateoryStore } from "./store/category/useCategoryStore";
+import { useSubCategoryStore } from "./store/subcategory/useSubCategory";
 
 
 function App() {
@@ -16,6 +17,7 @@ const accId = localStorage.getItem("id")
 const {status,checkToken,}= useAtuhStore();
 const {setUsers,onGetUsers}= useAccountStore();
 const {ongetCategory}= useCateoryStore();
+const {onGetSubCategory}= useSubCategoryStore();
 
 useEffect(() => {
 
@@ -30,8 +32,9 @@ useEffect(() => {
   onGetUsers()
   setUsers(accId);
   ongetCategory();
+  onGetSubCategory();
  // eslint-disable-next-line react-hooks/exhaustive-deps
- }, []);
+ }, [status]);
 
 
 
