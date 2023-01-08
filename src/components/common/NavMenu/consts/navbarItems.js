@@ -1,14 +1,13 @@
 import React from 'react'
 import PeopleIcon from '@mui/icons-material/People';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+
 import DashboardCustomizeTwoToneIcon from '@mui/icons-material/DashboardCustomizeTwoTone';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HistoryEduTwoToneIcon from '@mui/icons-material/HistoryEduTwoTone';
-
-
+import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
 
 
 
@@ -29,10 +28,10 @@ export const mainSideBarItems =  [
     },
     {
         id:2,
-        icon:<ReceiptLongIcon/>,
-        label:'Cotización',
-        route:'Cotizacion',
-        hidden:true
+        icon:<PlagiarismTwoToneIcon style={{ fill: '#0072ea' }}/>,
+        label:'Casos',
+        route:'Casos',
+        hidden:false
     },
     {
         id:3,
