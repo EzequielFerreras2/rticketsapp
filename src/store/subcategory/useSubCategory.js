@@ -31,14 +31,101 @@ export const useSubCategoryStore =()=> {
     };
 
     const onCreateSubCategory = async(val)=>{
-    
+
+        try {
+            const {data} = await rticketsApp.post('/cases/subcategory',val);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'SubCategoria Creada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetSubCategory();  
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+            
     };
 
     const onUpdateSubCategory = async(val)=>{
+
+        try {
+            const {data} = await rticketsApp.post(`/cases/subcategory/${val.id}/${val.category}`,val);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'SubCategoria Actualizada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetSubCategory();  
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
     
     };
 
     const onDeleteSubCategory = async(val)=>{
+
+        try {
+            const {data} = await rticketsApp.post(`/cases/subcategory/${val.id}`,val);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'SubCategoria Eliminada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetSubCategory();  
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
         
     };
 
