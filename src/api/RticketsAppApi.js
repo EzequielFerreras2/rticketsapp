@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getEnvVariables } from '../helpers/getEnvVariables';
 
-const {API_URL} = getEnvVariables();
+// const {API_URL} = getEnvVariables();
 
 const rTicketsApi = axios.create({
 

@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAccountStore } from '../../../../store/accounts/useAccountStore'
 import AmdAccTable from './AmdAccTable';
 
