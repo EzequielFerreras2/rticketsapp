@@ -4,13 +4,13 @@ export const subCategorySlice = createSlice({
 name: 'subCategory',
 initialState: {
 
- subCategory:[]
+ SubCategory:[]
 
  },
   reducers: {
 getSubCategory: (state, {payload} ) => {
 
-    state.subCategory=payload;
+    state.SubCategory=payload;
 
    },
  }
