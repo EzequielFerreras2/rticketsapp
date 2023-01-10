@@ -3,12 +3,27 @@ import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+import EditSubCategoryModal from './Modal/EditSubCategoryModal';
+import DeleteSubCategoryModal from './Modal/DeleteSubCategoryModal';
 
 
 
 const SubCategoryTable = ({subCategory}) => {
 
-   
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [getSubCategory, setGetSubCategory] = useState({});
+  
+  const openEdit = (rowValue) =>{
+      setGetSubCategory(rowValue.row);
+      setOpenEditModal(true);
+  };
+  
+  const openDelete = (rowValue) =>{
+      setGetSubCategory(rowValue.row);
+      setOpenDeleteModal(true);
+  };
+  
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
@@ -22,8 +37,8 @@ const SubCategoryTable = ({subCategory}) => {
                           color='primary'
                           aria-label="Editar Usuario" 
                           component="label" 
-                          onClick={() => prueba(rowValue.row)}
-                        //   onClick={() => openEdit(rowValue)} 
+                          
+                          onClick={() => openEdit(rowValue)} 
                         >
                           <ModeEditTwoToneIcon/>
                         </IconButton>
@@ -31,7 +46,7 @@ const SubCategoryTable = ({subCategory}) => {
                           color="error" 
                           aria-label="Borrar Usuario" 
                           component="label"
-                        //   onClick={() => openDelete(rowValue.row)} 
+                          onClick={() => openDelete(rowValue.row)} 
                         >
                           <DeleteTwoToneIcon />
                         </IconButton>
@@ -42,11 +57,6 @@ const SubCategoryTable = ({subCategory}) => {
           }
       ];
 
-const prueba =(data)=>{
-
-    console.log(data.category)
-
-}
 
   return (
     <div style={{marginTop:2, height:400, width: '100%' }}>
@@ -56,6 +66,16 @@ const prueba =(data)=>{
         pageSize={10}
         rowsPerPageOptions={[10]}
       />
+      <EditSubCategoryModal
+        open ={openEditModal} 
+        onClose={() => setOpenEditModal(false)}
+        getSubCategory={getSubCategory} 
+    />
+    <DeleteSubCategoryModal
+        open ={openDeleteModal} 
+        onClose={() => setOpenDeleteModal(false)}
+        getSubCategory={getSubCategory} 
+    />
       </div>
   )
 }

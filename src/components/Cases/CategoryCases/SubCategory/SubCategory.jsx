@@ -4,6 +4,7 @@ import { useSubCategoryStore } from '../../../../store/subcategory/useSubCategor
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import SubCategoryTable from './SubCategoryTable';
+import CreateSubCategoryModal from './Modal/CreateSubCategoryModal';
 
 const SubCategory = () => {
 
@@ -14,6 +15,10 @@ const SubCategory = () => {
   //Effects
   useEffect(() => { setSubCategory(SubCategory);}, [SubCategory]);
   
+  
+  const addsubCategory = () =>{
+    setOpenCreateModal(true);
+  }
 
   return (
     <div>
@@ -24,7 +29,7 @@ const SubCategory = () => {
             name="Agregar"
             startIcons={<AddBoxTwoToneIcon/>}
             colors="#0d47a1"
-            // onClick={()=>addCategory()}
+            onClick={()=>addsubCategory()}
             />
           </Grid >
         </Grid>
@@ -34,6 +39,10 @@ const SubCategory = () => {
           <SubCategoryTable subCategory={subCategory}/>
         </Grid>
       </Box>
+      <CreateSubCategoryModal
+        open ={openCreateModal} 
+        onClose={() => setOpenCreateModal(false)}
+      />
     </div>
   )
 }

@@ -33,7 +33,7 @@ export const useSubCategoryStore =()=> {
     const onCreateSubCategory = async(val)=>{
 
         try {
-            const {data} = await rticketsApp.post('/cases/subcategory',val);
+            const {data} = await rticketsApp.post(`/cases/subcategory/${val.category}`,val);
             if (data.ok === true)
             {
             Swal.fire({

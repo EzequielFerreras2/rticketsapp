@@ -78,7 +78,7 @@ const getContent =()=>(
     subTitle=""
     content={getContent()}
     onSubmit={handleSubmit(saveChanges)}
-    name="Cambiar Contraseña"
+    name="Agregar Categoria"
     colors="#43a047"
     startIcons={<AddBoxTwoToneIcon/>}
     />

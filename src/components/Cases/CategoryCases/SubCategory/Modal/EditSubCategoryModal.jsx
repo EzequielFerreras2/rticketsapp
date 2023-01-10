@@ -1,8 +1,132 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import BasicModal from '../../../../common/BasicModal/BasicModal'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup'
+import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
+import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Box } from '@mui/system';
+import { useCateoryStore } from '../../../../../store/category/useCategoryStore';
+import { useSubCategoryStore } from '../../../../../store/subcategory/useSubCategory';
+import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 
-const EditSubCategoryModal = () => {
+const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
+
+  const{Category}= useCateoryStore();
+  const {onUpdateSubCategory}= useSubCategoryStore();
+
+  const [categoryS, setCategoryS] = useState("");
+ 
+  const [category, setCategory] = useState([]);
+  const [getSubCategories, setGetSubCategories] = useState({});
+  const handleSelectCategoryChange = (event) => {setCategoryS(event.target.value);};
+
+
+
+const validationSchema = Yup.object().shape({
+  subcategory: Yup.string().required('Campo requerido')  
+});
+
+//useForm
+const {
+  register,
+  handleSubmit,
+  setValue,
+  reset,
+  formState: { errors },
+} = useForm({
+  resolver: yupResolver(validationSchema)
+});
+
+ //Carga de datos desde la tabla.
+ const subCa = async(data) =>{
+
+  const SubCate = await data;
+
+  if(SubCate !== undefined)
+  {
+    console.log(SubCate)
+    setValue("subcategory",SubCate.subcategory);
+  
+};
+
+ }
+
+useEffect(() => {setCategory(Category)}, [Category]);
+useEffect(() => {setGetSubCategories(getSubCategory);}, [getSubCategory]);
+useEffect(() => {subCa(getSubCategories);}, [getSubCategories]);
+
+const saveChanges = (data) => { 
+if (data.category === '')
+{
+  data.category = getSubCategories.category;
+}
+data.id= getSubCategories.id
+onUpdateSubCategory(data);
+
+  reset();
+  onClose();
+  setCategoryS("")
+  
+};
+
+const getContent= () =>(
+  <Grid container direction="row" sx={{mb:5}}  spacing={2}>
+          <Grid  item xs={6}>
+              <FormControl fullWidth>
+                      <InputLabel id="category">Categoria</InputLabel>
+                      <Select
+
+                          labelId="category"
+                          id="category"
+                          value={categoryS}
+                          {...register("category")}
+                          label="Categoria"
+                          onChange={handleSelectCategoryChange}
+                          error={!!errors.company}
+                          
+                      >
+                      {
+                          category.map((category)=>{
+                            
+                          return (
+                              <MenuItem key={category.id} value={category.id}>{category.category} </MenuItem>
+                          );
+                          })
+                          
+                      }; 
+                      </Select>
+                  </FormControl>
+               </Grid>
+          
+                <Grid  item xs={6}>
+                <TextField
+                  fullWidth={true}
+                  id="subcategory"
+                  label="Sub Categoria"
+                  {...register('subcategory')}
+                  error={!!errors.subcategory}
+                  helperText={errors.subcategory?.message}
+              />
+              
+              </Grid>
+              
+  </Grid>
+  );
   return (
-    <div>EditSubCategoryModal</div>
+    <div>
+      <BasicModal
+        open={open}
+        onClose={onClose}
+        title="Editar SubCategoria"
+        subTitle=""
+        content={getContent()}
+        onSubmit={handleSubmit(saveChanges)}
+        name="Actualizar"
+        colors="#43a047"
+        startIcons={<ModeEditTwoToneIcon/>}
+        />
+    </div>
   )
 }
 
