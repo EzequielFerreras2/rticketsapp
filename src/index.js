@@ -10,7 +10,7 @@ import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={dashboardTheme}>
@@ -20,6 +20,6 @@ root.render(
         </ThemeProvider>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+ 
 );
 
