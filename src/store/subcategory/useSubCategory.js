@@ -64,8 +64,6 @@ export const useSubCategoryStore =()=> {
 
     const onUpdateSubCategory = async(val)=>{
 
-        console.log("val")
-        console.log(val)
         try {
             const {data} = await rticketsApp.put(`/cases/subcategory/${val.id}/${val.category}`,val);
             if (data.ok === true)
