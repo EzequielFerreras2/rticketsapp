@@ -45,9 +45,8 @@ const {
 
   if(SubCate !== undefined)
   {
-    console.log(SubCate)
     setValue("subcategory",SubCate.subcategory);
-  
+    setCategoryS(SubCate.category._id);
 };
 
  }
