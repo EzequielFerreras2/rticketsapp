@@ -56,6 +56,7 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
     onUpdateSubCategory(data);
     reset();
     onClose();
+    subCa(getSubCategories);
   };
 
   //Contenido Modal
