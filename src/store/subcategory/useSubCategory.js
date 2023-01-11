@@ -42,7 +42,6 @@ export const useSubCategoryStore =()=> {
                 title: 'SubCategoria Creada.',
                 showConfirmButton: false,
                 timer: 2000,
-                
             })
             }
             onGetSubCategory();  
