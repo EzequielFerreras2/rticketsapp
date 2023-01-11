@@ -20,7 +20,8 @@ const SubCategoryTable = ({subCategory}) => {
   };
   
   const openDelete = (rowValue) =>{
-      setGetSubCategory(rowValue.row);
+ 
+      setGetSubCategory(rowValue);
       setOpenDeleteModal(true);
   };
   
