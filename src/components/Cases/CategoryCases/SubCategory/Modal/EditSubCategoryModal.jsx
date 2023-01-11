@@ -58,7 +58,7 @@ useEffect(() => {subCa(getSubCategories);}, [getSubCategories]);
 const saveChanges = (data) => { 
 if (data.category === '')
 {
-  data.category = getSubCategories.category;
+  data.category = getSubCategories.category._id;
 }
 data.id= getSubCategories.id
 onUpdateSubCategory(data);

@@ -66,7 +66,7 @@ export const useSubCategoryStore =()=> {
     const onUpdateSubCategory = async(val)=>{
 
         try {
-            const {data} = await rticketsApp.post(`/cases/subcategory/${val.id}/${val.category}`,val);
+            const {data} = await rticketsApp.put(`/cases/subcategory/${val.id}/${val.category}`,val);
             if (data.ok === true)
             {
             Swal.fire({
@@ -99,7 +99,7 @@ export const useSubCategoryStore =()=> {
     const onDeleteSubCategory = async(val)=>{
 
         try {
-            const {data} = await rticketsApp.post(`/cases/subcategory/${val.id}`,val);
+            const {data} = await rticketsApp.delete(`/cases/subcategory/${val.id}`,val);
             if (data.ok === true)
             {
             Swal.fire({
