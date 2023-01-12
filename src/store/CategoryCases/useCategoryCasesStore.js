@@ -5,15 +5,84 @@ import { getCategoryCases } from './categoryCasesSlice';
 
 export const useCategoryCasesStore =()=> {
 
-    const { CategoryCases } =  useSelector( state => state.CategoryCases );
+    const { CategoryCases } =  useSelector( state => state.categoryCases );
     const dispatch = useDispatch();
 
     const onGetCategoryCases =async() =>{
 
         try {
             const {data} = await rticketsApp.get('/cases/casescategory');
-            const {categoryCases} = data;
-            dispatch(getCategoryCases(categoryCases));
+            const {CasesCategory} = data;
+            dispatch(getCategoryCases(CasesCategory));
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+            
+    };
+
+    const onfindCategoryCases =async(val) =>{
+
+        try {
+            const {data} = await rticketsApp.get(`/cases/casescategory/${val.category}/${val.subcategory}`);
+            const {CasesCategory} = data;
+            dispatch(getCategoryCases(CasesCategory));
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+            
+    };
+
+    const onGetCategoryCasesByCategory =async(val) =>{
+
+        try {
+            const {data} = await rticketsApp.get(`/cases/casescategory/bycategory/${val}`);
+            const {CasesCategory} = data;
+            dispatch(getCategoryCases(CasesCategory));
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+            
+    };
+
+    const onGetCategoryCasesBySubCategory =async(val) =>{
+
+        try {
+            const {data} = await rticketsApp.get(`/cases/casescategory/bysubcategory/${val}`);
+            const {CasesCategory} = data;
+            dispatch(getCategoryCases(CasesCategory));
         } 
         catch ({response})
          {
@@ -32,14 +101,100 @@ export const useCategoryCasesStore =()=> {
     };
 
     const onCreateCategoryCases = async(val)=>{
+
+        try {
+            const {data} = await rticketsApp.post(`/cases/casescategory/${val.category}/${val.subcategory}`,val);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Categoria de Caso Creada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetCategoryCases();   
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
     
     };
 
     const onUpdateCategoryCases = async(val)=>{
-    
+
+        try {
+            const {data} = await rticketsApp.put(`/cases/casescategory/${val.id}/${val.category}/${val.subcategory}`,val);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Categoria de Caso Actualizada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetCategoryCases();   
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
     };
 
     const onDeleteCategoryCases = async(val)=>{
+
+        try {
+            const {data} = await rticketsApp.delete(`/cases/casescategory/${val.id}`);
+            if (data.ok === true)
+            {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Categoria de Caso Eliminada.',
+                showConfirmButton: false,
+                timer: 2000,
+                
+            })
+            }
+            onGetCategoryCases();   
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+    
         
     };
 
@@ -48,6 +203,9 @@ export const useCategoryCasesStore =()=> {
         CategoryCases,
         //Methos
         onGetCategoryCases,
+        onfindCategoryCases,
+        onGetCategoryCasesByCategory,
+        onGetCategoryCasesBySubCategory,
         onCreateCategoryCases,
         onUpdateCategoryCases,
         onDeleteCategoryCases,

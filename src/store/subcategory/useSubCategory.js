@@ -1,7 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import {getSubCategory} from '../subcategory/subCategorySlice'
+import {getSubCategory,getSubCategoryByCategory} from '../subcategory/subCategorySlice'
 
 export const useSubCategoryStore =()=> {
 
@@ -14,6 +14,27 @@ export const useSubCategoryStore =()=> {
             const {data} = await rticketsApp.get('/cases/subcategory');
             const {subCategory} = data;
             dispatch(getSubCategory(subCategory));
+        } 
+        catch ({response})
+         {
+            const{data} = response;
+            if(data.ok === false)
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: `${data.msg}.!!!`,
+                  })
+            };
+            }
+            
+    };
+    const onGetSubCategoryByCategory =async(val) =>{
+
+        try {
+            const {data} = await rticketsApp.get(`/cases/subcategory/${val.category}`);
+            const {subCategory} = data;
+            dispatch(getSubCategoryByCategory(subCategory));
         } 
         catch ({response})
          {
@@ -133,6 +154,7 @@ export const useSubCategoryStore =()=> {
         SubCategory,
         //Methos
         onGetSubCategory,
+        onGetSubCategoryByCategory,
         onCreateSubCategory,
         onUpdateSubCategory,
         onDeleteSubCategory,

@@ -66,7 +66,7 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
                 <FormControl fullWidth>
                         <InputLabel id="category">Categoria</InputLabel>
                         <Select
-
+                            selected
                             labelId="category"
                             id="category"
                             value={categoryS}

@@ -4,17 +4,24 @@ export const subCategorySlice = createSlice({
 name: 'subCategory',
 initialState: {
 
- SubCategory:[]
-
+ SubCategory:[],
+ SubCategoryByCategory:[]
  },
   reducers: {
-getSubCategory: (state, {payload} ) => {
+  getSubCategory: (state, {payload} ) => {
 
     state.SubCategory=payload;
 
    },
+
+   getSubCategoryByCategory: (state, {payload} ) => {
+
+    state.SubCategoryByCategory=payload;
+
+   },
+
  }
 });
 
 // Action creators are generated for each case reducer function
-export const { getSubCategory } = subCategorySlice.actions;
+export const { getSubCategory,getSubCategoryByCategory } = subCategorySlice.actions;
