@@ -7,6 +7,7 @@ import InRoute from "./routes/InRoute";
 import { useAccountStore } from "./store/accounts/useAccountStore";
 import { useAtuhStore } from "./store/auth/useAuthStore";
 import { useCateoryStore } from "./store/category/useCategoryStore";
+import { useCategoryCasesStore } from "./store/CategoryCases/useCategoryCasesStore";
 import { useSubCategoryStore } from "./store/subcategory/useSubCategory";
 
 
@@ -18,6 +19,7 @@ const {status,checkToken,}= useAtuhStore();
 const {setUsers,onGetUsers}= useAccountStore();
 const {ongetCategory}= useCateoryStore();
 const {onGetSubCategory}= useSubCategoryStore();
+const {onGetCategoryCases}= useCategoryCasesStore();
 
 useEffect(() => {
 
@@ -33,6 +35,7 @@ useEffect(() => {
   setUsers(accId);
   ongetCategory();
   onGetSubCategory();
+  onGetCategoryCases();
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [status]);
 
