@@ -4,18 +4,25 @@ import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import { useCategoryCasesStore } from '../../../../store/CategoryCases/useCategoryCasesStore';
 import CategoryCasesTable from './Table/CategoryCasesTable';
-import CollapsibleTable from './Table/TableAccordion';
+import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 
 
 const CasesCategory = () => {
 
-  const {CategoryCases}= useCategoryCasesStore();
+  const {CategoryCases,onGetCategoryCases}= useCategoryCasesStore();
   const [categoryCases, setCategoryCases] = useState([]);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   
   //Effects
   useEffect(() => { setCategoryCases(CategoryCases);}, [CategoryCases]);
   
+
+  const upDateCategoryCases =()=>{
+
+    onGetCategoryCases()
+
+  };
+
   
   const addCategoryCases = () =>{
     setOpenCreateModal(true);
@@ -32,6 +39,12 @@ const CasesCategory = () => {
               startIcons={<AddBoxTwoToneIcon/>}
               colors="#0d47a1"
               onClick={()=> addCategoryCases()}
+              />
+              <BasicButton
+              name="Actualizar"
+              startIcons={<CachedTwoToneIcon/>}
+              colors="#0276aa"
+              onClick={()=> upDateCategoryCases()}
               />
             </Grid >
           </Grid>
