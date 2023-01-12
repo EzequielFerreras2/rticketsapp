@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Category from './Category/Category';
 import SubCategory from './SubCategory/SubCategory';
-import Cases from '../CategoryCases/Cases/Cases';
+import CasesCategory from '../CategoryCases/Cases/CasesCategory';
 
 function TabPanel(props) {
   
@@ -68,7 +68,7 @@ const [value, setValue] = React.useState(0);
         <SubCategory/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Cases/>
+        <CasesCategory/>
       </TabPanel>
     </Box>
     </>
