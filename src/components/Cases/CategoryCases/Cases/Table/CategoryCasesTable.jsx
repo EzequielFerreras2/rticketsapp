@@ -1,10 +1,9 @@
-import { Box, Button, Collapse, IconButton, Menu, MenuItem, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Button, IconButton, Menu, Typography } from '@mui/material';
 import React, {useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 const CategoryCasesTable = ({CasesCategory}) => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -37,11 +36,28 @@ const CategoryCasesTable = ({CasesCategory}) => {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
-        { field: 'title', headerName: 'Titulo', width: 250 },
-        { field: 'subcategory',valueFormatter: (params) => params.value.subcategory, headerName: 'Sub-Categoria', width: 100 },
-        { field: 'category', valueFormatter: (params) => params.value.category, headerName: 'Categoria', width: 100},
-        { field: 'priority', headerName: 'Prioridad', width: 100 },
-        { field: 'Descripcion',width: 350,
+        { field: 'title', headerName: 'Titulo', width: 350 },
+        { field: 'subcategory',valueFormatter: (params) => params.value.subcategory, headerName: 'Sub-Categoria', width: 200 },
+        { field: 'category', valueFormatter: (params) => params.value.category, headerName: 'Categoria', width: 150},
+        { field: 'priority',width: 150,headerName: 'Priority',
+        
+              renderCell:(rowValue) =>{
+                var color;
+                if(rowValue.row.priority ==="Alta"){color="#b71c1c"}
+                if(rowValue.row.priority ==="Media"){color="#ffc107"}
+                if(rowValue.row.priority ==="Baja"){color="#357a38"}
+
+                  return(
+                      <>
+                         <Typography  sx={{pl:1, wordWrap:true ,width: 250 , color:color}}>
+                                  <b><PriorityHighIcon/>{rowValue.row.priority}<PriorityHighIcon/></b>
+                         </Typography> 
+                      </>
+                      
+                  )
+              }
+          },   
+        { field: 'Descripcion',width: 130,
               renderCell:(rowValue) =>{
                 
                   return(
@@ -107,7 +123,7 @@ const CategoryCasesTable = ({CasesCategory}) => {
                       
                   )
               }
-          },   
+          },  
       ];
   return (
     <div style={{marginTop:2, height:400, width: '100%' }}>
