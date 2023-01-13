@@ -15,19 +15,10 @@ const CasesCategory = () => {
   
   //Effects
   useEffect(() => { setCategoryCases(CategoryCases);}, [CategoryCases]);
-  
 
-  const upDateCategoryCases =()=>{
-
-    onGetCategoryCases()
-
-  };
-
-  
-  const addCategoryCases = () =>{
-    setOpenCreateModal(true);
-  }
-
+  //update.
+  const upDateCategoryCases =()=>{onGetCategoryCases();};
+  const addCategoryCases = () =>{setOpenCreateModal(true);};
 
   return (
       <div>

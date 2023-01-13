@@ -115,14 +115,12 @@ else{
 
     try {
         const {data} = await rticketsApp.get('/auth/renew');
-
             localStorage.setItem('token', data.token);
             localStorage.setItem('rol',data.rol);
             localStorage.setItem('id',data.uid);
             localStorage.setItem('token-init-date', new Date().getTime());
 
             dispatch(
-            
                 logIn({
                     id:data.uid,
                     name:data.name,
@@ -132,26 +130,18 @@ else{
                     company:data.company
                 }
                 ));
-        
     } catch ({response}) {
-
         const{data} = response;
         localStorage.clear();
-        dispatch(logOut(data.msg));
-        
-        
+        dispatch(logOut(data.msg));   
     }
 }
 
 };
 
-
 const startLogOut =()=>{
-
     dispatch(logOut("Fin de la Secion"))
     localStorage.clear();
-
-
 };
     return{
 

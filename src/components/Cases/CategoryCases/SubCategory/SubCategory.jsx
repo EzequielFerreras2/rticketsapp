@@ -5,21 +5,18 @@ import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import SubCategoryTable from './SubCategoryTable';
 import CreateSubCategoryModal from './Modal/CreateSubCategoryModal';
-
+import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 const SubCategory = () => {
 
-  const {SubCategory }= useSubCategoryStore();
+  const {SubCategory,onGetSubCategory }= useSubCategoryStore();
   const [subCategory, setSubCategory] = useState([]);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   
   //Effects
   useEffect(() => { setSubCategory(SubCategory);}, [SubCategory]);
   
-  
-  const addsubCategory = () =>{
-    setOpenCreateModal(true);
-  }
-
+  const addsubCategory = () =>{ setOpenCreateModal(true);}
+  const upDateSubCategory =()=>{}
   return (
     <div>
       <Box >
@@ -31,6 +28,12 @@ const SubCategory = () => {
             colors="#0d47a1"
             onClick={()=>addsubCategory()}
             />
+            <BasicButton
+              name="Actualizar"
+              startIcons={<CachedTwoToneIcon/>}
+              colors="#0276aa"
+              onClick={()=> upDateSubCategory()}
+              />
           </Grid >
         </Grid>
         
