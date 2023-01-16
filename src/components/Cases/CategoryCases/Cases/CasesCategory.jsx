@@ -5,6 +5,7 @@ import BasicButton from '../../../common/BasicButton/BasicButton';
 import { useCategoryCasesStore } from '../../../../store/CategoryCases/useCategoryCasesStore';
 import CategoryCasesTable from './Table/CategoryCasesTable';
 import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
+import CreateCasesCategoryModal from './Modal/CreateCasesCategoryModal';
 
 
 const CasesCategory = () => {
@@ -46,7 +47,10 @@ const CasesCategory = () => {
             {/* <CollapsibleTable/> */}
           </Grid>
         </Box>
-        
+        <CreateCasesCategoryModal
+        open ={openCreateModal} 
+        onClose={() => setOpenCreateModal(false)}
+        />
       </div>
   )
 }
