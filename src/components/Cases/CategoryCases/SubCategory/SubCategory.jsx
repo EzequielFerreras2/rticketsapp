@@ -16,7 +16,7 @@ const SubCategory = () => {
   useEffect(() => { setSubCategory(SubCategory);}, [SubCategory]);
   
   const addsubCategory = () =>{ setOpenCreateModal(true);}
-  const upDateSubCategory =()=>{}
+  const upDateSubCategory =()=>{onGetSubCategory()}
   return (
     <div>
       <Box >

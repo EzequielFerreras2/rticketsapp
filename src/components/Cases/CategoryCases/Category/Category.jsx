@@ -5,21 +5,20 @@ import BasicButton from '../../../common/BasicButton/BasicButton';
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import CategoryTable from './CategoryTable';
 import CreateCategoryModal from './Modal/CreateCategoryModal';
+import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 
 const Category = () => {
 
 //States
-const {Category }= useCateoryStore();
+const {Category,ongetCategory }= useCateoryStore();
 const [category, setCategory] = useState([]);
 const [openCreateModal, setOpenCreateModal] = useState(false);
 
 //Effects
 useEffect(() => { setCategory(Category);}, [Category]);
 
-  const addCategory = () =>{
-
-    setOpenCreateModal(true);
-  }
+  const addCategory = () =>{setOpenCreateModal(true);}
+  const upDateCategory =()=>{ongetCategory()}
 
   return (
     <div>
@@ -32,6 +31,12 @@ useEffect(() => { setCategory(Category);}, [Category]);
             colors="#0d47a1"
             onClick={()=>addCategory()}
             />
+            <BasicButton
+              name="Actualizar"
+              startIcons={<CachedTwoToneIcon/>}
+              colors="#0276aa"
+              onClick={()=> upDateCategory()}
+              />
           </Grid >
         </Grid>
         
