@@ -9,12 +9,13 @@ import { Box } from '@mui/system';
 import { useCateoryStore } from '../../../../../store/category/useCategoryStore';
 import { useSubCategoryStore } from '../../../../../store/subcategory/useSubCategory';
 import{ priorityList} from '../../../../../helpers/List/priority';
+import { useCategoryCasesStore } from '../../../../../store/CategoryCases/useCategoryCasesStore';
 
 const CreateCasesCategoryModal = ({open,onClose}) => {
 
     const{Category}= useCateoryStore();
     const {SubCategory}= useSubCategoryStore()
-    const {onCreateSubCategory}= useSubCategoryStore();
+    const {onCreateCategoryCases} = useCategoryCasesStore();
 
     const [categoryS, setCateogryS] = useState("");
     const [subCategoryS, setSubCateogryS] = useState("");
@@ -25,9 +26,13 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
     const handleSelectPriorityChange = (event) => {setPriorityS(event.target.value);};
 
           
-console.log(SubCategory)
+
             const validationSchema = Yup.object().shape({
-                subcategory: Yup.string().required('Campo requerido')  
+                title: Yup.string().required('Campo requerido'),
+                category: Yup.string().required('Campo requerido'),
+                subcategory: Yup.string().required('Campo requerido'),
+                priority: Yup.string().required('Campo requerido'),
+                description: Yup.string().required('Campo requerido') 
             });
 
             //useForm
@@ -41,10 +46,12 @@ console.log(SubCategory)
             });
 
             const saveChanges = (data) => { 
-               console.log(data);
+                onCreateCategoryCases(data);
                 reset();
                 onClose();
-                setCateogryS("")
+                setCateogryS("");
+                setSubCateogryS("");
+                setPriorityS("");
                 
             };
 
@@ -54,7 +61,7 @@ console.log(SubCategory)
             <TextField
                         fullWidth="true"
                         id="title"
-                        label="title"
+                        label="Titulo"
                         {...register('title')}
                         error={!!errors.title}
                         helperText={errors.title?.message}
