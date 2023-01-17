@@ -11,11 +11,13 @@ import { useSubCategoryStore } from '../../../../../store/subcategory/useSubCate
 import{ priorityList} from '../../../../../helpers/List/priority';
 import { useCategoryCasesStore } from '../../../../../store/CategoryCases/useCategoryCasesStore';
 
-const CreateCasesCategoryModal = ({open,onClose}) => {
+
+const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
+
 
     const{Category}= useCateoryStore();
     const {SubCategory}= useSubCategoryStore()
-    const {onCreateCategoryCases} = useCategoryCasesStore();
+    const {onUpdateCategoryCases} = useCategoryCasesStore();
 
     const [categoryS, setCateogryS] = useState("");
     const [subCategoryS, setSubCateogryS] = useState("");
@@ -25,7 +27,25 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
     const handleSelectSubCategoryChange = (event) => {setSubCateogryS(event.target.value);};
     const handleSelectPriorityChange = (event) => {setPriorityS(event.target.value);};
 
-          
+    const CasesCa = async(data) =>{
+        const SubCate = await data;
+        if(SubCate !== undefined)
+        {
+            setValue('title',getCategoryCases.title);
+            setCateogryS(getCategoryCases.category._id);
+            setSubCateogryS(getCategoryCases.subcategory._id);
+            setPriorityS(getCategoryCases.priority);
+            setValue('description',getCategoryCases.description);
+        };
+      };
+    
+
+    useEffect(() => {
+      
+        
+        CasesCa(getCategoryCases)
+
+    }, [getCategoryCases]);
 
             const validationSchema = Yup.object().shape({
                 title: Yup.string().required('Campo requerido'),
@@ -40,13 +60,15 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                 register,
                 handleSubmit,
                 reset,
+                setValue,
                 formState: { errors },
             } = useForm({
                 resolver: yupResolver(validationSchema)
             });
 
-            const saveChanges = (data) => { 
-                onCreateCategoryCases(data);
+            const saveChanges = (data) => {
+                data.id=getCategoryCases.id 
+                onUpdateCategoryCases(data);
                 reset();
                 onClose();
                 setCateogryS("");
@@ -165,16 +187,18 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
         </Grid>
     );
     
+
+
   return (
     <div>
         <BasicModal
         open={open}
         onClose={onClose}
-        title="Crear Categoria de Caso"
+        title="Editar Categoria de Caso"
         subTitle=""
         content={getContent()}
         onSubmit={handleSubmit(saveChanges)}
-        name="Agregar Categoria de Caso"
+        name="Editar Categoria de Caso"
         colors="#43a047"
         startIcons={<AddBoxTwoToneIcon/>}
     />
@@ -182,4 +206,4 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
   )
 }
 
-export default CreateCasesCategoryModal
+export default EditCasesCategoryModal

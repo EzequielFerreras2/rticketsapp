@@ -4,6 +4,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import EditCasesCategoryModal from '../Modal/EditCasesCategoryModal';
+import DeleteCasesCategoryModal from '../Modal/DeleteCasesCategoryModal';
 
 const CategoryCasesTable = ({CasesCategory}) => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -134,16 +136,17 @@ const CategoryCasesTable = ({CasesCategory}) => {
         pageSize={10}
         rowsPerPageOptions={[10]}
       />
-      {/* <EditSubCategoryModal
+      <EditCasesCategoryModal
         open ={openEditModal} 
         onClose={() => setOpenEditModal(false)}
-        getSubCategory={getSubCategory} 
+        getCategoryCases={getCategoryCases} 
     />
-    <DeleteSubCategoryModal
+     
+    <DeleteCasesCategoryModal
         open ={openDeleteModal} 
         onClose={() => setOpenDeleteModal(false)}
-        getSubCategory={getSubCategory} 
-    /> */}
+        getCategoryCases={getCategoryCases} 
+    />
       </div>
   )
 }
