@@ -93,7 +93,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                     <FormControl fullWidth>
                             <InputLabel id="category">Categoria</InputLabel>
                             <Select
-    
+                                
                                 labelId="category"
                                 id="category"
                                 value={categoryS}
@@ -122,7 +122,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                       <FormControl fullWidth>
                             <InputLabel id="subcategory">Sub Categoria</InputLabel>
                             <Select
-    
+                                
                                 labelId="subcategory"
                                 id="subcategory"
                                 value={subCategoryS}
@@ -135,7 +135,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                             {
                                 SubCategory.map((subcategory)=>{
                                 return (
-                                    <MenuItem key={subcategory.id} value={subcategory.id}>{subcategory.subcategory} </MenuItem>
+                                    <MenuItem  key={subcategory.id} value={subcategory.id}>{subcategory.subcategory} </MenuItem>
                                 );
                                 })
                                 
@@ -149,7 +149,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                       <FormControl fullWidth>
                             <InputLabel id="priority">Prioridad</InputLabel>
                             <Select
-    
+                                
                                 labelId="priority"
                                 id="priority"
                                 value={priorityS}
@@ -162,7 +162,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                             {
                                 priorityList.map((PriorityList)=>{
                                 return (
-                                    <MenuItem key={PriorityList} value={PriorityList}>{PriorityList} </MenuItem>
+                                    <MenuItem  key={PriorityList} value={PriorityList}>{PriorityList} </MenuItem>
                                 );
                                 })
                                 

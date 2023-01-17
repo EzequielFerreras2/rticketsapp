@@ -87,7 +87,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                     <FormControl fullWidth>
                             <InputLabel id="category">Categoria</InputLabel>
                             <Select
-                                
+                                selected
                                 labelId="category"
                                 id="category"
                                 value={categoryS}
@@ -116,7 +116,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                       <FormControl fullWidth>
                             <InputLabel id="subcategory">Sub Categoria</InputLabel>
                             <Select
-    
+                                selected
                                 labelId="subcategory"
                                 id="subcategory"
                                 value={subCategoryS}
@@ -143,7 +143,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                       <FormControl fullWidth>
                             <InputLabel id="priority">Prioridad</InputLabel>
                             <Select
-    
+                                
                                 labelId="priority"
                                 id="priority"
                                 value={priorityS}
