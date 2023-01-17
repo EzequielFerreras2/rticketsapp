@@ -30,6 +30,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
 
     const selectedCategory =async(data)=>{
        await onGetSubCategoryByCategory(data.id);
+       setSubCateogryS("");
     };
 
     useEffect(() => {

@@ -30,16 +30,31 @@ useEffect(() => {
 
 
 useEffect(() => {
-  checkToken();
-  onGetUsers()
-  setUsers(accId);
-  ongetCategory();
-  onGetSubCategory();
-  onGetCategoryCases();
+ 
+  check()
+  
+  
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [status]);
 
+const check =()=>{
 
+   try {
+
+    checkToken();
+    onGetUsers()
+    setUsers(accId);
+    ongetCategory();
+    onGetSubCategory();
+    onGetCategoryCases(); 
+    
+   } catch (error) {
+    
+   }
+  
+
+    
+};
 
   const DisplayHeader= (props) =>{
     const isLoggedIn = props.isLoggedIn;
