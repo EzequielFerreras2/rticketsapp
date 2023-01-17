@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { Box } from '@mui/system';
+
 import { useCateoryStore } from '../../../../../store/category/useCategoryStore';
 import { useSubCategoryStore } from '../../../../../store/subcategory/useSubCategory';
 import{ priorityList} from '../../../../../helpers/List/priority';
@@ -14,9 +14,12 @@ import { useCategoryCasesStore } from '../../../../../store/CategoryCases/useCat
 const CreateCasesCategoryModal = ({open,onClose}) => {
 
     const{Category}= useCateoryStore();
-    const {SubCategory}= useSubCategoryStore()
+    const {SubCategory,onGetSubCategoryByCategory,SubCategoryByCategory}= useSubCategoryStore()
     const {onCreateCategoryCases} = useCategoryCasesStore();
 
+
+
+    const [subCategory, setSubCategory] = useState(SubCategory);
     const [categoryS, setCateogryS] = useState("");
     const [subCategoryS, setSubCateogryS] = useState("");
     const [priorityS, setPriorityS] = useState("");
@@ -25,7 +28,20 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
     const handleSelectSubCategoryChange = (event) => {setSubCateogryS(event.target.value);};
     const handleSelectPriorityChange = (event) => {setPriorityS(event.target.value);};
 
-          
+    const selectedCategory =async(data)=>{
+       await onGetSubCategoryByCategory(data.id);
+    };
+
+    useEffect(() => {
+        if(SubCategoryByCategory.length === 0)
+        {
+            setSubCategory(SubCategory);
+        }
+        else{
+           
+            setSubCategory(SubCategoryByCategory)
+        }
+    }, [SubCategoryByCategory]);
 
             const validationSchema = Yup.object().shape({
                 title: Yup.string().required('Campo requerido'),
@@ -84,7 +100,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                             {
                                 Category.map((category)=>{
                                 return (
-                                    <MenuItem key={category.id} value={category.id}>{category.category} </MenuItem>
+                                    <MenuItem key={category.id} value={category.id} onClick={()=>selectedCategory(category)}>{category.category} </MenuItem>
                                 );
                                 })
                                 
@@ -111,7 +127,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                                 
                             >
                             {
-                                SubCategory.map((subcategory)=>{
+                                subCategory.map((subcategory)=>{
                                 return (
                                     <MenuItem key={subcategory.id} value={subcategory.id}>{subcategory.subcategory} </MenuItem>
                                 );

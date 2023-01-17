@@ -5,7 +5,7 @@ import {getSubCategory,getSubCategoryByCategory} from '../subcategory/subCategor
 
 export const useSubCategoryStore =()=> {
 
-    const { SubCategory } =  useSelector( state => state.subCategory );
+    const { SubCategory, SubCategoryByCategory } =  useSelector( state => state.subCategory );
     const dispatch = useDispatch();
 
     const onGetSubCategory =async() =>{
@@ -31,8 +31,10 @@ export const useSubCategoryStore =()=> {
     };
     const onGetSubCategoryByCategory =async(val) =>{
 
+        console.log("VAL")
+        console.log(val)
         try {
-            const {data} = await rticketsApp.get(`/cases/subcategory/${val.category}`);
+            const {data} = await rticketsApp.get(`/cases/subcategory/${val}`);
             const {subCategory} = data;
             dispatch(getSubCategoryByCategory(subCategory));
         } 
@@ -152,6 +154,7 @@ export const useSubCategoryStore =()=> {
     return{
         //Propieties
         SubCategory,
+        SubCategoryByCategory,
         //Methos
         onGetSubCategory,
         onGetSubCategoryByCategory,

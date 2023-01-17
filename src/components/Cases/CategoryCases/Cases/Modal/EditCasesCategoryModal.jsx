@@ -38,7 +38,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
             setValue('description',getCategoryCases.description);
         };
       };
-    
+  
 
     useEffect(() => {
       
@@ -106,7 +106,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                             {
                                 Category.map((category)=>{
                                 return (
-                                    <MenuItem key={category.id} value={category.id}>{category.category} </MenuItem>
+                                    <MenuItem key={category.id} value={category.id} >{category.category} </MenuItem>
                                 );
                                 })
                                 
