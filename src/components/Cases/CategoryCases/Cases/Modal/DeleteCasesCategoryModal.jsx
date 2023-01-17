@@ -8,6 +8,22 @@ import { useCategoryCasesStore } from '../../../../../store/CategoryCases/useCat
 const DeleteCasesCategoryModal = ({getCategoryCases,open,onClose}) => {
 
     const {onDeleteCategoryCases}= useCategoryCasesStore();
+    const [categoryCases, setCategoryCases] = useState({});
+
+    const CasesCa = async(data) =>{
+        const SubCate = await data;
+        if(SubCate !== undefined)
+        {
+
+            setCategoryCases(data);
+        };
+      };
+
+
+      useEffect(() => {
+        CasesCa(getCategoryCases);
+      }, [getCategoryCases]);
+    
     
   const getContent= () =>(
   
@@ -20,12 +36,12 @@ const DeleteCasesCategoryModal = ({getCategoryCases,open,onClose}) => {
           <Stack sx={{ m:2, width: '100%' }} spacing={2}>
               <Alert severity="warning"><h2>!Estas Seguro que deseas eliminar la categoria de Caso!</h2></Alert>
               <Alert severity="error">
-              <p><b>id:</b> {getCategoryCases.id}</p>
-              <p><b>Titulo:</b> {getCategoryCases.title}</p>
-              <p><b>Categoria:</b> {getCategoryCases.category.category}</p>
-              <p><b>Sub Categoria:</b> {getCategoryCases.subcategory.subcategory}</p>
-              <p><b>Prioridad:</b> {getCategoryCases.priority}</p>
-              <p><b>Descripcion:</b> {getCategoryCases.description}</p>   
+              <p><b>id:</b> {categoryCases.id}</p>
+              <p><b>Titulo:</b> {categoryCases.title}</p>
+              {/* <p><b>Categoria:</b> {categoryCases.category.category}</p> */}
+              {/* <p><b>Sub Categoria:</b> {categoryCases.subcategory.subcategory}</p> */}
+              <p><b>Prioridad:</b> {categoryCases.priority}</p>
+              <p><b>Descripcion:</b> {categoryCases.description}</p>   
               </Alert>  
           </Stack>
           </Grid>
