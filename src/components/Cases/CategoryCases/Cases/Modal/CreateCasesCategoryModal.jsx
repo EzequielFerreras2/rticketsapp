@@ -87,7 +87,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                     <FormControl fullWidth>
                             <InputLabel id="category">Categoria</InputLabel>
                             <Select
-    
+                                
                                 labelId="category"
                                 id="category"
                                 value={categoryS}
