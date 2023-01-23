@@ -1,79 +1,40 @@
 import React from 'react';
+import Box from '@mui/material/Box';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import BasicButton from '../../common/BasicButton/BasicButton';
-import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import { ButtonGroup, Grid } from '@mui/material';
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import { Box } from '@mui/system';
+
+import Cases from './Cases';
+
+
 
 const CreateCases = () => {
     return (
         <div>
             <br/>
             <h1>Casos</h1>
-            <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-
-                
+           <Cases/>
+           <br/>
+                <Box sx={{ mt:10, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                    <SpeedDial
                     
-               
-
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item xs={6}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Grid container
-                            direction="row"
-                            justifyContent="flex-end"
-                            alignItems="center" >
-                            <BasicButton
-                                heights={200}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<ModeEditTwoToneIcon/>}
-                                colors={"#2a3eb1"}
-                        
-                                />
-                                <BasicButton
-                                heights={200}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<DeleteTwoToneIcon/>}
-                                colors={"#b2102f"}
-                            
-                                />
-                        </Grid>
-                    
-                    </Grid>
-                    
-                    </Grid>
-                
-                </CardContent>
-
-            </Card>
+                        ariaLabel="SpeedDial"
+                        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+                        icon={<SpeedDialIcon openIcon={<NoteAddTwoToneIcon />} />}
+                        onClick={()=>console.log("CLieck")}
+                        FabProps={{
+                            sx: {
+                              bgcolor: '#0d47a1',
+                              '&:hover': {
+                                bgcolor: '#1976d2',
+                              }
+                            }
+                          }}
+                    >
+                    </SpeedDial>
+                </Box>
         </div>
     );
 }
