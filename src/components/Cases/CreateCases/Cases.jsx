@@ -47,7 +47,6 @@ const Cases = () => {
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
-
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Apertura:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
