@@ -20,7 +20,7 @@ const Cases = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center" >
-                                        <Avatar  sx={{mt:7,bgcolor:"#b2102f",width: 80, height: 80 }}>
+                                        <Avatar  sx={{mt:13,bgcolor:"#b2102f",width: 80, height: 80 }}>
                                             <ReportProblemIcon />
                                         </Avatar>
                             </Grid>
@@ -29,7 +29,34 @@ const Cases = () => {
                     <Grid item xs={8}>
                                 
                                 <Grid item xs={6}>
-                                    <Accordion sx={{mt:2,mb:2 ,backgroundColor: "#e0e0e0" }}>
+                                    
+                                </Grid>
+
+                                <Typography sx={{ fontSize: 24 }}  gutterBottom>
+                                  <b>Caso:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Sub-Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Fecha de Apertura:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Fecha de Cierre:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+
+                                <Grid item xs={6}>
+                                <Accordion sx={{mt:2,mb:2 ,backgroundColor: "#e0e0e0" }}>
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1a-content"
@@ -44,33 +71,13 @@ const Cases = () => {
                                         </Typography>
                                         </AccordionDetails>
                                     </Accordion>
-                                </Grid>
-
-                                <Typography sx={{ fontSize: 20 }}  gutterBottom>
-                                  <b>Caso:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Sub-Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-
-                                <Grid item xs={6}>
                                     <Accordion sx={{mt:2 ,backgroundColor: "#e0e0e0" }}>
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         >
-                                        <Typography>Detalles</Typography>
+                                        <Typography><b>Detalles Del Caso</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                         <Typography>
@@ -79,6 +86,7 @@ const Cases = () => {
                                         </Typography>
                                         </AccordionDetails>
                                     </Accordion>
+                                    
                                 </Grid>
                                  
                     </Grid>
@@ -87,16 +95,16 @@ const Cases = () => {
                             sx={{mt:2}}
                             direction="row"
                             justifyContent="flex-end"
-                            alignItems="center" >
+                            alignItems="stretch" >
                             <BasicButton
-                                heights={200}
+                                heights={300}
                                 onClick={()=> console.log("Edit")}
                                 startIcons={<ModeEditTwoToneIcon/>}
                                 colors={"#0d47a1"}
                         
                                 />
                                 <BasicButton
-                                heights={200}
+                                heights={300}
                                 onClick={()=> console.log("Edit")}
                                 startIcons={<DeleteTwoToneIcon/>}
                                 colors={"#b2102f"}
