@@ -11,7 +11,7 @@ import { Grid } from '@mui/material';
 const Cases = () => {
     return (
         <div>
-             <Card sx={{ minWidth: 275 }}>
+             <Card  sx={{ minWidth: 275,backgroundColor: "#e3f2fd" }}>
                 <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={6}>
@@ -28,13 +28,8 @@ const Cases = () => {
                                 Word of the Day
                                 </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                 Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
                                 </Typography>
+                               
                     </Grid>
                     <Grid item xs={6}>
                         <Grid container
@@ -60,8 +55,65 @@ const Cases = () => {
                     </Grid>
                     
                     </Grid>
+                    
                 
                 </CardContent>
+
+                
+                
+
+            </Card>
+            <br/>
+            <Card  sx={{ minWidth: 275,backgroundColor: "#e3f2fd" }}>
+                <CardContent>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid item xs={6}>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography>
+                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Word of the Day
+                                </Typography>
+                               
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Grid container
+                            direction="row"
+                            justifyContent="flex-end"
+                            alignItems="center" >
+                            <BasicButton
+                                heights={200}
+                                onClick={()=> console.log("Edit")}
+                                startIcons={<ModeEditTwoToneIcon/>}
+                                colors={"#0d47a1"}
+                        
+                                />
+                                <BasicButton
+                                heights={200}
+                                onClick={()=> console.log("Edit")}
+                                startIcons={<DeleteTwoToneIcon/>}
+                                colors={"#b2102f"}
+                            
+                                />
+                        </Grid>
+                    
+                    </Grid>
+                    
+                    </Grid>
+                    
+                
+                </CardContent>
+
+                
+                
 
             </Card>
         </div>
