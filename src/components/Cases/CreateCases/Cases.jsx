@@ -5,18 +5,31 @@ import Typography from '@mui/material/Typography';
 import BasicButton from '../../common/BasicButton/BasicButton';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import { Grid } from '@mui/material';
-
+import {Accordion, AccordionDetails, AccordionSummary, Avatar, Grid } from '@mui/material';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Cases = () => {
     return (
         <div>
-             <Card  sx={{ minWidth: 275,backgroundColor: "#e3f2fd" }}>
+             <Card  sx={{ minWidth: 275,backgroundColor: "#eeeeee" }}>
                 <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item xs={6}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
+                        <Grid item xs={2}>
+                            <Grid container
+                                    direction="column"
+                                    justifyContent="center"
+                                    alignItems="center" >
+                                        <Avatar  sx={{mt:7,bgcolor:"#b2102f",width: 80, height: 80 }}>
+                                            <ReportProblemIcon />
+                                        </Avatar>
+                            </Grid>
+                        </Grid>
+                    
+                    <Grid item xs={8}>
+                                
+                                <Typography sx={{ fontSize: 20 }}  gutterBottom>
+                                  <b>Caso:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                 Word of the Day
@@ -29,10 +42,29 @@ const Cases = () => {
                                 </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                 Word of the Day
                                 </Typography>
-                               
+
+                                <Grid item xs={4}>
+                        <Accordion sx={{mt:2 ,backgroundColor: "#e0e0e0" }}>
+                            <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            >
+                            <Typography>Detalles</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                            <Typography>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                malesuada lacus ex, sit amet blandit leo lobortis eget.
+                            </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        </Grid>
+                                 
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={2} >
                         <Grid container
+                            sx={{mt:2}}
                             direction="row"
                             justifyContent="flex-end"
                             alignItems="center" >
@@ -54,9 +86,10 @@ const Cases = () => {
                     
                     </Grid>
                     
-                    </Grid>
                     
-                
+                    </Grid>
+                        
+                    
                 </CardContent>
 
                 
@@ -64,58 +97,7 @@ const Cases = () => {
 
             </Card>
             <br/>
-            <Card  sx={{ minWidth: 275,backgroundColor: "#e3f2fd" }}>
-                <CardContent>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item xs={6}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography>
-                               
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Grid container
-                            direction="row"
-                            justifyContent="flex-end"
-                            alignItems="center" >
-                            <BasicButton
-                                heights={200}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<ModeEditTwoToneIcon/>}
-                                colors={"#0d47a1"}
-                        
-                                />
-                                <BasicButton
-                                heights={200}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<DeleteTwoToneIcon/>}
-                                colors={"#b2102f"}
-                            
-                                />
-                        </Grid>
-                    
-                    </Grid>
-                    
-                    </Grid>
-                    
-                
-                </CardContent>
-
-                
-                
-
-            </Card>
+           
         </div>
     );
 }

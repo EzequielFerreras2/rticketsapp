@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import Category from './Category/Category';
 import SubCategory from './SubCategory/SubCategory';
 import CasesCategory from '../CategoryCases/Cases/CasesCategory';
+import { useCategoryCasesStore } from '../../../store/CategoryCases/useCategoryCasesStore';
+import { useSubCategoryStore } from '../../../store/subcategory/useSubCategory';
+import { useCateoryStore } from '../../../store/category/useCategoryStore';
 
 function TabPanel(props) {
   
@@ -46,9 +49,20 @@ export default function BasicTabs() {
 
 const [value, setValue] = React.useState(0);
 
+
+const {onGetCategoryCases} = useCategoryCasesStore();
+const {onGetSubCategory} = useSubCategoryStore();
+const {ongetCategory} = useCateoryStore();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+React.useEffect(() => {
+  ongetCategory();
+    onGetSubCategory();
+    onGetCategoryCases(); 
+}, []);
 
   return (
     <>
