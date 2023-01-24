@@ -28,38 +28,58 @@ const Cases = () => {
                     
                     <Grid item xs={8}>
                                 
+                                <Grid item xs={6}>
+                                    <Accordion sx={{mt:2,mb:2 ,backgroundColor: "#e0e0e0" }}>
+                                        <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        >
+                                        <Typography><b>Usuario:</b> Ezequiel Ferreras</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </Grid>
+
                                 <Typography sx={{ fontSize: 20 }}  gutterBottom>
                                   <b>Caso:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
-                                </Typography><Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Word of the Day
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Sub-Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
 
-                                <Grid item xs={4}>
-                        <Accordion sx={{mt:2 ,backgroundColor: "#e0e0e0" }}>
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            >
-                            <Typography>Detalles</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                malesuada lacus ex, sit amet blandit leo lobortis eget.
-                            </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                        </Grid>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
+                                </Typography>
+
+                                <Grid item xs={6}>
+                                    <Accordion sx={{mt:2 ,backgroundColor: "#e0e0e0" }}>
+                                        <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        >
+                                        <Typography>Detalles</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </Grid>
                                  
                     </Grid>
                     <Grid item xs={2} >
