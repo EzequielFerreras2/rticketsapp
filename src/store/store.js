@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { accountsSlice } from './accounts/accountSlice'
 import { authSlice } from './auth/authSlice'
-import { casesSlice } from './cases/useCasesStore'
+import { casesSlice } from './cases/casesSlice'
 import { categorySlice } from './category/categorySlice'
 import { categoryCasesSlice } from './CategoryCases/categoryCasesSlice'
 import { subCategorySlice } from './subcategory/subCategorySlice'
