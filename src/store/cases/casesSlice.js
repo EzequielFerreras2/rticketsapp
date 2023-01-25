@@ -8,13 +8,13 @@ initialState: {
 
     Case: {},
     CasesByUser: [],
-    Cases:[],
+    AllCases:[],
 
  },
   reducers: {
 
     getCases: (state, {payload} ) => {
-        state.Cases = payload;
+        state.AllCases = payload;
     },
     getCasesByUser: (state, {payload} ) => {
         state.CasesByUser = payload;

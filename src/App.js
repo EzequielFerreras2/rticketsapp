@@ -6,6 +6,7 @@ import Header from "./components/common/NavMenu/Header";
 import InRoute from "./routes/InRoute";
 import { useAccountStore } from "./store/accounts/useAccountStore";
 import { useAtuhStore } from "./store/auth/useAuthStore";
+import { useCasesStore } from "./store/cases/useCasesStore";
 
 
 function App() {
@@ -14,7 +15,7 @@ var [isNavbarHidden, setIsNavbarHidden] = useState(false);
 const accId = localStorage.getItem("id")
 const {status,checkToken,}= useAtuhStore();
 const {setUsers,onGetUsers}= useAccountStore();
-
+const {onGetCases,Cases}=useCasesStore();
 
 useEffect(() => {
 
@@ -37,7 +38,7 @@ const check =()=>{
    try {
 
     checkToken();
-   
+    onGetCases();
     setUsers(accId);
  
     

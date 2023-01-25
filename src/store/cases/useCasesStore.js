@@ -12,8 +12,9 @@ export const useCasesStore = () => {
 
         try {
             const {data} = await rticketsApp.get('/cases');
-            const {cases} = data;
-            dispatch(getCases(cases));
+            const {Cases} = data;
+            console.log(data)
+            dispatch(getCases(Cases));
         } 
         catch ({response})
          {
