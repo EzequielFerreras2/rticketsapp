@@ -11,7 +11,7 @@ export const useCasesStore = () => {
     const onGetCases =async() =>{
 
         try {
-            const {data} = await rticketsApp.get('/cases/subcategory');
+            const {data} = await rticketsApp.get('/cases');
             const {cases} = data;
             dispatch(getCases(cases));
         } 
