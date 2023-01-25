@@ -20,7 +20,7 @@ const Cases = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center" >
-                                        <Avatar  sx={{mt:13,bgcolor:"#b2102f",width: 80, height: 80 }}>
+                                        <Avatar  sx={{mt:15,bgcolor:"#b2102f",width: 80, height: 80 }}>
                                             <ReportProblemIcon />
                                         </Avatar>
                             </Grid>
@@ -40,9 +40,6 @@ const Cases = () => {
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Categoria:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
-                                </Typography>
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Prioridad:</b> asdfasdfasdfasdfasdfasdfasdfasdfa
@@ -89,33 +86,28 @@ const Cases = () => {
                                 </Grid>
                                  
                     </Grid>
-                    <Grid item xs={2} >
-                        <Grid container
-                            sx={{mt:2}}
-                            direction="row"
-                            justifyContent="flex-end"
-                            alignItems="stretch" >
-                            <BasicButton
-                                heights={300}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<ModeEditTwoToneIcon/>}
-                                colors={"#0d47a1"}
-                        
-                                />
-                                <BasicButton
-                                heights={300}
-                                onClick={()=> console.log("Edit")}
-                                startIcons={<DeleteTwoToneIcon/>}
-                                colors={"#b2102f"}
-                            
-                                />
-                        </Grid>
-                    
+                      <Grid item xs={2} >
+                          <Grid container
+                              sx={{mt:2}}
+                              direction="row"
+                              justifyContent="flex-end"
+                              alignItems="stretch" >
+                              <BasicButton
+                                  heights={325}
+                                  onClick={()=> console.log("Edit")}
+                                  startIcons={<ModeEditTwoToneIcon/>}
+                                  colors={"#0d47a1"}
+                                  />
+                                  <BasicButton
+                                  heights={325}
+                                  onClick={()=> console.log("Edit")}
+                                  startIcons={<DeleteTwoToneIcon/>}
+                                  colors={"#b2102f"}
+                                  />
+                          </Grid>
+                      </Grid>
+
                     </Grid>
-                    
-                    
-                    </Grid>
-                        
                     
                 </CardContent>
 
