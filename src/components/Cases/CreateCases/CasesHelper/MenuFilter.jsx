@@ -4,7 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { TextField } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -45,6 +47,11 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
+
+  const [valueDate, setValueDate] = React.useState(null);
+
+console.log(valueDate)
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -57,7 +64,16 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DatePicker
+        label="Basic example"
+        value={valueDate}
+        onChange={(newValue) => {
+          setValueDate(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

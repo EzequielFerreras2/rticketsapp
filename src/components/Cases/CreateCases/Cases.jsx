@@ -8,7 +8,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import {Accordion, AccordionDetails, AccordionSummary, Avatar, Grid } from '@mui/material';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { date } from 'yup';
+
 import moment from 'moment/moment';
 
 const Cases = ({AllCases}) => {
@@ -59,7 +59,9 @@ const Cases = ({AllCases}) => {
                                   <b>Caso:</b> {res.casesCategory.title}.
                                 </Typography>
                                 
-                                
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Estatus:</b> {res.status}.
+                                </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Apertura:</b> {moment(res.openDate).format('LLL')}.
                                 </Typography>
