@@ -5,7 +5,7 @@ import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
 
-    const { Case,Cases,CasesByUser } =  useSelector( state => state.cases );
+    const { Case,AllCases,CasesByUser } =  useSelector( state => state.cases );
     const dispatch = useDispatch();
 
     const onGetCases =async() =>{
@@ -13,7 +13,6 @@ export const useCasesStore = () => {
         try {
             const {data} = await rticketsApp.get('/cases');
             const {Cases} = data;
-            console.log(data)
             dispatch(getCases(Cases));
         } 
         catch ({response})
@@ -35,7 +34,7 @@ export const useCasesStore = () => {
 
      //Propieties
      Case,
-     Cases,
+     AllCases,
      CasesByUser,
      //Methos
      onGetCases,
