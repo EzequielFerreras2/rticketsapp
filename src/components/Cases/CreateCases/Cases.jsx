@@ -26,7 +26,7 @@ const Cases = ({AllCases}) => {
               var acorColors ="#e0e0e0";
 
               if(res.casesCategory.priority==="Alta"){ superIconsColor="#b2102f"; };
-              if(res.casesCategory.priority==="Media"){ superIconsColor="#ffeb3b"};
+              if(res.casesCategory.priority==="Media"){ superIconsColor="#ffb300"};
               if(res.casesCategory.priority==="Baja"){ superIconsColor="#27632a"};
 
 

@@ -5,16 +5,32 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 import Cases from './Cases';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Fab, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AddIcon from '@mui/icons-material/Add';
 const CreateCases = () => {
 
 const {AllCases, onGetCases}= useCasesStore();
 var acorColors ="#e0e0e0";
 
+const rol = localStorage.getItem("rol")
+
+const getCasesByRol =()=>{
+
+  if (rol === "Admin")
+  {
+    onGetCases();
+  }
+  else
+  {
+
+  }
+
+};
+
 useEffect(() => {
- onGetCases();
+  getCasesByRol();
 }, []);
 
     return (
@@ -37,7 +53,7 @@ useEffect(() => {
             <br/>
            <Cases AllCases={AllCases}/>
            <br/>
-                <Box sx={{ mt:15, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                <Box sx={{ mt:15, transform: 'translateZ(0px)', flexGrow: 1  ,}}>
                     <SpeedDial
                         ariaLabel="SpeedDial"
                         sx={{ position: 'absolute', bottom: 16, right: 16 }}
@@ -56,6 +72,8 @@ useEffect(() => {
                     >
                     </SpeedDial>
                 </Box>
+
+       
         </div>
     );
 }
