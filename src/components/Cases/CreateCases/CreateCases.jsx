@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -8,16 +8,38 @@ import { useCasesStore } from '../../../store/cases/useCasesStore';
 import { Accordion, AccordionDetails, AccordionSummary, Fab, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AddIcon from '@mui/icons-material/Add';
+
+
+
 const CreateCases = () => {
 
+  /* Store */
 const {AllCases, onGetCases}= useCasesStore();
-var acorColors ="#e0e0e0";
 
-const rol = localStorage.getItem("rol")
+  /* State Variables */
+var acorColors ="#e0e0e0";
+const rol = localStorage.getItem("rol");
+const [cases, setCases] = useState([]);
+
+
+  /* Arrows Funtions */
+
+const filterbyDate = async(date) =>{
+
+const fbd = await AllCases.filter( res => res.openDate === date);
+
+setCases(fbd);
+};
+
+
+const clearCasesFilter=()=>{
+
+  setCases(AllCases);
+
+};
+
 
 const getCasesByRol =()=>{
-
   if (rol === "Admin")
   {
     onGetCases();
@@ -29,9 +51,17 @@ const getCasesByRol =()=>{
 
 };
 
+
+  /* Effect */
 useEffect(() => {
   getCasesByRol();
 }, []);
+
+useEffect(() => {
+  setCases(AllCases);
+}, [AllCases]);
+
+
 
     return (
         <div>
@@ -46,12 +76,12 @@ useEffect(() => {
                                         <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                              <MenuFilter/>
+                                              <MenuFilter filterbyDate={(e)=>filterbyDate(e)} clearCasesFilter={()=> clearCasesFilter()}/>
                                         </AccordionDetails>
                                     </Accordion>
               
             <br/>
-           <Cases AllCases={AllCases}/>
+           <Cases AllCases={cases}/>
            <br/>
                 <Box sx={{ mt:15, transform: 'translateZ(0px)', flexGrow: 1  ,}}>
                     <SpeedDial

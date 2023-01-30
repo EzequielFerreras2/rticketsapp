@@ -7,19 +7,20 @@ import BackspaceTwoToneIcon from '@mui/icons-material/BackspaceTwoTone';
 import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 
-const SearchByDate = () => {
+const SearchByDate = ({ filterbyDate, clearCasesFilter}) => {
     const [valueDate, setValueDate] = React.useState(null);
 
     const clearDate =()=>
-  {setValueDate(null)};
+  {setValueDate(null);clearCasesFilter();};
 
   const handleChangeDate = (newValue) => 
-  {var time;time=moment(newValue.$d).format('LLL');setValueDate(time);};
+  {var time;time=moment(newValue.$d).format('L');setValueDate(time); };
 
   const searchByDate =()=>{
 
-    console.log(valueDate);
+    filterbyDate(valueDate);
   };
+
 
 
 

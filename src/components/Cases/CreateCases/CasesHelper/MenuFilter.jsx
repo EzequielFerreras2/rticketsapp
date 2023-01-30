@@ -10,6 +10,8 @@ import SearchByUser from './SearchByUser';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
+
     
   return (
     <div
@@ -41,15 +43,15 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-
+  const {filterbyDate,clearCasesFilter}= props;
   const rol = localStorage.getItem("rol");
   
   const handleChange = (event, newValue) => 
   {setValue(newValue);};
 
-
+ 
 
 
 
@@ -68,7 +70,7 @@ export default function BasicTabs() {
       </Box> 
 {/*Buscar Por Fecha De Creacion */}
         <TabPanel value={value} index={0}>
-            <SearchByDate/>
+            <SearchByDate clearCasesFilter={clearCasesFilter}  filterbyDate={ filterbyDate}/>
         </TabPanel>
 {/*Buscar Por Fecha De Creacion */}
 

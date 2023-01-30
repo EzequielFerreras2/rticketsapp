@@ -63,7 +63,7 @@ const Cases = ({AllCases}) => {
                                   <b>Estatus:</b> {res.status}.
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Fecha de Apertura:</b> {moment(res.openDate).format('LLL')}.
+                                  <b>Fecha de Apertura:</b> {moment(res.openDate).format('L')}.
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Dias Desde La Apertura:</b> {moment(res.openDate).fromNow()}.
