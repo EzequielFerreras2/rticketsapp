@@ -73,36 +73,41 @@ const rol = localStorage.getItem("rol");
                                 </Typography>
 
                                 <Grid key={res.id}  item xs={6}>
-                                <Accordion key={res.openCaseUser._id}  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
-                                        <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"
-                                        >
-                                        <Typography sx={{ fontSize: 20 }}><b>Usuario:</b> {res.openCaseUser.name}</Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                          
-                                          {
-                                            rol === "Admin"?
-                                            <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                            <b>Id:</b> {res.openCaseUser._id}
-                                          </Typography>
-                                          :<div></div>
-                                          }
-                                        
-                                            <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                              <b>Email:</b> {res.openCaseUser.email}
-                                            </Typography>
-                                            <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                              <b>Departamento:</b> {res.openCaseUser.departament}.
-                                            </Typography>
-                                            <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                              <b>Compañia:</b> {res.openCaseUser.company}.
-                                            </Typography>
+                                   { 
+                                   rol==="Admin"? 
+                                   <Accordion key={res.openCaseUser._id}  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
+                                            <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
+                                            >
+                                            <Typography sx={{ fontSize: 20 }}><b>Usuario:</b> {res.openCaseUser.name}</Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                              
+                                              {
+                                                rol === "Admin"?
+                                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                                <b>Id:</b> {res.openCaseUser._id}
+                                              </Typography>
+                                              :<div></div>
+                                              }
+                                            
+                                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                                  <b>Email:</b> {res.openCaseUser.email}
+                                                </Typography>
+                                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                                  <b>Departamento:</b> {res.openCaseUser.departament}.
+                                                </Typography>
+                                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                                  <b>Compañia:</b> {res.openCaseUser.company}.
+                                                </Typography>
 
-                                        </AccordionDetails>
-                                    </Accordion>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                        :
+                                        <div></div>
+                                        }
                                     <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
