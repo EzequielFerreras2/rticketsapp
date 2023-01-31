@@ -8,6 +8,7 @@ import { useCasesStore } from '../../../store/cases/useCasesStore';
 import { Accordion, AccordionDetails, AccordionSummary, Fab, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Swal from 'sweetalert2';
 
 
 
@@ -28,7 +29,17 @@ const filterbyDate = async(date) =>{
 
 const fbd = await AllCases.filter( res => res.openDate === date);
 
-setCases(fbd);
+if(fbd.length===0){
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Error...',
+    text: `No existen Casos de la fecha ${date}`
+  });
+}
+else{
+  setCases(fbd);
+}
 };
 
 
