@@ -13,7 +13,7 @@ import moment from 'moment/moment';
 
 const Cases = ({AllCases}) => {
 
-  console.log(AllCases)
+
 
     return (
         <div>

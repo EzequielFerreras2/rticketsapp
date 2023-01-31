@@ -35,9 +35,7 @@ const SearchByDate = ({ filterbyDate, clearCasesFilter}) => {
                     />
             </LocalizationProvider>
             <Grid sx={{mt:2}}
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="center" 
+                 
             >
                     <BasicButton
                     ml={2}

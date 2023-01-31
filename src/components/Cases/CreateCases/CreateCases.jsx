@@ -8,11 +8,43 @@ import { useCasesStore } from '../../../store/cases/useCasesStore';
 import { Accordion, AccordionDetails, AccordionSummary, Fab, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AddIcon from '@mui/icons-material/Add';
+import Swal from 'sweetalert2';
+
+
+
 const CreateCases = () => {
 
 const {AllCases, onGetCases}= useCasesStore();
 var acorColors ="#e0e0e0";
+const rol = localStorage.getItem("rol");
+const [cases, setCases] = useState([]);
+
+
+  /* Arrows Funtions */
+
+const filterbyDate = async(date) =>{
+
+const fbd = await AllCases.filter( res => res.openDate === date);
+
+if(fbd.length===0){
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Error...',
+    text: `No existen Casos de la fecha ${date}`
+  });
+}
+else{
+  setCases(fbd);
+}
+};
+
+
+const clearCasesFilter=()=>{
+
+  setCases(AllCases);
+
+};
 
 const rol = localStorage.getItem("rol")
 
