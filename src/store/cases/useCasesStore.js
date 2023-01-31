@@ -30,6 +30,29 @@ export const useCasesStore = () => {
             
     };
 
+    const onGetCasesByUser =async(id) =>{
+
+      try {
+          const {data} = await rticketsApp.get(`/cases/${id}`);
+          const {Cases} = data;
+          console.log(Cases);
+          dispatch(getCasesByUser(Cases));
+      } 
+      catch ({response})
+       {
+          const{data} = response;
+          if(data.ok === false)
+          {
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: `${data.msg}.!!!`,
+                })
+          };
+          }
+          
+  };
+
   return {
 
      //Propieties
@@ -38,6 +61,7 @@ export const useCasesStore = () => {
      CasesByUser,
      //Methos
      onGetCases,
+     onGetCasesByUser
     
   };
 }

@@ -14,9 +14,10 @@ import Swal from 'sweetalert2';
 
 const CreateCases = () => {
 
-const {AllCases, onGetCases}= useCasesStore();
+const {AllCases, onGetCases,onGetCasesByUser,CasesByUser}= useCasesStore();
 var acorColors ="#e0e0e0";
 const rol = localStorage.getItem("rol");
+const id = localStorage.getItem("id");
 const [cases, setCases] = useState([]);
 
 
@@ -70,7 +71,7 @@ const getCasesByRol =()=>{
   }
   else
   {
-
+    onGetCasesByUser(id)
   }
 
 };
@@ -79,11 +80,14 @@ useEffect(() => {
   getCasesByRol();
 }, []);
 
+
 useEffect(() => {
   setCases(AllCases);
 }, [AllCases]);
 
-
+useEffect(() => {
+  setCases(CasesByUser);
+}, [CasesByUser]);
 
     return (
         <div>
