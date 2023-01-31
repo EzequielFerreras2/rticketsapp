@@ -9,7 +9,7 @@ import BasicButton from '../../../common/BasicButton/BasicButton';
 import BackspaceTwoToneIcon from '@mui/icons-material/BackspaceTwoTone';
 import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
 
-const SearchByUser = ({filterByUser}) => {
+const SearchByUser = ({filterByUser,clearCasesFilter}) => {
     const [valueRadio, setValueRadio] = useState('');
     const [value, setValue] = useState('');
     const user = {type:"",value:""}
@@ -77,6 +77,7 @@ const SearchByUser = ({filterByUser}) => {
 
                     <BasicButton
                     name={"Limpiar"}
+                    onClick={()=>clearCasesFilter()}
                     startIcons={<BackspaceTwoToneIcon/>}
                     colors={"#90caf9"}
                     

@@ -65,9 +65,9 @@ const rol = localStorage.getItem("rol");
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Apertura:</b> {moment(res.openDate).format('L')}.
                                 </Typography>
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                {/* <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Dias Desde La Apertura:</b> {moment(res.openDate).fromNow()}.
-                                </Typography>
+                                </Typography> */}
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Cierre:</b> {res.closeDate === null?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
                                 </Typography>

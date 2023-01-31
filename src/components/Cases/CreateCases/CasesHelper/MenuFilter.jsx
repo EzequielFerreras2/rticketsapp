@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SearchByDate from './SearchByDate';
 import SearchByUser from './SearchByUser';
+import SearchByPriority from './SearchByPriority';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +45,7 @@ function a11yProps(index) {
 
 export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-  const {filterbyDate,clearCasesFilter,filterByUser}= props;
+  const {filterbyDate,clearCasesFilter,filterByUser,filterByPriority}= props;
   const rol = localStorage.getItem("rol");
   
   const handleChange = (event, newValue) => 
@@ -86,7 +87,7 @@ export default function BasicTabs(props) {
 
 {/*Buscar Por Prioridad */}
       <TabPanel value={value} index={2}>
-        Item Three
+        <SearchByPriority filterByPriority={filterByPriority} clearCasesFilter={clearCasesFilter}/>
       </TabPanel>
 {/*Buscar Por Prioridad */}
     </Box>

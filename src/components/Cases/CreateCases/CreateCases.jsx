@@ -23,36 +23,35 @@ const [cases, setCases] = useState([]);
   /* Arrows Funtions */
 
 const filterbyDate = async(date) =>{
-
-const fbd = await AllCases.filter( res => res.openDate === date);
-
-if(fbd.length===0){
-
-  Swal.fire({
-    icon: 'error',
-    title: 'Error...',
-    text: `No existen Casos de la fecha ${date}`
-  });
-}
-else{
-
-  setCases(fbd);
-}
+  const fbd = await AllCases.filter( res => res.openDate === date);
+  if(fbd.length===0){
+    Swal.fire({
+      icon: 'error',
+      title: 'Error...',
+      text: `No existen Casos de la fecha ${date}`
+    });
+  }
+  else{
+    setCases(fbd);
+  }
 };
 
 const filterByUser=async(user)=>{
-
   if(user.type ==="Id"){
-
     const fbu = await AllCases.filter( res => res.openCaseUser._id === user.value);
-    console.log(fbu)
-
+    setCases(fbu);
   }
   else{
-
     const fbu = await AllCases.filter( res => res.openCaseUser.name === user.value);
-    console.log(fbu)
+    setCases(fbu);
   }
+};
+
+const filterByPriority =async(prority)=>{
+
+  const fbp = await AllCases.filter( res => res.casesCategory.priority === prority);
+
+     setCases(fbp);
 };
 
 const clearCasesFilter=()=>{
@@ -99,7 +98,7 @@ useEffect(() => {
                                         <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                              <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser}/>
+                                              <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser} filterByPriority={filterByPriority}/>
                                         </AccordionDetails>
                                     </Accordion>
               
