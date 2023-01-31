@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -35,10 +35,25 @@ if(fbd.length===0){
   });
 }
 else{
+
   setCases(fbd);
 }
 };
 
+const filterByUser=async(user)=>{
+
+  if(user.type ==="Id"){
+
+    const fbu = await AllCases.filter( res => res.openCaseUser._id === user.value);
+    console.log(fbu)
+
+  }
+  else{
+
+    const fbu = await AllCases.filter( res => res.openCaseUser.name === user.value);
+    console.log(fbu)
+  }
+};
 
 const clearCasesFilter=()=>{
 
@@ -46,7 +61,7 @@ const clearCasesFilter=()=>{
 
 };
 
-const rol = localStorage.getItem("rol")
+
 
 const getCasesByRol =()=>{
 
@@ -65,6 +80,12 @@ useEffect(() => {
   getCasesByRol();
 }, []);
 
+useEffect(() => {
+  setCases(AllCases);
+}, [AllCases]);
+
+
+
     return (
         <div>
             <br/>
@@ -78,12 +99,12 @@ useEffect(() => {
                                         <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
-                                              <MenuFilter/>
+                                              <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser}/>
                                         </AccordionDetails>
                                     </Accordion>
               
             <br/>
-           <Cases AllCases={AllCases}/>
+           <Cases AllCases={cases}/>
            <br/>
                 <Box sx={{ mt:15, transform: 'translateZ(0px)', flexGrow: 1  ,}}>
                     <SpeedDial

@@ -13,7 +13,7 @@ import moment from 'moment/moment';
 
 const Cases = ({AllCases}) => {
 
-
+const rol = localStorage.getItem("rol");
 
     return (
         <div>
@@ -82,6 +82,14 @@ const Cases = ({AllCases}) => {
                                         <Typography sx={{ fontSize: 20 }}><b>Usuario:</b> {res.openCaseUser.name}</Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
+                                          
+                                          {
+                                            rol === "Admin"?
+                                            <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                            <b>Id:</b> {res.openCaseUser._id}
+                                          </Typography>
+                                          :<div></div>
+                                          }
                                         
                                             <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                               <b>Email:</b> {res.openCaseUser.email}

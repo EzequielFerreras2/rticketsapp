@@ -9,21 +9,34 @@ import BasicButton from '../../../common/BasicButton/BasicButton';
 import BackspaceTwoToneIcon from '@mui/icons-material/BackspaceTwoTone';
 import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
 
-const SearchByUser = () => {
+const SearchByUser = ({filterByUser}) => {
     const [valueRadio, setValueRadio] = useState('');
+    const [value, setValue] = useState('');
+    const user = {type:"",value:""}
 
     const handleRadioChange = (event) => {
         setValueRadio(event.target.value);
+      };
+
+      const handleChange = (event) => {
+        setValue(event.target.value);
       };
 
     const searchByUser=()=>{
 
         if(valueRadio==="id")
         {
-            console.log("Buscar Por ID");
+            user.type="Id"
+            user.value=value;
+            filterByUser(user);
+            
+            
         }
         else{
-            console.log("Buscar Por nombre");
+            user.type="Name"
+            user.value=value;
+            filterByUser(user);
+            
         }
         
     };
@@ -46,7 +59,7 @@ const SearchByUser = () => {
       </RadioGroup>
     </FormControl>
     <Grid>
-        <TextField id="outlined-basic" label={`Buscar por: ${valueRadio}`} variant="outlined" />
+        <TextField onChange={(e)=>handleChange(e)} id="outlined-basic" label={`Buscar por: ${valueRadio}`} variant="outlined" />
     </Grid>
     
     <Grid sx={{mt:2}}

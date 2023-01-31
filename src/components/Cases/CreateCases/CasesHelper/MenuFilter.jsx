@@ -4,7 +4,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import moment from 'moment';
 import SearchByDate from './SearchByDate';
 import SearchByUser from './SearchByUser';
 
@@ -45,7 +44,7 @@ function a11yProps(index) {
 
 export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-  const {filterbyDate,clearCasesFilter}= props;
+  const {filterbyDate,clearCasesFilter,filterByUser}= props;
   const rol = localStorage.getItem("rol");
   
   const handleChange = (event, newValue) => 
@@ -59,13 +58,13 @@ export default function BasicTabs(props) {
     <Box sx={{ width: '100%' }}  >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Fecha" {...a11yProps(0)} />
+          <Tab onClick={()=>clearCasesFilter()} label="Fecha" {...a11yProps(0)} />
           {
           rol==="Admin"?
-          <Tab label="Usuario" {...a11yProps(1)} />:
+          <Tab onClick={()=>clearCasesFilter()}  label="Usuario" {...a11yProps(1)} />:
           <div></div>
            }   
-          <Tab label="Prioridad" {...a11yProps(2)} />
+          <Tab onClick={()=>clearCasesFilter()} label="Prioridad" {...a11yProps(2)} />
         </Tabs>
       </Box> 
 {/*Buscar Por Fecha De Creacion */}
@@ -78,7 +77,7 @@ export default function BasicTabs(props) {
     {
         rol==="Admin"?
         <TabPanel value={value} index={1}>
-            <SearchByUser/>
+            <SearchByUser clearCasesFilter={clearCasesFilter} filterByUser={filterByUser}/>
         </TabPanel>:
         <div>
         </div>
