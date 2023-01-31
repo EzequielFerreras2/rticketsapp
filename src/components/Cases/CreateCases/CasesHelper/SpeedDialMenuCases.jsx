@@ -8,12 +8,10 @@ import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 
 
 
-const SpeedDialMenuCases = () => {
+const SpeedDialMenuCases = ({updateList}) => {
     const actions = [
-        { icon: <CachedTwoToneIcon />, name: 'Actualiza Lista' },
-        { icon: <NoteAddTwoToneIcon />, name: 'Agregar Caso' },
-        
-        
+        { icon: <CachedTwoToneIcon />, name: 'Actualiza Lista', onclick: ()=>updateList()},
+        { icon: <NoteAddTwoToneIcon />, name: 'Agregar Caso',onclick: ()=>console.log("bb") }, 
       ];
   return (
     <Box sx={{ height:50, transform: 'translateZ(0px)', flexGrow: 1 }}>
@@ -38,6 +36,7 @@ const SpeedDialMenuCases = () => {
           key={action.name}
           icon={action.icon}
           tooltipTitle={action.name}
+          onClick={action.onclick}
         />
       ))}
     </SpeedDial>

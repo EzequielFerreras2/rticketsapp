@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import NoteAddTwoToneIcon from '@mui/icons-material/NoteAddTwoTone';
 import Cases from './Cases';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
 import { Accordion, AccordionDetails, AccordionSummary, Fab, Grid, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Swal from 'sweetalert2';
-import BasicButton from '../../common/BasicButton/BasicButton';
-import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
-import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
+
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
 
 
@@ -88,7 +82,7 @@ const [cases, setCases] = useState([]);
             <h1>Casos</h1>
             <Grid container direction={"row"} justifyContent="flex-end" alignItems="center" sx={{height:'100%',}}>
                 <Grid item  >
-                  <SpeedDialMenuCases/>
+                  <SpeedDialMenuCases updateList={getCasesByRol}/>
                 </Grid >
               </Grid>
             <Grid container spacing={1}>
