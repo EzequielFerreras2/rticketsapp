@@ -33,7 +33,7 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
   //Carga de datos desde la tabla.
   const subCa = async(data) =>{
     const SubCate = await data;
-    console.log(SubCate);
+
     if(SubCate.category._id !== undefined || SubCate !== {})
     {
       setValue("subcategory",SubCate.subcategory);

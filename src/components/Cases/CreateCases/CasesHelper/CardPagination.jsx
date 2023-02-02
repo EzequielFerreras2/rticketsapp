@@ -11,7 +11,7 @@ const handleChanges =(e,p)=>{
   return (
     <div>
         <Stack spacing={2}>
-          <Pagination count={Caseslength} shape="rounded" color="primary" onChange={handleChanges} />
+          <Pagination count={Caseslength} color="primary" onChange={handleChanges} />
         </Stack>
     </div>
   )
