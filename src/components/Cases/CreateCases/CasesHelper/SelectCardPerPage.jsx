@@ -1,31 +1,30 @@
 import React from 'react'
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import FormLabel from '@mui/material/FormLabel';
 
 const SelectCardPerPage = ({cardPerPages,handleChangeSelect}) => {
-   console.log(cardPerPages) 
+   
   return (
-    <Box sx={{ minWidth: 150 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Tamaño de pagina: </InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={cardPerPages}
-          label="Age"
-          onChange={handleChangeSelect}
-        >
-          <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={5}>5</MenuItem>
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={25}>25</MenuItem>
-          <MenuItem value={50}>50</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    
+     <FormControl>
+      <FormLabel id="demo-controlled-radio-buttons-group">Tamaño Pag:</FormLabel>
+      <RadioGroup
+        row
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+        value={cardPerPages}
+        onChange={handleChangeSelect}
+      >
+        <FormControlLabel value={3} control={<Radio />} label="3" />
+        <FormControlLabel value={5} control={<Radio />} label="5" />
+        <FormControlLabel value={10} control={<Radio />} label="10" />
+        <FormControlLabel value={25} control={<Radio />} label="25" />
+        <FormControlLabel value={50} control={<Radio />} label="50" />
+      </RadioGroup>
+    </FormControl>
   )
 }
 
