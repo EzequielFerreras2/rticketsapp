@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
 import CardPagination from './CasesHelper/CardPagination';
+import SelectCardPerPage from './CasesHelper/SelectCardPerPage';
 
 
 const CreateCases = () => {
@@ -21,7 +22,7 @@ const id = localStorage.getItem("id");
 const [cases, setCases] = useState([]);
 const Caseslength = cases.length;
 const [currentPage, setCurrentPage] = useState(1);
-const [cardPerPages, setCardPerPages] = useState(3);
+const [cardPerPages, setCardPerPages] = useState(5);
 const lastPostIndex = cardPerPages * currentPage;
 const firstPostIndex = lastPostIndex -cardPerPages;
 
@@ -75,6 +76,10 @@ const currentCard = cases.slice(firstPostIndex,lastPostIndex);
     }
   };
 
+  const handleChangeSelect = (event) => {
+    setCardPerPages(event.target.value);
+  };
+/*Effect */
   useEffect(() => {
     getCasesByRol();
   }, []);
@@ -110,19 +115,32 @@ const currentCard = cases.slice(firstPostIndex,lastPostIndex);
                                                   <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser} filterByPriority={filterByPriority}/>
                                             </AccordionDetails>
                   </Accordion>
+                  <br/>
               </Grid>
               <br/>
-              <Grid item xs={4}>
               
-              </Grid>
-              <br/>
+              
             </Grid>
-            <Grid container direction={"row"} justifyContent="center" alignItems="center">
+            <Grid>
+            
+            <Grid sx={{mt:3}} container direction={"row"} justifyContent="center" alignItems="center">
               <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
             </Grid>
+            <Grid container direction={"row"} justifyContent="flex-end" alignItems="center">
+                <SelectCardPerPage handleChangeSelect= {handleChangeSelect} cardPerPages={cardPerPages}/>
+            </Grid>
+            </Grid>
+            
             <br/>
            <Cases AllCases={currentCard}/>
            <br/>
+           
+           <Grid container direction={"row"} justifyContent="center" alignItems="center">
+              <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
+            </Grid>
+            
+         
+          
         </div>
     );
 }
