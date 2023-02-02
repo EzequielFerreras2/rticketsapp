@@ -42,20 +42,12 @@ const CreateCasesModal = ({open,onClose}) => {
     }, []);
 
     useEffect(() => {
-
             onGetSubCategoryByCategory(categoryS);
-        
-        
     }, [categoryS]);
 
     useEffect(() => {
-      
             onGetCategoryCasesBySubCategory(subCategoryS);
-        
-        
     }, [subCategoryS]);
-
-
 
 
     //Estilo del Modal
@@ -86,34 +78,28 @@ const CreateCasesModal = ({open,onClose}) => {
     });
 
     const saveChanges = (data) => {
-
+        
+        console.log(data);
     };
-
 
     const getContent =()=>(
     <Box sx={modalStyles.inputFields}>
-
             <Typography>
                 Tipo de Caso:
             </Typography>
-            <hr/>
+            <br/>
         <Grid container spacing={3}>
-            
                 <Grid item xs={4}>
-                    
                     <FormControl fullWidth>
                             <InputLabel id="category">Categoria</InputLabel>
                             <Select
-
                                 labelId="category"
                                 id="category"
                                 value={categoryS}
                                 {...register("category")}
                                 label="Categoria"
                                 onChange={handleSelectCategoryChange}
-                                error={!!errors.company}
-                                
-                                
+                                error={!!errors.company}  
                             >
                             {
                                 Category.map((category)=>{
@@ -125,10 +111,6 @@ const CreateCasesModal = ({open,onClose}) => {
                             }; 
                             </Select>
                         </FormControl>
-
-                        
-                        
-                
                 </Grid>
 
                 <Grid item xs={4}>

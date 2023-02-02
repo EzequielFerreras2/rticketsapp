@@ -137,9 +137,7 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
             </Grid>
             <Grid>
             
-            <Grid sx={{mt:3}} container direction={"row"} justifyContent="center" alignItems="center">
-              <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
-            </Grid>
+      
             <Grid container direction={"row"} justifyContent="flex-end" alignItems="center">
                 <SelectCardPerPage handleChangeSelect= {handleChangeSelect} cardPerPages={cardPerPages}/>
             </Grid>

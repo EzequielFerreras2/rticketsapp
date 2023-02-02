@@ -80,7 +80,6 @@ export const useCategoryCasesStore =()=> {
 
     const onGetCategoryCasesBySubCategory =async(val) =>{
 
-        console.log(val);
         try {
             const {data} = await rticketsApp.get(`/cases/casescategory/bysubcategory/${val}`);
             const {CasesCategory} = data;

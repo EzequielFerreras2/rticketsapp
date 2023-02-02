@@ -30,7 +30,7 @@ const rol = localStorage.getItem("rol");
                 <div>
                   <Card key={res.id}  sx={{ minWidth: 275,backgroundColor: color }}>
                 <CardContent>
-                    <Grid sx={{mt:2}}  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid sx={{mt:2}}  container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid   item xs={2}>
                             <Grid  container
                                     direction="column"
