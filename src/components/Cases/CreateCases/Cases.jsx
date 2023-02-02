@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import BasicButton from '../../common/BasicButton/BasicButton';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import {Accordion, AccordionDetails, AccordionSummary, Avatar, Grid } from '@mui/material';
+import {Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Grid } from '@mui/material';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SubtitlesOffTwoToneIcon from '@mui/icons-material/SubtitlesOffTwoTone';
 
 import moment from 'moment/moment';
 
@@ -40,7 +41,7 @@ const rol = localStorage.getItem("rol");
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center" >
-                                        <Avatar   sx={{mt:15,bgcolor: superIconsColor ,width: 80, height: 80 }}>
+                                        <Avatar   sx={{mt:10,bgcolor: superIconsColor ,width: 80, height: 80 }}>
                                             <ReportProblemIcon />
                                         </Avatar>
                                 <Typography sx={{mt:1, fontSize: 16 }}  gutterBottom>
@@ -129,21 +130,73 @@ const rol = localStorage.getItem("rol");
                       <Grid item xs={2} >
                           <Grid container
                               sx={{mt:2}}
-                              direction="row"
+                              direction="column"
                               justifyContent="flex-end"
-                              alignItems="center" >
-                              <BasicButton
-                                  heights={290}
-                                  onClick={()=> console.log(res.id)}
-                                  startIcons={<ModeEditTwoToneIcon/>}
-                                  colors={"#0d47a1"}
-                                  />
-                                  <BasicButton
-                                  heights={290}
-                                  onClick={()=> console.log("Edit")}
-                                  startIcons={<DeleteTwoToneIcon/>}
-                                  colors={"#b2102f"}
-                                  />
+                              alignItems="flex-end" >
+
+                                <Grid   item xs={12} >
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                    <b>Opciones del caso:</b>
+                                </Typography>
+                                <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
+                                  
+                                        <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        >
+                                          
+                                        <Typography><b>Opciones:</b></Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                        <ButtonGroup size="large" aria-label="large button group">
+                                        <BasicButton
+                                          name={"Editar"}
+                                          size="large"
+                                          onClick={()=> console.log(res.id)}
+                                          startIcons={<ModeEditTwoToneIcon/>}
+                                          colors={"#0d47a1"}
+                                          />
+                                          <BasicButton
+                                          name={"Eliminar"}
+                                          size="large"
+                                          onClick={()=> console.log("Edit")}
+                                          startIcons={<DeleteTwoToneIcon/>}
+                                          colors={"#b2102f"}
+                                          />
+                                        </ButtonGroup>
+                                         
+                                        </AccordionDetails>
+                                    </Accordion>
+
+                                    {
+                                      rol==="Admin"?
+                                      <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
+                                              <AccordionSummary
+                                              expandIcon={<ExpandMoreIcon />}
+                                              aria-controls="panel1a-content"
+                                              id="panel1a-header"
+                                              >
+                                              <Typography><b>Opciones De Administrador:</b></Typography>
+                                              </AccordionSummary>
+                                              <AccordionDetails>
+                                                <BasicButton
+                                                name={"Cerrar Caso"}
+                                                onClick={()=> console.log(res.id)}
+                                                startIcons={<SubtitlesOffTwoToneIcon/>}
+                                                colors={"#0d47a1"}
+                                                />
+                                              </AccordionDetails>
+                                          </Accordion>
+                                      :<ddiv></ddiv>
+                                    }
+
+                               
+                                </Grid>
+                               
+                             
+                                  
+                                
                           </Grid>
                       </Grid>
 

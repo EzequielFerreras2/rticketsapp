@@ -7,15 +7,26 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Swal from 'sweetalert2';
 
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
+import CardPagination from './CasesHelper/CardPagination';
 
 
 const CreateCases = () => {
 
 const {AllCases, onGetCases,onGetCasesByUser,CasesByUser}= useCasesStore();
+
+
 var acorColors ="#e0e0e0";
 const rol = localStorage.getItem("rol");
 const id = localStorage.getItem("id");
 const [cases, setCases] = useState([]);
+const Caseslength = cases.length;
+const [currentPage, setCurrentPage] = useState(1);
+const [cardPerPages, setCardPerPages] = useState(3);
+const lastPostIndex = cardPerPages * currentPage;
+const firstPostIndex = lastPostIndex -cardPerPages;
+
+const currentCard = cases.slice(firstPostIndex,lastPostIndex);
+
 
 
 /* Arrows Funtions */
@@ -106,8 +117,11 @@ const [cases, setCases] = useState([]);
               </Grid>
               <br/>
             </Grid>
+            <Grid container direction={"row"} justifyContent="center" alignItems="center">
+              <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
+            </Grid>
             <br/>
-           <Cases AllCases={cases}/>
+           <Cases AllCases={currentCard}/>
            <br/>
         </div>
     );
