@@ -1,11 +1,11 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import { getCategoryCases } from './categoryCasesSlice';
+import { getCategoryCases, getCategoryBySubCategory } from './categoryCasesSlice';
 
 export const useCategoryCasesStore =()=> {
 
-    const { CategoryCases } =  useSelector( state => state.categoryCases );
+    const { CategoryCases,CategoryCasesBySubCategory } =  useSelector( state => state.categoryCases );
     const dispatch = useDispatch();
 
     const onGetCategoryCases =async() =>{
@@ -13,6 +13,7 @@ export const useCategoryCasesStore =()=> {
         try {
             const {data} = await rticketsApp.get('/cases/casescategory');
             const {CasesCategory} = data;
+            
             dispatch(getCategoryCases(CasesCategory));
         } 
         catch ({response})
@@ -79,10 +80,11 @@ export const useCategoryCasesStore =()=> {
 
     const onGetCategoryCasesBySubCategory =async(val) =>{
 
+        console.log(val);
         try {
             const {data} = await rticketsApp.get(`/cases/casescategory/bysubcategory/${val}`);
             const {CasesCategory} = data;
-            dispatch(getCategoryCases(CasesCategory));
+            dispatch( getCategoryBySubCategory(CasesCategory));
         } 
         catch ({response})
          {
@@ -201,6 +203,7 @@ export const useCategoryCasesStore =()=> {
     return{
         //Propieties
         CategoryCases,
+        CategoryCasesBySubCategory,
         //Methos
         onGetCategoryCases,
         onfindCategoryCases,

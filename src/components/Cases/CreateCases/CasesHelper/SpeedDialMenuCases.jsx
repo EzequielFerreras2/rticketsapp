@@ -8,10 +8,10 @@ import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 
 
 
-const SpeedDialMenuCases = ({updateList}) => {
+const SpeedDialMenuCases = ({updateList,setOpenCreateModal}) => {
     const actions = [
         { icon: <CachedTwoToneIcon />, name: 'Actualiza Lista', onclick: ()=>updateList()},
-        { icon: <NoteAddTwoToneIcon />, name: 'Agregar Caso',onclick: ()=>console.log("bb") }, 
+        { icon: <NoteAddTwoToneIcon />, name: 'Agregar Caso',onclick: ()=>setOpenCreateModal(true) }, 
       ];
   return (
     <Box sx={{ height:50, transform: 'translateZ(0px)', flexGrow: 1 }}>

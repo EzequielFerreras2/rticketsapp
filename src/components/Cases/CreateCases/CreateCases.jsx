@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
 import CardPagination from './CasesHelper/CardPagination';
 import SelectCardPerPage from './CasesHelper/SelectCardPerPage';
+import CreateCasesModal from './Modal/CreateCasesModal';
 
 
 const CreateCases = () => {
@@ -26,6 +27,9 @@ const [cardPerPages, setCardPerPages] = useState(5);
 const lastPostIndex = cardPerPages * currentPage;
 const firstPostIndex = lastPostIndex -cardPerPages;
 const currentCard = cases.slice(firstPostIndex,lastPostIndex);
+const [openCreateModal, setOpenCreateModal] = useState(false);
+const [openEditModal, setOpenEditModal] = useState(false);
+const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
 
 
@@ -108,7 +112,7 @@ const currentCard = cases.slice(firstPostIndex,lastPostIndex);
             <h1>Casos</h1>
             <Grid container direction={"row"} justifyContent="flex-end" alignItems="center" sx={{height:'100%',}}>
                 <Grid item  >
-                  <SpeedDialMenuCases updateList={getCasesByRol}/>
+                  <SpeedDialMenuCases updateList={getCasesByRol} setOpenCreateModal={setOpenCreateModal}/>
                 </Grid >
               </Grid>
             <Grid container spacing={1}>
@@ -149,7 +153,11 @@ const currentCard = cases.slice(firstPostIndex,lastPostIndex);
               <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
             </Grid>
             
-         
+         {/*Modals */}
+         <CreateCasesModal
+          open ={openCreateModal} 
+          onClose={() => setOpenCreateModal(false)}
+          />
           
         </div>
     );

@@ -30,11 +30,9 @@ export const useSubCategoryStore =()=> {
             
     };
     const onGetSubCategoryByCategory =async(val) =>{
-
-        console.log("VAL")
-        console.log(val)
+        
         try {
-            const {data} = await rticketsApp.get(`/cases/subcategory/${val}`);
+            const {data} = await rticketsApp.get(`/cases/subcategory/bycategory/${val}`);
             const {subCategory} = data;
             dispatch(getSubCategoryByCategory(subCategory));
         } 
