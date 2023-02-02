@@ -9,19 +9,15 @@ import {Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Grid
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SubtitlesOffTwoToneIcon from '@mui/icons-material/SubtitlesOffTwoTone';
-
 import moment from 'moment/moment';
 
 const Cases = ({AllCases}) => {
-
 const rol = localStorage.getItem("rol");
 
     return (
         <div>
-
           {
             AllCases.map( (res) =>{
-
               var color ="#eeeeee";
               var superIconsColor="#e0e0e0";
               var acorColors ="#e0e0e0";
@@ -29,7 +25,6 @@ const rol = localStorage.getItem("rol");
               if(res.casesCategory.priority==="Alta"){ superIconsColor="#b2102f"; };
               if(res.casesCategory.priority==="Media"){ superIconsColor="#ffb300"};
               if(res.casesCategory.priority==="Baja"){ superIconsColor="#27632a"};
-
 
               return(
                 <div>
@@ -49,17 +44,10 @@ const rol = localStorage.getItem("rol");
                                 </Typography>
                             </Grid>
                         </Grid>
-                    
-                    <Grid   item xs={8}>
-                                
-                                <Grid   item xs={6}>
-                                    
-                                </Grid>
-
+                    <Grid item xs={8}>
                                 <Typography sx={{ fontSize: 24 }}  gutterBottom>
                                   <b>Caso:</b> {res.casesCategory.title}.
                                 </Typography>
-                                
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Estatus:</b> {res.status}.
                                 </Typography>
@@ -72,7 +60,6 @@ const rol = localStorage.getItem("rol");
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Cierre:</b> {res.closeDate === null?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
                                 </Typography>
-
                                 <Grid key={res.id}  item xs={6}>
                                    { 
                                    rol==="Admin"? 
@@ -85,7 +72,6 @@ const rol = localStorage.getItem("rol");
                                             <Typography sx={{ fontSize: 20 }}><b>Usuario:</b> {res.openCaseUser.name}</Typography>
                                             </AccordionSummary>
                                             <AccordionDetails>
-                                              
                                               {
                                                 rol === "Admin"?
                                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
@@ -93,7 +79,6 @@ const rol = localStorage.getItem("rol");
                                               </Typography>
                                               :<div></div>
                                               }
-                                            
                                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                                   <b>Email:</b> {res.openCaseUser.email}
                                                 </Typography>
@@ -123,9 +108,7 @@ const rol = localStorage.getItem("rol");
                                         </Typography>
                                         </AccordionDetails>
                                     </Accordion>
-                                    
                                 </Grid>
-                                 
                     </Grid>
                       <Grid item xs={2} >
                           <Grid container
@@ -133,19 +116,16 @@ const rol = localStorage.getItem("rol");
                               direction="column"
                               justifyContent="flex-end"
                               alignItems="flex-end" >
-
                                 <Grid   item xs={12} >
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                     <b>Opciones del caso:</b>
                                 </Typography>
                                 <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
-                                  
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
-                                        >
-                                          
+                                        >    
                                         <Typography><b>Opciones:</b></Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
@@ -165,10 +145,8 @@ const rol = localStorage.getItem("rol");
                                           colors={"#b2102f"}
                                           />
                                         </ButtonGroup>
-                                         
                                         </AccordionDetails>
                                     </Accordion>
-
                                     {
                                       rol==="Admin"?
                                       <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
@@ -190,30 +168,15 @@ const rol = localStorage.getItem("rol");
                                           </Accordion>
                                       :<ddiv></ddiv>
                                     }
-
-                               
                                 </Grid>
-                               
-                             
-                                  
-                                
                           </Grid>
                       </Grid>
-
                     </Grid>
-                    
                 </CardContent>
-
             </Card>
             <br/>
                 </div>
-              ) 
-
-              
-            })
-          }
-
-           
+              ) })}
         </div>
     );
 }

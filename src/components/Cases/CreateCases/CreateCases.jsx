@@ -15,7 +15,7 @@ const CreateCases = () => {
 
 const {AllCases, onGetCases,onGetCasesByUser,CasesByUser}= useCasesStore();
 
-
+/* States and Var */
 var acorColors ="#e0e0e0";
 const rol = localStorage.getItem("rol");
 const id = localStorage.getItem("id");
@@ -25,8 +25,8 @@ const [currentPage, setCurrentPage] = useState(1);
 const [cardPerPages, setCardPerPages] = useState(5);
 const lastPostIndex = cardPerPages * currentPage;
 const firstPostIndex = lastPostIndex -cardPerPages;
-
 const currentCard = cases.slice(firstPostIndex,lastPostIndex);
+
 
 
 
@@ -81,6 +81,16 @@ const currentCard = cases.slice(firstPostIndex,lastPostIndex);
   };
 /*Effect */
   useEffect(() => {
+    if(AllCases.length===0)
+    {
+      Swal.fire({
+        title: `Loading...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
     getCasesByRol();
   }, []);
 
