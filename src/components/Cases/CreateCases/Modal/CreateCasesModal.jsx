@@ -3,7 +3,7 @@ import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
-import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Alert, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import BasicModal from '../../../common/BasicModal/BasicModal';
 import { useCateoryStore } from '../../../../store/category/useCategoryStore';
@@ -64,7 +64,9 @@ const CreateCasesModal = ({open,onClose}) => {
     };
 
     const validationSchema = Yup.object().shape({
-        category: Yup.string().required('Campo requerido')  
+        category: Yup.string().required('Campo requerido'),
+        subcategory: Yup.string().required('Campo requerido'),
+        subcategoryCases: Yup.string().required('Campo requerido')    
     });
 
     //useForm
@@ -80,6 +82,7 @@ const CreateCasesModal = ({open,onClose}) => {
     const saveChanges = (data) => {
         
         console.log(data);
+        onClose();
     };
 
     const getContent =()=>(
@@ -138,6 +141,7 @@ const CreateCasesModal = ({open,onClose}) => {
                             </Select>
                         </FormControl>
                 </Grid>
+                
                 <Grid item xs={4}>
                 <FormControl fullWidth>
                             <InputLabel id="categoryCases">Tipo Caso </InputLabel>
@@ -163,6 +167,23 @@ const CreateCasesModal = ({open,onClose}) => {
                             </Select>
                         </FormControl>
                 </Grid>
+            </Grid>
+            <Grid container spacing={4}>
+               <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    id="multiline"
+                    label="Descripcion del Caso."
+                    multiline
+                    rows={4}
+                    {...register("description")}
+                    />
+                     <Alert variant="filled" severity="info">
+                        Maximo 140 carateres en la Descripcion.
+                     </Alert>
+               </Grid>
+              
+    
             </Grid>
 
     </Box>
