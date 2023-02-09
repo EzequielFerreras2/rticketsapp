@@ -28,7 +28,7 @@ const lastPostIndex = cardPerPages * currentPage;
 const firstPostIndex = lastPostIndex -cardPerPages;
 const currentCard = cases.slice(firstPostIndex,lastPostIndex);
 const [openCreateModal, setOpenCreateModal] = useState(false);
-const [openEditModal, setOpenEditModal] = useState(false);
+
 const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
 
@@ -162,6 +162,7 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
          <CreateCasesModal
           open ={openCreateModal} 
           onClose={() => setOpenCreateModal(false)}
+         
           />
           
         </div>

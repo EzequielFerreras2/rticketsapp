@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -11,10 +11,20 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import moment from 'moment/moment';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
+import EditCasesModal from './Modal/EditCasesModal';
 
 const Cases = ({AllCases}) => {
 const {user}=useAtuhStore();
 const rol = user.rol;
+
+
+const [cases, setCases] = useState();
+const [openEditModal, setOpenEditModal] = useState(false);
+
+const openEdit =(a,b)=>{
+  setCases(a)
+  setOpenEditModal(b)
+};
 
     return (
         <div>
@@ -130,7 +140,7 @@ const rol = user.rol;
                                          <BasicButton
                                           name={"Editar"}
                                           size="large"
-                                          onClick={()=> console.log(res.id)}
+                                          onClick={()=> openEdit(res,true) }
                                           startIcons={<ModeEditTwoToneIcon/>}
                                           colors={"#0d47a1"}
                                           />
@@ -176,6 +186,11 @@ const rol = user.rol;
             <br/>
                 </div>
               ) })}
+          <EditCasesModal
+          open ={openEditModal} 
+          onClose={() => setOpenEditModal(false)}
+          Cases={cases}
+          />
         </div>
     );
 }
