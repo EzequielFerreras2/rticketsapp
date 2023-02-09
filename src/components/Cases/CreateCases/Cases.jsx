@@ -10,9 +10,11 @@ import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SubtitlesOffTwoToneIcon from '@mui/icons-material/SubtitlesOffTwoTone';
 import moment from 'moment/moment';
+import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 const Cases = ({AllCases}) => {
-const rol = localStorage.getItem("rol");
+const {user}=useAtuhStore();
+const rol = user.rol;
 
     return (
         <div>

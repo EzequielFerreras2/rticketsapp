@@ -6,16 +6,32 @@ import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import CategoryTable from './CategoryTable';
 import CreateCategoryModal from './Modal/CreateCategoryModal';
 import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
+import Swal from 'sweetalert2';
 
 const Category = () => {
 
 //States
 const {Category,ongetCategory }= useCateoryStore();
-const [category, setCategory] = useState([]);
 const [openCreateModal, setOpenCreateModal] = useState(false);
 
+
 //Effects
-useEffect(() => { setCategory(Category);}, [Category]);
+useEffect(() => {
+  if(Category.length===0)
+  {
+    Swal.fire({
+      title: `Loading...`,
+      timerProgressBar: true,
+      allowOutsideClick: false,
+      didOpen: () => {
+          Swal.showLoading()
+      },})
+  }
+  else{
+    Swal.close();
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const addCategory = () =>{setOpenCreateModal(true);}
   const upDateCategory =()=>{ongetCategory()}
@@ -42,7 +58,7 @@ useEffect(() => { setCategory(Category);}, [Category]);
         
         <br/>
         <Grid>
-          <CategoryTable Category={category}/>
+          <CategoryTable Category={Category}/>
         </Grid>
           
       </Box>

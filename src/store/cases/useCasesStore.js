@@ -1,7 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
+import {getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
 

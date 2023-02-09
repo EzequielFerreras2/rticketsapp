@@ -6,16 +6,32 @@ import { useCategoryCasesStore } from '../../../../store/CategoryCases/useCatego
 import CategoryCasesTable from './Table/CategoryCasesTable';
 import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
 import CreateCasesCategoryModal from './Modal/CreateCasesCategoryModal';
+import Swal from 'sweetalert2';
 
 
 const CasesCategory = () => {
 
   const {CategoryCases,onGetCategoryCases}= useCategoryCasesStore();
-  const [categoryCases, setCategoryCases] = useState([]);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   
   //Effects
-  useEffect(() => { setCategoryCases(CategoryCases);}, [CategoryCases]);
+  useEffect(() => {
+    if(CategoryCases.length===0)
+    {
+      Swal.fire({
+        title: `Loading...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
+    else{
+      Swal.close();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
 
   //update.
   const upDateCategoryCases =()=>{onGetCategoryCases();};
@@ -43,7 +59,7 @@ const CasesCategory = () => {
           
           <br/>
           <Grid>
-            <CategoryCasesTable CasesCategory={categoryCases}/>
+            <CategoryCasesTable CasesCategory={CategoryCases}/>
             {/* <CollapsibleTable/> */}
           </Grid>
         </Box>

@@ -6,14 +6,29 @@ import BasicButton from '../../../common/BasicButton/BasicButton';
 import SubCategoryTable from './SubCategoryTable';
 import CreateSubCategoryModal from './Modal/CreateSubCategoryModal';
 import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
+import Swal from 'sweetalert2';
 const SubCategory = () => {
 
   const {SubCategory,onGetSubCategory }= useSubCategoryStore();
-  const [subCategory, setSubCategory] = useState([]);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   
   //Effects
-  useEffect(() => { setSubCategory(SubCategory);}, [SubCategory]);
+  useEffect(() => {
+    if(SubCategory.length===0)
+    {
+      Swal.fire({
+        title: `Loading...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
+    else{
+      Swal.close();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
   const addsubCategory = () =>{ setOpenCreateModal(true);}
   const upDateSubCategory =()=>{onGetSubCategory()}
@@ -39,7 +54,7 @@ const SubCategory = () => {
         
         <br/>
         <Grid>
-          <SubCategoryTable subCategory={subCategory}/>
+          <SubCategoryTable subCategory={SubCategory}/>
         </Grid>
       </Box>
       <CreateSubCategoryModal
