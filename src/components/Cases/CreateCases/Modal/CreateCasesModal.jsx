@@ -9,13 +9,17 @@ import BasicModal from '../../../common/BasicModal/BasicModal';
 import { useCateoryStore } from '../../../../store/category/useCategoryStore';
 import { useSubCategoryStore } from '../../../../store/subcategory/useSubCategory';
 import { useCategoryCasesStore } from '../../../../store/CategoryCases/useCategoryCasesStore';
+import { useCasesStore } from '../../../../store/cases/useCasesStore';
+import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
 const CreateCasesModal = ({open,onClose}) => {
 
     const {Category,ongetCategory}=useCateoryStore();
     const {SubCategoryByCategory,onGetSubCategoryByCategory} =useSubCategoryStore();
-    const {CategoryCasesBySubCategory,onGetCategoryCasesBySubCategory}= useCategoryCasesStore()
+    const {CategoryCasesBySubCategory,onGetCategoryCasesBySubCategory}= useCategoryCasesStore();
+    const {user}=useAtuhStore();
+    const {onCreateCases}= useCasesStore();
     
 
     const [categoryS, setCateogryS] = useState("")
@@ -62,7 +66,7 @@ const CreateCasesModal = ({open,onClose}) => {
         category: Yup.string().required('Campo requerido'),
         subCategory: Yup.string().required('Campo requerido'),
         categoryCases: Yup.string().required('Campo requerido'),
-        description: Yup.string().required('Campo requerido').max(140,"La Descripcion no puede tener mas de 140 caracteres."),  
+        details: Yup.string().required('Campo requerido').max(140,"La Descripcion no puede tener mas de 140 caracteres."),  
     });
 
     //useForm
@@ -76,13 +80,15 @@ const CreateCasesModal = ({open,onClose}) => {
     });
 
     const saveChanges = (data) => {
-        
-        console.log(data);
+        data.openUser= user.id;
+        onCreateCases(data);
         reset();
         setCateogryCaseS("");
         setCateogryS("");
         setSubCateogryS("");
         onClose();
+
+        console.log(data);
     };
 
     const getContent =()=>(
@@ -179,9 +185,9 @@ const CreateCasesModal = ({open,onClose}) => {
                     label="Descripcion del Caso."
                     multiline
                     rows={4}
-                    {...register("description")}
-                    error={errors.description ? true : false}
-                    helperText={errors.description?.message}
+                    {...register("details")}
+                    error={errors.details ? true : false}
+                    helperText={errors.details?.message}
                     />
                       {/* <Alert variant="filled" severity="info">
                         Maximo 140 carateres en la Descripcion.

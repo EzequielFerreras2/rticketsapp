@@ -53,12 +53,49 @@ export const useCasesStore = () => {
           
   };
 
+  const onCreateCases = async(val)=>{
+
+    console.log("store")
+    console.log(val);
+
+    try {
+        const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
+        if (data.ok === true)
+        {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Caso Creado.',
+            showConfirmButton: false,
+            timer: 2000,
+            
+        })
+        }
+           
+    } 
+    catch ({response})
+     {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+              })
+        };
+        }
+        
+        
+};
+
   return {
 
      //Propieties
      Case,
      AllCases,
      CasesByUser,
+     onCreateCases,
      //Methos
      onGetCases,
      onGetCasesByUser
