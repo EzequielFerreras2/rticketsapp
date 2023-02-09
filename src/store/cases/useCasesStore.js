@@ -67,7 +67,7 @@ export const useCasesStore = () => {
             icon: 'success',
             title: 'Caso Creado.',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 2500,
             
         })
         }
