@@ -62,7 +62,7 @@ const CreateCasesModal = ({open,onClose}) => {
         category: Yup.string().required('Campo requerido'),
         subCategory: Yup.string().required('Campo requerido'),
         categoryCases: Yup.string().required('Campo requerido'),
-        description: Yup.string().required('Campo requerido').max(140),  
+        description: Yup.string().required('Campo requerido').max(140,"La Descripcion no puede tener mas de 140 caracteres."),  
     });
 
     //useForm
@@ -79,6 +79,9 @@ const CreateCasesModal = ({open,onClose}) => {
         
         console.log(data);
         reset();
+        setCateogryCaseS("");
+        setCateogryS("");
+        setSubCateogryS("");
         onClose();
     };
 
