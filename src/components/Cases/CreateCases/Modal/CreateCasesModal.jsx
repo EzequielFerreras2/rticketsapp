@@ -60,9 +60,9 @@ const CreateCasesModal = ({open,onClose}) => {
 
     const validationSchema = Yup.object().shape({
         category: Yup.string().required('Campo requerido'),
-        subcategory: Yup.string().required('Campo requerido'),
+        subCategory: Yup.string().required('Campo requerido'),
         categoryCases: Yup.string().required('Campo requerido'),
-        // description: Yup.string().required('Campo requerido').max(140),  
+        description: Yup.string().required('Campo requerido').max(140),  
     });
 
     //useForm
@@ -99,7 +99,8 @@ const CreateCasesModal = ({open,onClose}) => {
                                 {...register("category")}
                                 label="Categoria"
                                 onChange={handleSelectCategoryChange}
-                                error={!!errors.company}  
+                                error={errors.category ? true : false}
+                                helperText={errors.category?.message}  
                             >
                             {
                                 Category.map((category)=>{
@@ -124,7 +125,8 @@ const CreateCasesModal = ({open,onClose}) => {
                                 {...register("subCategory")}
                                 label="Sub Categoria"
                                 onChange={handleSelectSubCategoryChange}
-                                error={!!errors.company}
+                                error={errors.subCategory ? true : false}
+                                helperText={errors.subCategory?.message}
                                 disabled={isDisableSubCategory}
                             >
                             {
@@ -150,7 +152,8 @@ const CreateCasesModal = ({open,onClose}) => {
                                 {...register("categoryCases")}
                                 label="Categoria"
                                 onChange={handleSelectCategoryCaseChange}
-                                error={!!errors.company}
+                                error={errors.categoryCases ? true : false}
+                                helperText={errors.categoryCases?.message}
                                 disabled={isDisableCategoryCase}
                             >
                             {
@@ -167,7 +170,7 @@ const CreateCasesModal = ({open,onClose}) => {
             </Grid>
             <Grid container spacing={4}>
                <Grid item xs={12}>
-                {/* <TextField
+                <TextField
                     fullWidth
                     id="multiline"
                     label="Descripcion del Caso."
@@ -177,7 +180,7 @@ const CreateCasesModal = ({open,onClose}) => {
                     error={errors.description ? true : false}
                     helperText={errors.description?.message}
                     />
-                      <Alert variant="filled" severity="info">
+                      {/* <Alert variant="filled" severity="info">
                         Maximo 140 carateres en la Descripcion.
                      </Alert>  */}
                </Grid>
