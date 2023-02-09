@@ -8,7 +8,7 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import {Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Grid } from '@mui/material';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SubtitlesOffTwoToneIcon from '@mui/icons-material/SubtitlesOffTwoTone';
+import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import moment from 'moment/moment';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
@@ -113,26 +113,21 @@ const rol = user.rol;
                                 </Grid>
                     </Grid>
                       <Grid item xs={2} >
-                          <Grid container
+                        <Grid>
+                              <Grid container
                               sx={{mt:2}}
                               direction="column"
                               justifyContent="flex-end"
                               alignItems="flex-end" >
                                 <Grid   item xs={12} >
+                                
+                                
+                                <ButtonGroup orientation="vertical">
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                     <b>Opciones del caso:</b>
                                 </Typography>
-                                <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
-                                        <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"
-                                        >    
-                                        <Typography><b>Opciones:</b></Typography>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                        <ButtonGroup size="large" aria-label="large button group">
-                                        <BasicButton
+
+                                         <BasicButton
                                           name={"Editar"}
                                           size="large"
                                           onClick={()=> console.log(res.id)}
@@ -146,32 +141,34 @@ const rol = user.rol;
                                           startIcons={<DeleteTwoToneIcon/>}
                                           colors={"#b2102f"}
                                           />
-                                        </ButtonGroup>
-                                        </AccordionDetails>
-                                    </Accordion>
-                                    {
-                                      rol==="Admin"?
-                                      <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
-                                              <AccordionSummary
-                                              expandIcon={<ExpandMoreIcon />}
-                                              aria-controls="panel1a-content"
-                                              id="panel1a-header"
-                                              >
-                                              <Typography><b>Opciones De Administrador:</b></Typography>
-                                              </AccordionSummary>
-                                              <AccordionDetails>
-                                                <BasicButton
-                                                name={"Cerrar Caso"}
-                                                onClick={()=> console.log(res.id)}
-                                                startIcons={<SubtitlesOffTwoToneIcon/>}
-                                                colors={"#0d47a1"}
-                                                />
-                                              </AccordionDetails>
-                                          </Accordion>
-                                      :<ddiv></ddiv>
-                                    }
+                                </ButtonGroup>
+                                
+                                
+                                
+                                </Grid>
+
+                                <Grid sx={{mt:16}}  item xs={12} >
+
+                                  {rol==="Admin"?
+                                  
+                                  <ButtonGroup orientation="vertical">
+                                    <BasicButton
+                                    name={"Cerrar Caso"}
+                                    size="large"
+                                    onClick={()=> console.log(res.id)}
+                                    startIcons={<AssignmentTurnedInTwoToneIcon/>}
+                                    colors={"#2e7d32"}
+                                    />
+                                  </ButtonGroup>
+
+                                  :<div></div>
+
+                                  }
+                                
                                 </Grid>
                           </Grid>
+                        </Grid>
+                          
                       </Grid>
                     </Grid>
                 </CardContent>
