@@ -108,8 +108,8 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   useEffect(() => {
     if(cardPerPages >= Caseslength && currentPage > 1){
-
       setCurrentPage(1);
+      
     }
   }, [cardPerPages]);
 
@@ -155,7 +155,7 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
            <br/>
            
            <Grid container direction={"row"} justifyContent="center" alignItems="center">
-              <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage} />
+              <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage}  />
             </Grid>
             
          {/*Modals */}

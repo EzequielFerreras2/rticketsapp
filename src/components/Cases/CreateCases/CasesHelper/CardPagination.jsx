@@ -6,6 +6,7 @@ const CardPagination = ({Caseslength, setCurrentPage}) => {
 
 const handleChanges =(e,p)=>{
     setCurrentPage(p);
+  
 }
 
   return (

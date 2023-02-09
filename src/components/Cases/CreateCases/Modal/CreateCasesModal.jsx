@@ -30,12 +30,7 @@ const CreateCasesModal = ({open,onClose}) => {
     const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory.length === 0, [SubCategoryByCategory]);
     const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory.length === 0, [CategoryCasesBySubCategory]);
 
-    const modalClose =()=>{
 
-        setCateogryCaseS("");
-        setCateogryS("");
-        setSubCateogryS("");
-    }
 
     useEffect(() => {
         ongetCategory();
@@ -66,7 +61,8 @@ const CreateCasesModal = ({open,onClose}) => {
     const validationSchema = Yup.object().shape({
         category: Yup.string().required('Campo requerido'),
         subcategory: Yup.string().required('Campo requerido'),
-        subcategoryCases: Yup.string().required('Campo requerido')    
+        categoryCases: Yup.string().required('Campo requerido'),
+        // description: Yup.string().required('Campo requerido').max(140),  
     });
 
     //useForm
@@ -82,6 +78,7 @@ const CreateCasesModal = ({open,onClose}) => {
     const saveChanges = (data) => {
         
         console.log(data);
+        reset();
         onClose();
     };
 
@@ -170,17 +167,19 @@ const CreateCasesModal = ({open,onClose}) => {
             </Grid>
             <Grid container spacing={4}>
                <Grid item xs={12}>
-                <TextField
+                {/* <TextField
                     fullWidth
                     id="multiline"
                     label="Descripcion del Caso."
                     multiline
                     rows={4}
                     {...register("description")}
+                    error={errors.description ? true : false}
+                    helperText={errors.description?.message}
                     />
-                     <Alert variant="filled" severity="info">
+                      <Alert variant="filled" severity="info">
                         Maximo 140 carateres en la Descripcion.
-                     </Alert>
+                     </Alert>  */}
                </Grid>
               
     
