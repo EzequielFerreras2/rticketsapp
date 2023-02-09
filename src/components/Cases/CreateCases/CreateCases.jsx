@@ -33,7 +33,6 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
 
 
-
 /* Arrows Funtions */
     const filterbyDate = async(date) =>{
       const fbd = await AllCases.filter( res => res.openDate === date);
@@ -105,6 +104,14 @@ const [openDeleteModal, setOpenDeleteModal] = useState(false);
   useEffect(() => {
     setCases(CasesByUser);
   }, [CasesByUser]);
+
+
+  useEffect(() => {
+    if(cardPerPages >= Caseslength && currentPage > 1){
+
+      setCurrentPage(1);
+    }
+  }, [cardPerPages]);
 
     return (
         <div>
