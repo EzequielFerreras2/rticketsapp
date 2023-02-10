@@ -1,7 +1,7 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import {getCases,getCasesByUser} from '../cases/casesSlice'
+import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
 
@@ -53,6 +53,26 @@ export const useCasesStore = () => {
           
   };
 
+  const onGetCasesById =async(Cases) =>{
+
+    try {
+        dispatch(getCase(Cases));
+    } 
+    catch ({response})
+     {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+              })
+        };
+        }
+        
+};
+
   const onCreateCases = async(val)=>{
 
     console.log("store")
@@ -95,10 +115,12 @@ export const useCasesStore = () => {
      Case,
      AllCases,
      CasesByUser,
-     onCreateCases,
+    
      //Methos
      onGetCases,
-     onGetCasesByUser
+     onGetCasesByUser,
+     onCreateCases,
+     onGetCasesById,
     
   };
 }

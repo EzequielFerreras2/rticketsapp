@@ -6,7 +6,7 @@ export const casesSlice = createSlice({
 name: 'cases',
 initialState: {
 
-    Case: {},
+    Case: null,
     CasesByUser: [],
     AllCases:[],
 

@@ -12,8 +12,10 @@ import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedI
 import moment from 'moment/moment';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import EditCasesModal from './Modal/EditCasesModal';
+import { useCasesStore } from '../../../store/cases/useCasesStore';
 
 const Cases = ({AllCases}) => {
+  const{onGetCasesById}= useCasesStore();
 const {user}=useAtuhStore();
 const rol = user.rol;
 
@@ -22,7 +24,7 @@ const [cases, setCases] = useState();
 const [openEditModal, setOpenEditModal] = useState(false);
 
 const openEdit =(a,b)=>{
-  setCases(a)
+  onGetCasesById(a);
   setOpenEditModal(b)
 };
 

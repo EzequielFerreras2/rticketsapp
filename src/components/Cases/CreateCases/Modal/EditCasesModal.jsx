@@ -13,14 +13,17 @@ import { useCasesStore } from '../../../../store/cases/useCasesStore';
 import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
-const EditCasesModal = ({Cases,open,onClose}) => {
+const EditCasesModal = ({open,onClose}) => {
 
     const {Category,ongetCategory}=useCateoryStore();
     const {SubCategoryByCategory,onGetSubCategoryByCategory} =useSubCategoryStore();
     const {CategoryCasesBySubCategory,onGetCategoryCasesBySubCategory}= useCategoryCasesStore();
     const {user}=useAtuhStore();
-    const {onCreateCases}= useCasesStore();
+    const {Case}= useCasesStore();
     
+  
+
+
 
     const [categoryS, setCateogryS] = useState("")
     const handleSelectCategoryChange = (event) => {setCateogryS(event.target.value); setSubCateogryS(""); setCateogryCaseS("")};
@@ -34,6 +37,7 @@ const EditCasesModal = ({Cases,open,onClose}) => {
     const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory.length === 0, [SubCategoryByCategory]);
     const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory.length === 0, [CategoryCasesBySubCategory]);
 
+
     useEffect(() => {
         ongetCategory();
     }, []);
@@ -43,10 +47,29 @@ const EditCasesModal = ({Cases,open,onClose}) => {
     }, [categoryS]);
 
     useEffect(() => {
-            onGetCategoryCasesBySubCategory(subCategoryS);
+            
+        onGetCategoryCasesBySubCategory(subCategoryS)
     }, [subCategoryS]);
+    
+ useEffect(() => {
+  if(Case!== null)
+  {
+    setValue("details",Case.details);
+    setCateogryS(Case.casesCategory.category)
 
-console.log()
+    if(SubCategoryByCategory.length!==0){
+        setSubCateogryS(Case.casesCategory.subcategory)
+    }  
+  }
+ }, [Case,SubCategoryByCategory]);
+
+ useEffect(() => {
+    if(CategoryCasesBySubCategory.length!==0){
+        setCateogryCaseS(Case.casesCategory._id)
+    }
+ }, [Case,CategoryCasesBySubCategory]);
+
+
     //Estilo del Modal
     const modalStyles = {
         inputFields: {
@@ -79,12 +102,7 @@ console.log()
     });
 
     const saveChanges = (data) => {
-        data.openUser= user.id;
-        onCreateCases(data);
-        reset();
-        setCateogryCaseS("");
-        setCateogryS("");
-        setSubCateogryS("");
+        
         onClose();
 
         console.log(data);
@@ -167,8 +185,12 @@ console.log()
                                 {
                                     CategoryCasesBySubCategory.map((categoryCase)=>{
                                     return (
+                                        
+                                      
                                         <MenuItem key={categoryCase.id} value={categoryCase.id} >{categoryCase.title} </MenuItem>
-                                    );
+                                        
+                                        
+                                    )
                                     })
                                     
                                 }; 
