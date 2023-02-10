@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import BasicButton from '../../common/BasicButton/BasicButton';
 // import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import {Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Grid } from '@mui/material';
+import {Accordion, AccordionDetails, AccordionSummary, Avatar, Button, ButtonGroup, Grid } from '@mui/material';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
@@ -174,15 +174,15 @@ const openDelete =(a,b)=>{
                                   {rol==="Admin"?
                                   
                                   <ButtonGroup orientation="vertical">
-                                    <BasicButton
-                                    name={"Cerrar Caso"}
-                                    size="large"
-                                    onClick={()=> console.log(res.id)}
-                                    startIcons={<AssignmentTurnedInTwoToneIcon/>}
-                                    colors={"#2e7d32"}
-                                    />
+                                    <Button variant='outlined'
+                                     endIcon={<AssignmentTurnedInTwoToneIcon/> }
+                                     size="medium"  
+                                     sx={{ color: "white", backgroundColor: "#0d47a1"}}
+                                     >
+                                      Cerrar Caso
+                                    </Button>
                                   </ButtonGroup>
-
+                                  
                                   :<div></div>
 
                                   }
