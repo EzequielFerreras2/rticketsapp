@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import BasicButton from '../../common/BasicButton/BasicButton';
-import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+// import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import {Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Grid } from '@mui/material';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
@@ -11,8 +11,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import moment from 'moment/moment';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
-import EditCasesModal from './Modal/EditCasesModal';
+// import EditCasesModal from './Modal/EditCasesModal';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
+import DeleteCasesModal from './Modal/DeleteCasesModal';
 
 const Cases = ({AllCases}) => {
   const{onGetCasesById}= useCasesStore();
@@ -20,13 +21,22 @@ const {user}=useAtuhStore();
 const rol = user.rol;
 
 
-const [cases, setCases] = useState();
-const [openEditModal, setOpenEditModal] = useState(false);
 
-const openEdit =(a,b)=>{
+// const [openEditModal, setOpenEditModal] = useState(false);
+const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+// const openEdit =(a,b)=>{
+//   onGetCasesById(a);
+//   setOpenEditModal(b)
+// };
+
+const openDelete =(a,b)=>{
+
   onGetCasesById(a);
-  setOpenEditModal(b)
+  setOpenDeleteModal(b)
+
 };
+
 
     return (
         <div>
@@ -42,7 +52,7 @@ const openEdit =(a,b)=>{
 
               return(
                 <div>
-                  <Card key={res.id}  sx={{ minWidth: 275,backgroundColor: color }}>
+                  <Card key={res.id}  sx={{ minWidth: 275,backgroundColor: color }} >
                 <CardContent>
                     <Grid sx={{mt:2}}  container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid   item xs={2}>
@@ -139,17 +149,17 @@ const openEdit =(a,b)=>{
                                     <b>Opciones del caso:</b>
                                 </Typography>
 
-                                         <BasicButton
+                                         {/* <BasicButton
                                           name={"Editar"}
                                           size="large"
                                           onClick={()=> openEdit(res,true) }
                                           startIcons={<ModeEditTwoToneIcon/>}
                                           colors={"#0d47a1"}
-                                          />
+                                          /> */}
                                           <BasicButton
                                           name={"Eliminar"}
                                           size="large"
-                                          onClick={()=> console.log("Edit")}
+                                          onClick={()=> openDelete(res,true)}
                                           startIcons={<DeleteTwoToneIcon/>}
                                           colors={"#b2102f"}
                                           />
@@ -188,10 +198,15 @@ const openEdit =(a,b)=>{
             <br/>
                 </div>
               ) })}
-          <EditCasesModal
+          {/* <EditCasesModal
           open ={openEditModal} 
           onClose={() => setOpenEditModal(false)}
-          Cases={cases}
+     
+          /> */}
+          <DeleteCasesModal
+          open ={openDeleteModal} 
+          onClose={() => setOpenDeleteModal(false)}
+       
           />
         </div>
     );

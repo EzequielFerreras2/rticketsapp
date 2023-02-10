@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from 'react'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { useForm } from 'react-hook-form';
@@ -10,7 +11,7 @@ import { useCateoryStore } from '../../../../store/category/useCategoryStore';
 import { useSubCategoryStore } from '../../../../store/subcategory/useSubCategory';
 import { useCategoryCasesStore } from '../../../../store/CategoryCases/useCategoryCasesStore';
 import { useCasesStore } from '../../../../store/cases/useCasesStore';
-import { useAtuhStore } from '../../../../store/auth/useAuthStore';
+
 
 
 const EditCasesModal = ({open,onClose}) => {
@@ -18,7 +19,6 @@ const EditCasesModal = ({open,onClose}) => {
     const {Category,ongetCategory}=useCateoryStore();
     const {SubCategoryByCategory,onGetSubCategoryByCategory} =useSubCategoryStore();
     const {CategoryCasesBySubCategory,onGetCategoryCasesBySubCategory}= useCategoryCasesStore();
-    const {user}=useAtuhStore();
     const {Case}= useCasesStore();
     
   
@@ -26,10 +26,10 @@ const EditCasesModal = ({open,onClose}) => {
 
 
     const [categoryS, setCateogryS] = useState("")
-    const handleSelectCategoryChange = (event) => {setCateogryS(event.target.value); setSubCateogryS(""); setCateogryCaseS("")};
+    const handleSelectCategoryChange = (event) => {setCateogryS(event.target.value); };
 
     const [subCategoryS, setSubCateogryS] = useState("")
-    const handleSelectSubCategoryChange = (event) => {setSubCateogryS(event.target.value); setCateogryCaseS("")};
+    const handleSelectSubCategoryChange = (event) => { setSubCateogryS(event.target.value); };
 
     const [categoryCaseS, setCateogryCaseS] = useState("")
     const handleSelectCategoryCaseChange = (event) => {setCateogryCaseS(event.target.value); };
@@ -58,14 +58,20 @@ const EditCasesModal = ({open,onClose}) => {
     setCateogryS(Case.casesCategory.category)
 
     if(SubCategoryByCategory.length!==0){
-        setSubCateogryS(Case.casesCategory.subcategory)
+      
+            setSubCateogryS(Case.casesCategory.subcategory)
+        
+        
     }  
   }
  }, [Case,SubCategoryByCategory]);
 
  useEffect(() => {
     if(CategoryCasesBySubCategory.length!==0){
-        setCateogryCaseS(Case.casesCategory._id)
+     
+            setCateogryCaseS(Case.casesCategory._id)
+        
+        
     }
  }, [Case,CategoryCasesBySubCategory]);
 
@@ -94,7 +100,6 @@ const EditCasesModal = ({open,onClose}) => {
     const {
         register,
         handleSubmit,
-        reset,
         setValue,
         formState: { errors },
     } = useForm({

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Cases from './Cases';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
-import { Accordion, AccordionDetails, AccordionSummary, Fab, Grid, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary,Grid, Typography } from '@mui/material';
 import MenuFilter from './CasesHelper/MenuFilter';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Swal from 'sweetalert2';
@@ -29,7 +30,7 @@ const firstPostIndex = lastPostIndex -cardPerPages;
 const currentCard = cases.slice(firstPostIndex,lastPostIndex);
 const [openCreateModal, setOpenCreateModal] = useState(false);
 
-const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
 
 
 

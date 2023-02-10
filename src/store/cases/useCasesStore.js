@@ -35,7 +35,6 @@ export const useCasesStore = () => {
       try {
           const {data} = await rticketsApp.get(`/cases/${id}`);
           const {Cases} = data;
-          console.log(Cases);
           dispatch(getCasesByUser(Cases));
       } 
       catch ({response})
@@ -109,6 +108,37 @@ export const useCasesStore = () => {
         
 };
 
+const onDeleteCase =async(val) =>{
+
+  try {
+    const {data} = await rticketsApp.delete(`/cases/${val.id}`);
+      if (data.ok === true)
+        {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Caso Eliminado.',
+            showConfirmButton: false,
+            timer: 2500,
+            
+        })
+        }
+  } 
+  catch ({response})
+   {
+      const{data} = response;
+      if(data.ok === false)
+      {
+          Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: `${data.msg}.!!!`,
+            })
+      };
+      }
+      
+};
+
   return {
 
      //Propieties
@@ -121,6 +151,7 @@ export const useCasesStore = () => {
      onGetCasesByUser,
      onCreateCases,
      onGetCasesById,
+     onDeleteCase
     
   };
 }
