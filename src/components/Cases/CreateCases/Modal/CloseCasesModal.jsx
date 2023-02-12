@@ -129,7 +129,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
         <Grid  item xs={6}>
         <Card sx={{p:2,backgroundColor:"#bbdefb"}}>
             <Typography><b>Case Info:</b></Typography>
-            <p><b>Estatus: </b>{Case.casesCategory.status}</p>
+            <p><b>Estatus: </b>{Case.status}</p>
             <p><b>Titulo: </b>{Case.casesCategory.title}</p>
             <p><b>Priridad: </b>{Case.casesCategory.priority}</p>
             <p><b>Fecha De Apertura: </b>{Case.openDate}</p>
