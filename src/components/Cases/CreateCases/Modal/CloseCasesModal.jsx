@@ -39,7 +39,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
      
     
         const validationSchema = Yup.object().shape({
-            reason: Yup.string().required('Campo requerido'),
+            status: Yup.string().required('Campo requerido'),
             notesSuport: Yup.string().required('Campo requerido').max(140,"Las notas no puede tener mas de 140 caracteres."),  
         });
         
@@ -106,14 +106,16 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
 
 <Stack sx={{ width: '65%' }} spacing={3}>
     <Alert severity="info">
-    <AlertTitle sx={{p:1}}>Caso #: <b>{Case.id}</b></AlertTitle>
+    <AlertTitle sx={{p:2}}>Caso #: <b>{Case.id}</b></AlertTitle>
  
  <Grid  
     container  
     direction="row"
     justifyContent="centar"
     alignItems="center"
-     spacing={2}>
+    spacing={2}
+    sx={{mb:2}}
+    >
 
     
 
@@ -149,16 +151,16 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
         <Typography variant="h5"><b>Opciones:</b></Typography>
         <br/>
         <FormControl fullWidth>
-                <InputLabel id="reason">Rason Del Cierre</InputLabel>
+                <InputLabel id="status">Estatus Del Cierre</InputLabel>
                 <Select
-                    labelId="reason"
-                    id="reason"
+                    labelId="status"
+                    id="status"
                     value={reasonS}
-                    {...register("reason")}
-                    label="Rason Del Cierre"
+                    {...register("status")}
+                    label="Estatus Del Cierre"
                     onChange={handleSelectReasonChange}
-                    error={errors.reason ? true : false}
-                    helperText={errors.reason?.message}  
+                    error={errors.status ? true : false}
+                    helperText={errors.status?.message}  
                 >
                 {
                      ReasonCloseCasesList.map((reason)=>{
