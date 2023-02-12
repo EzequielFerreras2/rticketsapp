@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 
 const CloseCasesModal = ({open, onClose,onOpen}) => {
 
-    const {Case} = useCasesStore();
+    const {Case,onCloseCases} = useCasesStore();
     const [reasonS, setReasonS] = useState("")
     const handleSelectReasonChange = (event) => {setReasonS(event.target.value);};
 
@@ -76,7 +76,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
                 if (result.isConfirmed) {
 
                   Swal.fire('Caso Cerrado!', '', 'success')
-                  
+                  onCloseCases(data);
                   reset();
                   setReasonS("");
 
