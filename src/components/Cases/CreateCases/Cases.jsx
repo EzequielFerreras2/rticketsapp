@@ -14,6 +14,7 @@ import { useAtuhStore } from '../../../store/auth/useAuthStore';
 // import EditCasesModal from './Modal/EditCasesModal';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
 import DeleteCasesModal from './Modal/DeleteCasesModal';
+import CloseCasesModal from './Modal/CloseCasesModal';
 
 const Cases = ({AllCases}) => {
   const{onGetCasesById}= useCasesStore();
@@ -24,6 +25,7 @@ const rol = user.rol;
 
 // const [openEditModal, setOpenEditModal] = useState(false);
 const [openDeleteModal, setOpenDeleteModal] = useState(false);
+const [openCloseCasesModal, setOpenCloseCasesModal] = useState(false);
 
 // const openEdit =(a,b)=>{
 //   onGetCasesById(a);
@@ -36,6 +38,11 @@ const openDelete =(a,b)=>{
   setOpenDeleteModal(b)
 
 };
+
+const openCloseCases =(a,b)=>{
+  onGetCasesById(a);
+  setOpenCloseCasesModal(b)
+};;
 
 
     return (
@@ -174,10 +181,12 @@ const openDelete =(a,b)=>{
                                   {rol==="Admin"?
                                   
                                   <ButtonGroup orientation="vertical">
-                                    <Button variant='outlined'
+                                    <Button 
+                                     variant='outlined'
                                      endIcon={<AssignmentTurnedInTwoToneIcon/> }
                                      size="medium"  
-                                     sx={{ color: "white", backgroundColor: "#0d47a1"}}
+                                     sx={{ color: "white", backgroundColor: "#0d47a1", height:100}}
+                                     onClick={()=>openCloseCases(res,true)}
                                      >
                                       Cerrar Caso
                                     </Button>
@@ -206,7 +215,11 @@ const openDelete =(a,b)=>{
           <DeleteCasesModal
           open ={openDeleteModal} 
           onClose={() => setOpenDeleteModal(false)}
-       
+          />
+          <CloseCasesModal
+           open ={openCloseCasesModal} 
+           onClose={() => setOpenCloseCasesModal(false)}
+           onOpen={()=> setOpenCloseCasesModal(true)}
           />
         </div>
     );

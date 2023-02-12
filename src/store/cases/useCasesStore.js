@@ -74,9 +74,6 @@ export const useCasesStore = () => {
 
   const onCreateCases = async(val)=>{
 
-    console.log("store")
-    console.log(val);
-
     try {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
@@ -106,6 +103,39 @@ export const useCasesStore = () => {
         }
         
         
+};
+
+const onCloseCases = async(val)=>{
+
+  try {
+      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);
+      if (data.ok === true)
+      {
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Caso Cerrado.',
+          showConfirmButton: false,
+          timer: 2500,
+          
+      })
+      }
+         
+  } 
+  catch ({response})
+   {
+      const{data} = response;
+      if(data.ok === false)
+      {
+          Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: `${data.msg}.!!!`,
+            })
+      };
+      }
+      
+      
 };
 
 const onDeleteCase =async(val) =>{
@@ -151,7 +181,8 @@ const onDeleteCase =async(val) =>{
      onGetCasesByUser,
      onCreateCases,
      onGetCasesById,
-     onDeleteCase
+     onDeleteCase,
+     onCloseCases
     
   };
 }
