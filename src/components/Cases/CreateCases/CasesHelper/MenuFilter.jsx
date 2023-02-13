@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import SearchByDate from './SearchByDate';
 import SearchByUser from './SearchByUser';
 import SearchByPriority from './SearchByPriority';
+import SearchByStatus from './SearchByStatus';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,34 +63,42 @@ export default function BasicTabs(props) {
           <Tab onClick={()=>clearCasesFilter()} label="Fecha" {...a11yProps(0)} />
           {
           rol==="Admin"?
-          <Tab onClick={()=>clearCasesFilter()}  label="Usuario" {...a11yProps(1)} />:
+          <Tab onClick={()=>clearCasesFilter()}  label="Usuario" {...a11yProps(1)} />
+          :
           <div></div>
-           }   
+          }  
           <Tab onClick={()=>clearCasesFilter()} label="Prioridad" {...a11yProps(2)} />
+          <Tab onClick={()=>clearCasesFilter()} label="Estatus" {...a11yProps(3)} />
         </Tabs>
       </Box> 
-{/*Buscar Por Fecha De Creacion */}
-        <TabPanel value={value} index={0}>
-            <SearchByDate clearCasesFilter={clearCasesFilter}  filterbyDate={ filterbyDate}/>
-        </TabPanel>
-{/*Buscar Por Fecha De Creacion */}
+      {/*Buscar Por Fecha De Creacion */}
+              <TabPanel value={value} index={0}>
+                  <SearchByDate clearCasesFilter={clearCasesFilter}  filterbyDate={ filterbyDate}/>
+              </TabPanel>
+      {/*Buscar Por Fecha De Creacion */}
 
-{/*Buscar Por Usuario*/}
-    {
-        rol==="Admin"?
-        <TabPanel value={value} index={1}>
-            <SearchByUser clearCasesFilter={clearCasesFilter} filterByUser={filterByUser}/>
-        </TabPanel>:
-        <div>
-        </div>
-    } 
-{/*Buscar Por Usuario*/}
+      {/*Buscar Por Usuario*/}
+          {
+              rol==="Admin"?
+              <TabPanel value={value} index={1}>
+                  <SearchByUser clearCasesFilter={clearCasesFilter} filterByUser={filterByUser}/>
+              </TabPanel>:
+              <div>
+              </div>
+          } 
+      {/*Buscar Por Usuario*/}
 
-{/*Buscar Por Prioridad */}
-      <TabPanel value={value} index={2}>
-        <SearchByPriority filterByPriority={filterByPriority} clearCasesFilter={clearCasesFilter}/>
-      </TabPanel>
-{/*Buscar Por Prioridad */}
+      {/*Buscar Por Prioridad */}
+            <TabPanel value={value} index={2}>
+              <SearchByPriority filterByPriority={filterByPriority} clearCasesFilter={clearCasesFilter}/>
+            </TabPanel>
+      {/*Buscar Por Prioridad */}
+
+    {/*Buscar Por Status */}
+    <TabPanel value={value} index={3}>
+          <SearchByStatus/>
+    </TabPanel>
+    {/*Buscar Por Status */}
     </Box>
   );
 }
