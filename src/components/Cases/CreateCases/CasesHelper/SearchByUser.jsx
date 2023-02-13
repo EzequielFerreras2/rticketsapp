@@ -8,10 +8,13 @@ import { Grid, TextField } from '@mui/material';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import BackspaceTwoToneIcon from '@mui/icons-material/BackspaceTwoTone';
 import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup'
 
 const SearchByUser = ({filterByUser,clearCasesFilter}) => {
     const [valueRadio, setValueRadio] = useState('');
-    const [value, setValue] = useState('');
+    const [values, setValues] = useState('');
     const user = {type:"",value:""}
 
     const handleRadioChange = (event) => {
@@ -22,24 +25,45 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
         setValue(event.target.value);
       };
 
-    const searchByUser=()=>{
-
+    const searchByUser=(data)=>{
+          console.log(data)
         if(valueRadio==="id")
         {
             user.type="Id"
-            user.value=value;
-            filterByUser(user);
+            user.value=values;
+            // filterByUser(user);
             
             
         }
         else{
             user.type="Name"
-            user.value=value;
-            filterByUser(user);
+            user.value=values;
+            // filterByUser(user);
             
         }
         
     };
+
+
+    
+    const validationSchema = Yup.object().shape({
+      search: Yup.string().required('Campo requerido'),
+  });
+  
+
+  
+
+  //useForm
+  const {
+      register,
+      handleSubmit,
+      reset,
+      setValue,
+      formState: { errors },
+  } = useForm({
+      resolver: yupResolver(validationSchema)
+  });
+
 
 
   return (
@@ -59,7 +83,7 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
       </RadioGroup>
     </FormControl>
     <Grid>
-        <TextField onChange={(e)=>handleChange(e)} id="outlined-basic" label={`Buscar por: ${valueRadio}`} variant="outlined" />
+        <TextField {...register("search")}  id="outlined-basic" label={`Buscar por: ${valueRadio}`} variant="outlined" />
     </Grid>
     
     <Grid sx={{mt:2}}
@@ -68,7 +92,7 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
                 alignItems="center" 
             >
                     <BasicButton
-                    onClick={()=>searchByUser()}
+                    onClick={()=>handleSubmit(searchByUser)}
                     name={"Buscar"}
                     startIcons={<PlagiarismTwoToneIcon/>}
                     colors={"#0d47a1"}

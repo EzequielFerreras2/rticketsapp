@@ -93,8 +93,8 @@ const CloseCasesModal = ({open, onClose,onOpen,actionName }) => {
         };
 
 useEffect(() => {
-if(Case.length!==0){
-    setValue("notesSuport", Case.notesSuport||"");
+if(Case!==null){
+    setValue("notesSuport", Case.notesSuport === null? "":Case.notesSuport);
     setReasonS(Case.status);
 }  
 }, [Case]);
