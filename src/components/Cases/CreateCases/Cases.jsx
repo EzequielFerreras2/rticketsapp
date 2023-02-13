@@ -77,7 +77,10 @@ const openCloseCases =(a,b)=>{
                         </Grid>
                     <Grid item xs={8}>
                                 <Typography sx={{ fontSize: 24 }}  gutterBottom>
-                                  <b>Caso:</b> {res.casesCategory.title}.
+                                  <b>{res.casesCategory.title}</b> .
+                                </Typography>
+                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Caso #:</b> {res.id}.
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Estatus:</b> {res.status}.
@@ -88,7 +91,7 @@ const openCloseCases =(a,b)=>{
                                 {
                                   res.status!=="Abierto"? 
                                     <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                    <b>Soporte:</b> {res.closeCaseUser.name}
+                                    <b>Soporte:</b> {res.closeCaseUser.name}.
                                   </Typography>
                                   :<div></div>
                                 }
@@ -221,7 +224,7 @@ const openCloseCases =(a,b)=>{
                                   <ButtonGroup orientation="vertical">
                                     {
                                       res.status !=="Abierto"?
-                                      <dv></dv>
+                                      <div></div>
                                     :
                                     <Button 
                                      variant='outlined'
