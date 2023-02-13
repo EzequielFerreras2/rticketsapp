@@ -11,11 +11,13 @@ import { ReasonCloseCasesList} from '../../../../helpers/List/ReasonCloseCases'
 import AssignmentTurnedInTwoToneIcon from '@mui/icons-material/AssignmentTurnedInTwoTone';
 import { useCasesStore } from '../../../../store/cases/useCasesStore';
 import Swal from 'sweetalert2';
+import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
 const CloseCasesModal = ({open, onClose,onOpen}) => {
 
     const {Case,onCloseCases} = useCasesStore();
+    const {user}= useAtuhStore();
     const [reasonS, setReasonS] = useState("")
     const handleSelectReasonChange = (event) => {setReasonS(event.target.value);};
 
@@ -59,6 +61,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
         const saveChanges = (data) => {
 
             data.openCaseUser= Case.openCaseUser._id;
+            data.closeCaseUser= user.id
             data.casesCategory = Case.casesCategory._id;
             data.id =Case.id;
 

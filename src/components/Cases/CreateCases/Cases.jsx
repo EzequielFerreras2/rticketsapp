@@ -85,9 +85,15 @@ const openCloseCases =(a,b)=>{
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Apertura:</b> {moment(res.openDate).format('L')}.
                                 </Typography>
-                                {/* <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Dias Desde La Apertura:</b> {moment(res.openDate).fromNow()}.
-                                </Typography> */}
+                                {
+                                  res.status!=="Abierto"? 
+                                    <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                    <b>Soporte:</b> {res.closeCaseUser.name}
+                                  </Typography>
+                                  :<div></div>
+                                }
+                                
+
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Cierre:</b> {res.closeDate === null?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
                                 </Typography>
@@ -125,7 +131,12 @@ const openCloseCases =(a,b)=>{
                                         :
                                         <div></div>
                                         }
-                                    <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
+
+                                    {
+                                      res.status!=="Abierto"? 
+                                      <div></div>
+                                      :
+                                      <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1a-content"
@@ -135,14 +146,41 @@ const openCloseCases =(a,b)=>{
                                         </AccordionSummary>
                                         <AccordionDetails>
                                         <Typography>
-                                            {res.details}.
+                                            {res.details}
                                         </Typography>
                                         </AccordionDetails>
-                                    </Accordion>
+                                      </Accordion>
+                                    }
+                                    { 
+                                   res.status!=="Abierto"? 
+                                   <Accordion key={res.openCaseUser._id}  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
+                                            <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
+                                            >
+                                            <Typography sx={{ fontSize: 20 }}><b>Nostas del Soporte:</b></Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                             
+                                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                                   {res.notesSuport}
+                                                </Typography>
+                                                
+
+                                            </AccordionDetails>
+                                        </Accordion>
+                                        :
+                                        <div></div>
+                                        }
                                 </Grid>
                     </Grid>
                       <Grid item xs={2} >
-                        <Grid>
+                        {
+                          res.status !=="Abierto"?
+                          <div></div>
+                          :
+                          <Grid>
                               <Grid container
                               sx={{mt:2}}
                               direction="column"
@@ -181,6 +219,10 @@ const openCloseCases =(a,b)=>{
                                   {rol==="Admin"?
                                   
                                   <ButtonGroup orientation="vertical">
+                                    {
+                                      res.status !=="Abierto"?
+                                      <dv></dv>
+                                    :
                                     <Button 
                                      variant='outlined'
                                      endIcon={<AssignmentTurnedInTwoToneIcon/> }
@@ -190,6 +232,8 @@ const openCloseCases =(a,b)=>{
                                      >
                                       Cerrar Caso
                                     </Button>
+                                    }
+                                    
                                   </ButtonGroup>
                                   
                                   :<div></div>
@@ -199,7 +243,7 @@ const openCloseCases =(a,b)=>{
                                 </Grid>
                           </Grid>
                         </Grid>
-                          
+                        }
                       </Grid>
                     </Grid>
                 </CardContent>
