@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
-const CloseCasesModal = ({open, onClose,onOpen}) => {
+const CloseCasesModal = ({open, onClose,onOpen,actionName }) => {
 
     const {Case,onCloseCases} = useCasesStore();
     const {user}= useAtuhStore();
@@ -53,6 +53,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
             register,
             handleSubmit,
             reset,
+            setValue,
             formState: { errors },
         } = useForm({
             resolver: yupResolver(validationSchema)
@@ -91,7 +92,12 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
     
         };
 
-
+useEffect(() => {
+if(Case.length!==0){
+    setValue("notesSuport", Case.notesSuport||"");
+    setReasonS(Case.status);
+}  
+}, [Case]);
   
 
     const getContent=()=>(
@@ -107,7 +113,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
     justifyContent="center"
     alignItems="center">
 
-<Stack sx={{ width: '65%' }} spacing={3}>
+<Stack sx={{ width: '100%' }} spacing={3}>
     <Alert severity="info">
     <AlertTitle sx={{p:2}}>Caso #: <b>{Case.id}</b></AlertTitle>
  
@@ -154,7 +160,7 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
         <Typography variant="h5"><b>Opciones:</b></Typography>
         <br/>
         <FormControl fullWidth>
-                <InputLabel id="status">Estatus Del Cierre</InputLabel>
+                <InputLabel id="status">Estatus {actionName} Caso</InputLabel>
                 <Select
                     labelId="status"
                     id="status"
@@ -206,10 +212,10 @@ const CloseCasesModal = ({open, onClose,onOpen}) => {
     <BasicModal
     open={open}
     onClose={onClose}
-    title="Cerrar Caso"
+    title={`${actionName} Caso`}
     content={getContent()}
     onSubmit={handleSubmit(saveChanges)}
-    name="Cerrar Caso"
+    name={actionName}
     colors="#0d47a1"
     startIcons={<AssignmentTurnedInTwoToneIcon/>}
     />

@@ -5,5 +5,6 @@ export const ReasonCloseCasesList =[
    'Cerrado No Resuelto',
    'En Verificacion',
    'En Espera',
+   'Abierto',
    
 ];

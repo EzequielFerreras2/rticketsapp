@@ -19,6 +19,7 @@ import CloseCasesModal from './Modal/CloseCasesModal';
 const Cases = ({AllCases}) => {
   const{onGetCasesById}= useCasesStore();
 const {user}=useAtuhStore();
+const [actionName, setActionName] = useState("");
 const rol = user.rol;
 
 
@@ -39,9 +40,10 @@ const openDelete =(a,b)=>{
 
 };
 
-const openCloseCases =(a,b)=>{
-  onGetCasesById(a);
-  setOpenCloseCasesModal(b)
+const openCloseCases =(data,open,action)=>{
+  setActionName(action);
+  onGetCasesById(data);
+  setOpenCloseCasesModal(open)
 };;
 
 
@@ -174,7 +176,7 @@ const openCloseCases =(a,b)=>{
                                             <AccordionDetails>
                                              
                                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                                   {res.notesSuport}
+                                                   {res.notesSuport}.
                                                 </Typography>
                                                 
 
@@ -186,10 +188,7 @@ const openCloseCases =(a,b)=>{
                                 </Grid>
                     </Grid>
                       <Grid item xs={2} >
-                        {
-                           statusChange ?
-                          <div></div>
-                          :
+                        
                           <Grid>
                               <Grid container
                               sx={{mt:2}}
@@ -198,8 +197,9 @@ const openCloseCases =(a,b)=>{
                               alignItems="flex-end" >
                                 <Grid   item xs={12} >
                                 
-                                
-                                <ButtonGroup orientation="vertical">
+                                {
+                                   statusChange ===false ?
+                                   <ButtonGroup orientation="vertical">
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                     <b>Opciones del caso:</b>
                                 </Typography>
@@ -218,7 +218,10 @@ const openCloseCases =(a,b)=>{
                                           startIcons={<DeleteTwoToneIcon/>}
                                           colors={"#b2102f"}
                                           />
-                                </ButtonGroup>
+                                </ButtonGroup>:
+                                <div></div>
+                                }
+                                
                                 
                                 
                                 
@@ -230,19 +233,30 @@ const openCloseCases =(a,b)=>{
                                   
                                   <ButtonGroup orientation="vertical">
                                     {
-                                      statusChange?
-                                      <div></div>
+                                      statusChange === false?
+                                      <Button
+                                      key={res.id}
+                                       variant='outlined'
+                                       endIcon={<AssignmentTurnedInTwoToneIcon/> }
+                                       size="medium"  
+                                       sx={{ color: "white", backgroundColor: "#0d47a1", height:100}}
+                                       onClick={()=>openCloseCases(res,true,"Cerrar ")}
+                                       >
+                                        Cerrar Caso
+                                      </Button>
                                     :
-                                    <Button 
-                                     variant='outlined'
-                                     endIcon={<AssignmentTurnedInTwoToneIcon/> }
-                                     size="medium"  
-                                     sx={{ color: "white", backgroundColor: "#0d47a1", height:100}}
-                                     onClick={()=>openCloseCases(res,true)}
-                                     >
-                                      Cerrar Caso
-                                    </Button>
+                                    <Button
+                                      key={res.id}
+                                       variant='outlined'
+                                       endIcon={<AssignmentTurnedInTwoToneIcon/> }
+                                       size="medium"  
+                                       sx={{ color: "white", backgroundColor: "#0d47a1", height:100}}
+                                       onClick={()=>openCloseCases(res,true,"Reaperturar ")}
+                                       >
+                                        Reaperturar Caso
+                                      </Button>
                                     }
+                                    
                                     
                                   </ButtonGroup>
                                   
@@ -253,7 +267,7 @@ const openCloseCases =(a,b)=>{
                                 </Grid>
                           </Grid>
                         </Grid>
-                        }
+                        
                       </Grid>
                     </Grid>
                 </CardContent>
@@ -274,6 +288,7 @@ const openCloseCases =(a,b)=>{
            open ={openCloseCasesModal} 
            onClose={() => setOpenCloseCasesModal(false)}
            onOpen={()=> setOpenCloseCasesModal(true)}
+           actionName={actionName}
           />
         </div>
     );
