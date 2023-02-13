@@ -52,10 +52,16 @@ const openCloseCases =(a,b)=>{
               var color ="#eeeeee";
               var superIconsColor="#e0e0e0";
               var acorColors ="#e0e0e0";
+              var statusChange = false;
 
               if(res.casesCategory.priority==="Alta"){ superIconsColor="#b2102f"; };
               if(res.casesCategory.priority==="Media"){ superIconsColor="#ffb300"};
               if(res.casesCategory.priority==="Baja"){ superIconsColor="#27632a"};
+
+              if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto")
+              {
+                statusChange=true;
+              }
 
               return(
                 <div>
@@ -80,7 +86,7 @@ const openCloseCases =(a,b)=>{
                                   <b>{res.casesCategory.title}</b> .
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Caso #:</b> {res.id}.
+                                  <b>Caso #:</b> {res.id}
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Estatus:</b> {res.status}.
@@ -89,17 +95,17 @@ const openCloseCases =(a,b)=>{
                                   <b>Fecha de Apertura:</b> {moment(res.openDate).format('L')}.
                                 </Typography>
                                 {
-                                  res.status!=="Abierto"? 
+                                  statusChange? 
                                     <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                     <b>Soporte:</b> {res.closeCaseUser.name}.
                                   </Typography>
                                   :<div></div>
                                 }
-                                
-
-                                <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Fecha de Cierre:</b> {res.closeDate === null?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
-                                </Typography>
+  
+                                  <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                  <b>Fecha de Cierre:</b> {  statusChange===false || res.closeDate === null ?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
+                                  </Typography>
+                        
                                 <Grid key={res.id}  item xs={6}>
                                    { 
                                    rol==="Admin"? 
@@ -136,7 +142,7 @@ const openCloseCases =(a,b)=>{
                                         }
 
                                     {
-                                      res.status!=="Abierto"? 
+                                        statusChange? 
                                       <div></div>
                                       :
                                       <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
@@ -155,8 +161,9 @@ const openCloseCases =(a,b)=>{
                                       </Accordion>
                                     }
                                     { 
-                                   res.status!=="Abierto"? 
-                                   <Accordion key={res.openCaseUser._id}  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
+                                        statusChange|| res.status==="En Verificacion"||res.status==="En Espera"? 
+
+                                            <Accordion key={res.openCaseUser._id}  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
                                             <AccordionSummary
                                             expandIcon={<ExpandMoreIcon />}
                                             aria-controls="panel1a-content"
@@ -180,7 +187,7 @@ const openCloseCases =(a,b)=>{
                     </Grid>
                       <Grid item xs={2} >
                         {
-                          res.status !=="Abierto"?
+                           statusChange ?
                           <div></div>
                           :
                           <Grid>
@@ -223,7 +230,7 @@ const openCloseCases =(a,b)=>{
                                   
                                   <ButtonGroup orientation="vertical">
                                     {
-                                      res.status !=="Abierto"?
+                                      statusChange?
                                       <div></div>
                                     :
                                     <Button 

@@ -115,7 +115,7 @@ console.log(clength,Caseslength,currentPage,cardPerPages,lastPostIndex,firstPost
 
 const filterByOpenStatus =async()=>{
 
-  const fbp = await cases.filter( res => res.status === "Abierto");
+  const fbp = await cases.filter( res => res.status==="Abierto"||res.status==="En Verificacion"||res.status==="En Espera");
   setOpenCases(fbp)
   setCaseslength(fbp.length)
 
@@ -124,7 +124,7 @@ const filterByOpenStatus =async()=>{
 
 const filterByCloseStatus =async()=>{
 
-  const fbp = await cases.filter( res => res.status !== "Abierto");
+  const fbp = await cases.filter( res => res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto");
   setCloseCases(fbp);
 
 };
