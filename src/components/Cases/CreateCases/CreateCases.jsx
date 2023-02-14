@@ -161,6 +161,40 @@ console.log(clength,Caseslength,currentPage,cardPerPages,lastPostIndex,firstPost
   };
 
 
+  const filterByStatus  =async(status)=>{
+console.log(status)
+    if(rol==="Admin"){
+      const fbs = await AllCases.filter( res => res.status === status);
+      if(fbs.length===0){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: `No existen Casos con Estatus: ${status}`
+        });
+      }
+      else{
+        setCases(fbs);
+      }
+    }
+    else{
+
+      const fbs = await CasesByUser.filter( res => res.status === status);
+      if(fbs.length===0){
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: `No existen Casos con Estatus: ${status}`
+        });
+  
+      }
+      else{
+        setCases(fbs);
+      }
+    }
+  };
+
+
 const filterByOpenStatus =async()=>{
 
   const fbp = await cases.filter( res => res.status==="Abierto"||res.status==="En Verificacion"||res.status==="En Espera");
@@ -255,16 +289,16 @@ const filterByCloseStatus =async()=>{
             <Grid container spacing={1}>
             <Grid item xs={4}>
                   <Accordion  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
-                                            <AccordionSummary
-                                            expandIcon={<ExpandMoreIcon />}
-                                            aria-controls="panel1a-content"
-                                            id="panel1a-header"
-                                            >
-                                            <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
-                                            </AccordionSummary>
-                                            <AccordionDetails>
-                                                  <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser} filterByPriority={filterByPriority}/>
-                                            </AccordionDetails>
+                     <AccordionSummary
+                     expandIcon={<ExpandMoreIcon />}
+                     aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                          <MenuFilter clearCasesFilter={clearCasesFilter} filterbyDate={filterbyDate} filterByUser={filterByUser} filterByPriority={filterByPriority} filterByStatus={filterByStatus}/>
+                    </AccordionDetails>
                   </Accordion>
                   <br/>
               </Grid>

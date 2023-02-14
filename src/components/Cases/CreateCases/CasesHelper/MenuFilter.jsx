@@ -46,7 +46,7 @@ function a11yProps(index) {
 
 export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-  const {filterbyDate,clearCasesFilter,filterByUser,filterByPriority}= props;
+  const {filterbyDate,clearCasesFilter,filterByUser,filterByPriority,filterByStatus}= props;
   const rol = localStorage.getItem("rol");
   
   const handleChange = (event, newValue) => 
@@ -96,7 +96,7 @@ export default function BasicTabs(props) {
 
     {/*Buscar Por Status */}
     <TabPanel value={value} index={3}>
-          <SearchByStatus/>
+          <SearchByStatus clearCasesFilter={clearCasesFilter} filterByStatus={filterByStatus}/>
     </TabPanel>
     {/*Buscar Por Status */}
     </Box>
