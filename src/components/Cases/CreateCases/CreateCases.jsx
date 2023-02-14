@@ -316,7 +316,7 @@ const filterByCloseStatus =async()=>{
             
             <br/>
             
-                <OpenCloseTab openCases={currentOpenCard} closeCases={currentCloseCard}/>
+                <OpenCloseTab setCaseslength={setCaseslength} openCases={currentOpenCard} closeCases={currentCloseCard}/>
                 
            <br/>
            

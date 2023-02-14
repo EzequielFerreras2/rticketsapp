@@ -9,6 +9,9 @@ import { Grid} from '@mui/material';
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import BackspaceTwoToneIcon from '@mui/icons-material/BackspaceTwoTone';
 import PlagiarismTwoToneIcon from '@mui/icons-material/PlagiarismTwoTone';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 const SearchByStatus = ({clearCasesFilter,filterByStatus}) => {
 
@@ -70,7 +73,12 @@ const SearchByStatus = ({clearCasesFilter,filterByStatus}) => {
                          onClick={()=>clearPriority ()}
                          />
                  </Grid>
-
+        <Stack sx={{ width: '100%',mt:4 }} spacing={2}>
+        <Alert severity="info">
+          <AlertTitle>Nota</AlertTitle>
+          Casos cerrados filtrados por estatus aparacen en la casilla de cerrados.
+        </Alert>
+       </Stack>
       </Box>
     </div>
   )

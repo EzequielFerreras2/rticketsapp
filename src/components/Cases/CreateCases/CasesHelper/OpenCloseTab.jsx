@@ -41,7 +41,7 @@ function a11yProps(index) {
 
 export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-  const {openCases,closeCases}= props;
+  const {openCases,closeCases,setCaseslength}= props;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -52,8 +52,8 @@ console.log(openCases,closeCases)
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Casos Abiartos" {...a11yProps(0)} />
-          <Tab label="Casos Cerrados" {...a11yProps(1)} />
+          <Tab label="Casos Abiartos" {...a11yProps(0)} onClick={()=>setCaseslength(openCases.length)} />
+          <Tab label="Casos Cerrados" {...a11yProps(1)}onClick={()=>setCaseslength(closeCases.length)} />
 
         </Tabs>
       </Box>
