@@ -14,32 +14,25 @@ import * as Yup from 'yup'
 
 const SearchByUser = ({filterByUser,clearCasesFilter}) => {
     const [valueRadio, setValueRadio] = useState('');
-    const [values, setValues] = useState('');
     const user = {type:"",value:""}
 
     const handleRadioChange = (event) => {
         setValueRadio(event.target.value);
       };
 
-      const handleChange = (event) => {
-        setValue(event.target.value);
-      };
-
     const searchByUser=(data)=>{
-          console.log(data)
+          
         if(valueRadio==="id")
         {
             user.type="Id"
-            user.value=values;
-            // filterByUser(user);
-            
+            user.value=data;
+            filterByUser(user);
             
         }
         else{
             user.type="Name"
-            user.value=values;
-            // filterByUser(user);
-            
+            user.value=data;
+            filterByUser(user);
         }
         
     };
@@ -68,6 +61,7 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
 
   return (
     <div>
+      <form onSubmit={handleSubmit(searchByUser)}>
         <FormControl>
       <FormLabel id="demo-row-radio-buttons-group-label">Buscar Usuario por:</FormLabel>
       <RadioGroup
@@ -92,7 +86,8 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
                 alignItems="center" 
             >
                     <BasicButton
-                    onClick={()=>handleSubmit(searchByUser)}
+                    type="submit"
+                   
                     name={"Buscar"}
                     startIcons={<PlagiarismTwoToneIcon/>}
                     colors={"#0d47a1"}
@@ -107,6 +102,7 @@ const SearchByUser = ({filterByUser,clearCasesFilter}) => {
                     
                     />
             </Grid>
+          </form>
     </div>
   )
 }

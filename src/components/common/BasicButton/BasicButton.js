@@ -1,9 +1,10 @@
 import { Button } from '@mui/material'
 import React from 'react'
 
-const BasicButton = ({onClick,startIcons,colors,name,heights,mt,mb,mr,ml}) => {
+const BasicButton = ({onClick,startIcons,colors,name,heights,mt,mb,mr,ml,type}) => {
   return (
     <Button
+        type={type}
         variant='outlined'
         onClick={onClick}
         startIcon={startIcons}

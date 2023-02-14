@@ -74,27 +74,75 @@ console.log(clength,Caseslength,currentPage,cardPerPages,lastPostIndex,firstPost
 
 
   const filterByUser=async(user)=>{
+   
     if(user.type ==="Id"){
       if(rol === "Admin")
       {
-        const fbu = await AllCases.filter( res => res.openCaseUser._id === user.value);
-        setCases(fbu);
+        const fbu = await AllCases.filter( res => res.openCaseUser._id === user.value.search);
+        if(fbu.length===0){
+          
+          Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: `No existen Casos Con el ID: ${user.value.search}`
+          });
+
+        }
+        else{
+          setCases(fbu);
+        }
+        
       }
       else{
-        const fbu = await CasesByUser.filter( res => res.openCaseUser._id === user.value);
-        setCases(fbu);
+        const fbu = await CasesByUser.filter( res => res.openCaseUser._id === user.value.search);
+
+        if(fbu.length===0){
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: `No existen Casos Con el Id=D: ${user.value.search}`
+          });
+
+        }
+        else{
+          setCases(fbu);
+        }
+        
       }  
     }
     else{
       if(rol === "Admin"){
 
-        const fbu = await AllCases.filter( res => res.openCaseUser.name === user.value);
-        setCases(fbu);
+        const fbu = await AllCases.filter( res => res.openCaseUser.name === user.value.search);
+        if(fbu.length===0){
+          
+          Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: `No existen Casos Con el Nombre: ${user.value.search}`
+          });
+
+        }
+        else{
+          setCases(fbu);
+        }
 
       }
       else{
-        const fbu = await CasesByUser.filter( res => res.openCaseUser.name === user.value);
-        setCases(fbu);
+        const fbu = await CasesByUser.filter( res => res.openCaseUser.name === user.value.search);
+        if(fbu.length===0){
+          
+          Swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: `No existen Casos Con el Nombre: ${user.value.search}`
+          });
+
+        }
+        else{
+          setCases(fbu);
+        }
       }
     }
   };
