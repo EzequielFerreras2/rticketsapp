@@ -5,7 +5,9 @@ import axios from 'axios';
 
 const rTicketsApi = axios.create({
 
-  baseURL:'http://localhost:4001/api'
+  // baseURL:'http://localhost:4001/api',
+  baseURL:'https://rticketsapp-backend.herokuapp.com/api'
+
 
 }); 
 
