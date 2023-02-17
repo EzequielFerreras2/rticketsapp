@@ -31,7 +31,7 @@ export const mainSideBarItems =  [
         icon:<PlagiarismTwoToneIcon style={{ fill: '#0072ea' }}/>,
         label:'Casos',
         route:'Casos',
-        hidden:false
+        hidden:true
     },
     {
         id:3,
