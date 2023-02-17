@@ -13,7 +13,7 @@ const PrivateRoute = (updateNavbar) => {
 
     return (
         
-        status === 'authenticated' ? <Outlet/> : <Navigate to='login'/>
+        status === 'authenticated' ? <Outlet/> : <Navigate to='/login'/>
         
     
     )   ;
