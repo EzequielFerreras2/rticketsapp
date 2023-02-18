@@ -34,7 +34,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
     };
 
     useEffect(() => {
-        if(SubCategoryByCategory.length === 0)
+        if(SubCategoryByCategory?.length === 0)
         {
             setSubCategory(SubCategory);
         }
@@ -99,7 +99,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                                 
                             >
                             {
-                                Category.map((category)=>{
+                                Category?.map((category)=>{
                                 return (
                                     <MenuItem key={category.id} value={category.id} onClick={()=>selectedCategory(category)}>{category.category} </MenuItem>
                                 );
@@ -128,7 +128,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                                 
                             >
                             {
-                                subCategory.map((subcategory)=>{
+                                subCategory?.map((subcategory)=>{
                                 return (
                                     <MenuItem key={subcategory.id} value={subcategory.id}>{subcategory.subcategory} </MenuItem>
                                 );
@@ -155,7 +155,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
                                 
                             >
                             {
-                                priorityList.map((PriorityList)=>{
+                                priorityList?.map((PriorityList)=>{
                                 return (
                                     <MenuItem key={PriorityList} value={PriorityList}>{PriorityList} </MenuItem>
                                 );

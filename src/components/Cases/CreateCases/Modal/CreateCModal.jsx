@@ -33,17 +33,17 @@ const CreateCModal = ({open,onClose}) => {
     const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory=== undefined || SubCategoryByCategory.length === 0  , [SubCategoryByCategory]);
     const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory=== undefined || CategoryCasesBySubCategory.length === 0, [CategoryCasesBySubCategory]);
 
-    console.log("Category");
-    console.log(Category);
-    console.log("SubCategoryByCategory");
-    console.log(SubCategoryByCategory);
-    console.log("CategoryCasesBySubCategory");
-    console.log(CategoryCasesBySubCategory);
-    console.log("------------------------------------------------");
-    console.log("isDisableSubCategory");
-    console.log(isDisableSubCategory);
-    console.log("isDisableCategoryCase");
-    console.log(isDisableCategoryCase);
+    // console.log("Category");
+    // console.log(Category);
+    // console.log("SubCategoryByCategory");
+    // console.log(SubCategoryByCategory);
+    // console.log("CategoryCasesBySubCategory");
+    // console.log(CategoryCasesBySubCategory);
+    // console.log("------------------------------------------------");
+    // console.log("isDisableSubCategory");
+    // console.log(isDisableSubCategory);
+    // console.log("isDisableCategoryCase");
+    // console.log(isDisableCategoryCase);
 
 
     useEffect(() => {
@@ -98,7 +98,7 @@ const CreateCModal = ({open,onClose}) => {
         setSubCateogryS("");
         onClose();
 
-        console.log(data);
+      
     };
 
     const getContent =()=>(
