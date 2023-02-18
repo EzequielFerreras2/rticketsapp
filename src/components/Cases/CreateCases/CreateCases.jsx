@@ -12,6 +12,7 @@ import CreateCasesModal from './Modal/CreateCasesModal';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 import OpenCloseTab  from '../CreateCases/CasesHelper/OpenCloseTab'
+import CreateCModal from './Modal/CreateCModal';
 
 const CreateCases = () => {
 
@@ -325,10 +326,15 @@ const filterByCloseStatus =async()=>{
             </Grid>
             
          {/*Modals */}
-         <CreateCasesModal
+         {/* <CreateCasesModal
           open ={openCreateModal} 
           onClose={() => setOpenCreateModal(false)}
          
+          /> */}
+
+          <CreateCModal
+          open ={openCreateModal} 
+          onClose={() => setOpenCreateModal(false)}
           />
           
         </div>
