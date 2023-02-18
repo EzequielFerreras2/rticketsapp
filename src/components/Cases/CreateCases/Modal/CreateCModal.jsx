@@ -30,8 +30,8 @@ const CreateCModal = ({open,onClose}) => {
     const [categoryCaseS, setCateogryCaseS] = useState("")
     const handleSelectCategoryCaseChange = (event) => {setCateogryCaseS(event.target.value); };
 
-    const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory=== undefined || SubCategoryByCategory.length === 0  , [SubCategoryByCategory]);
-    const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory=== undefined || CategoryCasesBySubCategory.length === 0, [CategoryCasesBySubCategory]);
+    const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory?.length === 0  , [SubCategoryByCategory]);
+    const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory?.length === 0, [CategoryCasesBySubCategory]);
 
     // console.log("Category");
     // console.log(Category);

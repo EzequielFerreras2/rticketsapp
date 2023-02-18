@@ -58,10 +58,25 @@ console.log(openCases,closeCases)
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-      <Cases AllCases={openCases}/>
+        {
+          openCases?.length ===0 
+          ?
+          <Typography sx={{color:'black'}} variant='h1'>No Hay Casos Para Mostrar.</Typography>
+          :
+          <Cases AllCases={openCases}/>
+        }
+      
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <Cases AllCases={closeCases}/>
+
+      {
+          closeCases?.length ===0 
+          ?
+          <Typography sx={{color:'black'}} variant='h1'>No Hay Casos Cerrados Para Mostrar.</Typography>
+          :
+          <Cases AllCases={closeCases}/>
+        }
+     
       </TabPanel>
      
     </Box>

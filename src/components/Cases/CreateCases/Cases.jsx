@@ -50,7 +50,7 @@ const openCloseCases =(data,open,action)=>{
     return (
         <div>
           {
-            AllCases.map( (res) =>{
+            AllCases?.map( (res) =>{
               var color ="#eeeeee";
               var superIconsColor="#e0e0e0";
               var acorColors ="#e0e0e0";
