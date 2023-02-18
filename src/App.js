@@ -92,7 +92,6 @@ if( status === 'checking' ){
               
               <br/>
               <InRoute updateNavbar={()=>updateNavbar()}/>
-               
           </Box>
        </Box>
        </main>
