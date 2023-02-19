@@ -40,13 +40,8 @@ const AdminDashboard = () => {
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
                             En Verificacion
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            adjective
-                            </Typography>
-                            <Typography variant="body2">
-                            well meaning and kindly.
-                            <br />
-                            {'"a benevolent smile"'}
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.verificateCases}
                             </Typography>
                         </CardContent>
                         </Card>  
@@ -56,19 +51,16 @@ const AdminDashboard = () => {
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
-                            Casos Cerrados
+                            Casos Cerrados Satisfactorios
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            adjective
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.CloseSasCases}
                             </Typography>
-                            <Typography variant="body2">
-                            well meaning and kindly.
-                            <br />
-                            {'"a benevolent smile"'}
-                            </Typography>
+                            
                         </CardContent>
                         </Card>
-                    </Grid> 
+                    </Grid>
+                     
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Card sx={{ minWidth: 275 , background:"#eeeeee" }}>

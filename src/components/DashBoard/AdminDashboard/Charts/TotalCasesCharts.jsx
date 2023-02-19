@@ -1,5 +1,5 @@
 import { Tooltip } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { PieChart, Pie,  Cell, ResponsiveContainer, Legend } from 'recharts';
 import { useCasesStore } from '../../../../store/cases/useCasesStore';
 
@@ -18,6 +18,25 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
 
   };
 
+  const verificateCases =()=>{
+
+    const vcl = AllCases.filter(res=> res.status==="En Verificacion");
+    return vcl.length;
+
+  };
+  const closeSasCases =()=>{
+
+    const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");
+    return csl.length;
+
+  };
+  const closeIncCases =()=>{
+
+    const cil = AllCases.filter(res=> res.status==="Cerrado Incorrecto");
+    return cil.length;
+
+  };
+
 
   useEffect(() => {
     onGetCases();
@@ -33,7 +52,10 @@ useEffect(() => {
 
   setOpenCasesCount({
     TotalCases:TotalCases,
-    OpenCases:openCases()
+    OpenCases:openCases(),
+    verificateCases:verificateCases(),
+    CloseSasCases:closeSasCases(),
+    CloseIncCases:closeIncCases(),
   })
   
 }, [AllCases])
@@ -41,10 +63,10 @@ useEffect(() => {
 
 
   const data = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
+    { name: 'Abierto', value: openCases()},
+    { name: 'En Verificacion', value: verificateCases() },
+    { name: 'Cerrado Satidfactorio', value: closeSasCases() },
+    { name: 'Cerrado Incorrecto', value: closeIncCases() },
   ];
 
   
