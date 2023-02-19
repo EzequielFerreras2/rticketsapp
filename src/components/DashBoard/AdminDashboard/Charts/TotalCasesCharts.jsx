@@ -1,8 +1,44 @@
 import { Tooltip } from '@mui/material';
-import React from 'react'
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend } from 'recharts';
+import React, { useEffect, useState } from 'react'
+import { PieChart, Pie,  Cell, ResponsiveContainer, Legend } from 'recharts';
+import { useCasesStore } from '../../../../store/cases/useCasesStore';
 
-const TotalCasesCharts = () => {
+const TotalCasesCharts = ({setOpenCasesCount,}) => {
+
+  const {AllCases,onGetCases}=useCasesStore();
+
+  const TotalCases= AllCases.length;
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+  const openCases =()=>{
+
+    const opl = AllCases.filter(res=> res.status==="Abierto");
+    return opl.length;
+
+  };
+
+
+  useEffect(() => {
+    onGetCases();
+  }, [])
+
+useEffect(() => {
+  openCases()
+}, [AllCases])
+
+
+
+useEffect(() => {
+
+  setOpenCasesCount({
+    TotalCases:TotalCases,
+    OpenCases:openCases()
+  })
+  
+}, [AllCases])
+
+
 
   const data = [
     { name: 'Group A', value: 400 },
@@ -11,7 +47,7 @@ const TotalCasesCharts = () => {
     { name: 'Group D', value: 200 },
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  
 
 
 
