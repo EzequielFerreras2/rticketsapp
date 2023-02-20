@@ -36,6 +36,7 @@ const AdminDashboard = () => {
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
                                 En Verificacion:
+                                
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4" >
                                 {CasesCount.verificateCases}
