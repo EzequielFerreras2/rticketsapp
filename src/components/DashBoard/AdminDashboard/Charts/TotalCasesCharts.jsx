@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Tooltip } from '@mui/material';
 import React, { useEffect } from 'react'
 import { PieChart, Pie,  Cell, ResponsiveContainer, Legend } from 'recharts';
@@ -9,47 +10,38 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
 
   const TotalCases= AllCases.length;
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#834bff','#33bfff','#ff4569','#af52bf'];
 
-  const openCases =()=>{
+    const openCases =()=>{
+      const opl = AllCases.filter(res=> res.status==="Abierto");
+      return opl.length;
+    };
+    const verificateCases =()=>{
+      const vcl = AllCases.filter(res=> res.status==="En Verificacion");
+      return vcl.length;
+    };
+    const closeSasCases =()=>{
+      const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");
+      return csl.length;
+    };
+    const closeIncCases =()=>{
+      const cil = AllCases.filter(res=> res.status==="Cerrado Incorrecto");
+      return cil.length;
+    };
+    const closeNrCases =()=>{
+      const cnrl = AllCases.filter(res=> res.status==="Cerrado No Resuelto");
+      return cnrl.length;
+    };
 
-    const opl = AllCases.filter(res=> res.status==="Abierto");
-    return opl.length;
-
-  };
-
-  const verificateCases =()=>{
-
-    const vcl = AllCases.filter(res=> res.status==="En Verificacion");
-    return vcl.length;
-
-  };
-  const closeSasCases =()=>{
-
-    const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");
-    return csl.length;
-
-  };
-  const closeIncCases =()=>{
-
-    const cil = AllCases.filter(res=> res.status==="Cerrado Incorrecto");
-    return cil.length;
-
-  };
-
-
-  useEffect(() => {
+useEffect(() => {
     onGetCases();
-  }, [])
+  }, []);
 
 useEffect(() => {
-  openCases()
-}, [AllCases])
-
-
+    openCases()
+  }, [AllCases]);
 
 useEffect(() => {
-
   setOpenCasesCount({
     TotalCases:TotalCases,
     OpenCases:openCases(),
@@ -57,24 +49,18 @@ useEffect(() => {
     CloseSasCases:closeSasCases(),
     CloseIncCases:closeIncCases(),
   })
-  
-}, [AllCases])
-
-
+}, [AllCases]);
 
   const data = [
     { name: 'Abierto', value: openCases()},
-    { name: 'En Verificacion', value: verificateCases() },
-    { name: 'Cerrado Satidfactorio', value: closeSasCases() },
-    { name: 'Cerrado Incorrecto', value: closeIncCases() },
+    { name: 'En Verificacion', value: verificateCases()},
+    { name: 'Cerrado Satidfactorio', value: closeSasCases()},
+    { name: 'Cerrado Incorrecto', value: closeIncCases()},
+    { name: 'Cerrado No Resuelto', value: closeNrCases()},
+    
   ];
 
-  
-
-
-
   return (
-    
     <ResponsiveContainer width="100%" height="100%">
      <PieChart width={800} height={400} >
         <Pie
@@ -95,10 +81,7 @@ useEffect(() => {
         <Tooltip />
         <Legend verticalAlign="bottom" height={36}/>
       </PieChart>
-    
-  </ResponsiveContainer>
-    
+   </ResponsiveContainer>  
   )
 }
-
 export default TotalCasesCharts

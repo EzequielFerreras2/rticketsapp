@@ -1,44 +1,41 @@
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import TotalCasesCharts from './Charts/TotalCasesCharts';
 
 const AdminDashboard = () => {
 
-    const [CasesCount, setCasesCount] = useState({});
+ const [CasesCount, setCasesCount] = useState({});
     
-
-
     return (
         <div>
             <br/>
             <br/>
             <Typography variant='h3'>DashBoard</Typography>
-            
             <br/>
             <Grid container
-            justifyContent="space-around"
             spacing={2}>
                 <Grid container  item xs={6} md={6} direction="row">
+                    
                     <Grid sx={{mr:12}} item xs={6} md={3}>
                         <Card sx={{ minWidth: 275, color:"white", background: "#eeeeee" }}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
-                            Casos Abiertos:
+                                Casos Abiertos:
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4">
-                                    {CasesCount.OpenCases}/<b>{CasesCount.TotalCases}</b>
+                                    {CasesCount.OpenCases}
                             </Typography>
                             
                         </CardContent>
                         </Card>
                     </Grid>
-                    <br/> 
+                    <br/>  
                     <Grid item sx={{mr:12}} xs={6} md={3}>
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
-                            En Verificacion
+                                En Verificacion:
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4" >
                                 {CasesCount.verificateCases}
@@ -46,21 +43,19 @@ const AdminDashboard = () => {
                         </CardContent>
                         </Card>  
                     </Grid> 
-                    <br/> 
+                    
                     <Grid item xs={6} md={3}>
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
-                            Casos Cerrados Satisfactorios
+                                Casos Cerrados Satisfactorios:
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4" >
                                 {CasesCount.CloseSasCases}
                             </Typography>
-                            
                         </CardContent>
                         </Card>
-                    </Grid>
-                     
+                    </Grid>  
                 </Grid>
                 <Grid item xs={6} md={6}>
                     <Card sx={{ minWidth: 275 , background:"#eeeeee" }}>
