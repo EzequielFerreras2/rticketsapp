@@ -36,7 +36,7 @@ const AdminDashboard = () => {
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
                                 En Verificacion:
-                                
+
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4" >
                                 {CasesCount.verificateCases}
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,  }} color="text.secondary" gutterBottom>
-                                Casos Cerrados Satisfactorios:
+                                Cerrados Satisfactorios:
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h4" >
                                 {CasesCount.CloseSasCases}
