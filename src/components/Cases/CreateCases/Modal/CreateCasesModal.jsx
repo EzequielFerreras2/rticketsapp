@@ -32,10 +32,12 @@ const CreateCasesModal = ({open,onClose}) => {
     const [categoryCaseS, setCateogryCaseS] = useState("")
     const handleSelectCategoryCaseChange = (event) => {setCateogryCaseS(event.target.value); };
 
-    const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory.length === 0, [SubCategoryByCategory]);
-    const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory.length === 0, [CategoryCasesBySubCategory]);
+    const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory.length === 0||SubCategoryByCategory===undefined, [SubCategoryByCategory]);
+    const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory.length === 0||SubCategoryByCategory===undefined, [CategoryCasesBySubCategory]);
 
-
+    console.log("-----------------------------------------------------------------")
+    console.log(SubCategoryByCategory.length)
+    console.log(CategoryCasesBySubCategory.length)
 
     useEffect(() => {
         ongetCategory();

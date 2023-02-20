@@ -37,9 +37,6 @@ const currentCloseCard = closeCases.slice(firstPostIndex,lastPostIndex);
 const [openCreateModal, setOpenCreateModal] = useState(false);
 
 
-console.log(clength,Caseslength,currentPage,cardPerPages,lastPostIndex,firstPostIndex)
-
-
 /* Arrows Funtions */
     const filterbyDate = async(date) =>{
     if(rol==="Admin")
@@ -256,6 +253,21 @@ const filterByCloseStatus =async()=>{
   }, []);
 
   useEffect(() => {
+    if(CasesByUser.length===0)
+    {
+      Swal.fire({
+        title: `Loading...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
+    getCasesByRol();
+  }, []);
+
+
+  useEffect(() => {
     setCases(AllCases);
   }, [AllCases]);
 
@@ -325,12 +337,13 @@ const filterByCloseStatus =async()=>{
             </Grid>
             
          {/*Modals */}
-         <CreateCasesModal
-          open ={openCreateModal} 
-          onClose={() => setOpenCreateModal(false)}
          
-          />
+          <CreateCasesModal
+            open ={openCreateModal} 
+            onClose={() => setOpenCreateModal(false)}
           
+            />
+           
         </div>
     );
 }
