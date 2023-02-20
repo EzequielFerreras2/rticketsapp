@@ -33,21 +33,7 @@ const CreateCModal = ({open,onClose}) => {
     const isDisableSubCategory= useMemo( ()=> SubCategoryByCategory?.length === 0  , [SubCategoryByCategory]);
     const isDisableCategoryCase= useMemo( ()=> CategoryCasesBySubCategory?.length === 0, [CategoryCasesBySubCategory]);
 
-    // console.log("Category");
-    // console.log(Category);
-    // console.log("SubCategoryByCategory");
-    // console.log(SubCategoryByCategory);
-    // console.log("CategoryCasesBySubCategory");
-    // console.log(CategoryCasesBySubCategory);
-    // console.log("------------------------------------------------");
-    // console.log("isDisableSubCategory");
-    // console.log(isDisableSubCategory);
-    // console.log("isDisableCategoryCase");
-    // console.log(isDisableCategoryCase);
-
-    console.log("-----------------------------------------------------------------")
-    console.log(SubCategoryByCategory.length)
-    console.log(CategoryCasesBySubCategory.length)
+   
 
     useEffect(() => {
         ongetCategory();
@@ -125,7 +111,7 @@ const CreateCModal = ({open,onClose}) => {
                                 helperText={errors.category?.message}  
                             >
                             {
-                                Category.map((category)=>{
+                                Category?.map((category)=>{
                                 return (
                                     <MenuItem key={category.id} value={category.id} >{category.category} </MenuItem>
                                 );
