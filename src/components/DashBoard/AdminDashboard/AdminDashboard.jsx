@@ -15,9 +15,9 @@ const AdminDashboard = () => {
             <br/>
             <Grid container
             spacing={2}>
-                <Grid container  item xs={6} md={6} direction="row">
+                <Grid container spacing={2} justifyContent="space-evenly"  item xs={3} md={6}  direction="row">
                     
-                    <Grid sx={{mr:12}} item xs={6} md={3}>
+                    {/* <Grid sx={{mr:12}} item xs={6} md={3}>
                         <Card sx={{ minWidth: 275, color:"white", background: "#eeeeee" }}>
                         <CardContent>
                             <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
@@ -56,9 +56,86 @@ const AdminDashboard = () => {
                             </Typography>
                         </CardContent>
                         </Card>
-                    </Grid>  
+                    </Grid>   */}
+
+                    <Grid item xs={1} md={6} sx={{}}>
+                        <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
+                        <CardContent>
+                        <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
+                                Casos Abiertos:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4">
+                                    {CasesCount.OpenCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
+                                En Verificacion:
+
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.verificateCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
+                                Cerrados Satisfactorios:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.CloseSasCases}
+                            </Typography>
+                        </CardContent>
+                        </Card>
+                    </Grid> 
+                    <Grid item xs={3} md={6}>
+                        <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
+                        <CardContent>
+                        <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
+                                Casos Abiertos:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4">
+                                    {CasesCount.OpenCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
+                                En Verificacion:
+
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.verificateCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
+                                Cerrados Satisfactorios:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.CloseSasCases}
+                            </Typography>
+                        </CardContent>
+                        </Card>
+                    </Grid> 
+                    <Grid item xs={3} md={12}>
+                        <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
+                        <CardContent>
+                        <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
+                                Casos Abiertos:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4">
+                                    {CasesCount.OpenCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
+                                En Verificacion:
+
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.verificateCases}
+                            </Typography>
+                            <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
+                                Cerrados Satisfactorios:
+                            </Typography>
+                            <Typography sx={{ mb: 1.5 }} variant="h4" >
+                                {CasesCount.CloseSasCases}
+                            </Typography>
+                        </CardContent>
+                        </Card>
+                    </Grid> 
+                      
                 </Grid>
-                <Grid item xs={6} md={6}>
+                <Grid item xs={1} md={6} >
                     <Card sx={{ minWidth: 275 , background:"#eeeeee" }}>
                         <CardContent>
                             <Typography sx={{ fontSize: 22  }} color="text.secondary" gutterBottom>
@@ -69,7 +146,7 @@ const AdminDashboard = () => {
                                     justifyContent="center"
                                     alignItems="center">
                                 <Grid item>
-                                    <Box width={730} height={500}>
+                                    <Box width={730} height={540}>
                                         <TotalCasesCharts setOpenCasesCount={setCasesCount}/>
                                     </Box>
                                 </Grid>
