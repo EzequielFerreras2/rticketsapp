@@ -31,7 +31,7 @@ useEffect(() => {
     Swal.close();
   }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+}, [Category]);
 
   const addCategory = () =>{setOpenCreateModal(true);}
   const upDateCategory =()=>{ongetCategory()}
