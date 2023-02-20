@@ -18,7 +18,9 @@ import logosss from '../../../img/2.png'
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 
+
 import Account from '../../Auth/Account/Account';
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 250;
 
@@ -128,7 +130,7 @@ const handleDrawerClose = () => {setOpen(false);};
 
 
           <Typography variant="h6" sx={{ flexGrow: 1 }} component="div">
-            aaaa
+            
           </Typography>
           
           

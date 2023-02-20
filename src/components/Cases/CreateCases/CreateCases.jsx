@@ -339,8 +339,7 @@ const filterByCloseStatus =async()=>{
           onClose={() => setOpenCreateModal(false)}
           />
           
-            />
-           
+        
         </div>
     );
 }
