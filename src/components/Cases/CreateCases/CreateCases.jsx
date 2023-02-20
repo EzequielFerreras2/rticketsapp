@@ -8,10 +8,10 @@ import Swal from 'sweetalert2';
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
 import CardPagination from './CasesHelper/CardPagination';
 import SelectCardPerPage from './CasesHelper/SelectCardPerPage';
-import CreateCasesModal from './Modal/CreateCasesModal';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 import OpenCloseTab  from '../CreateCases/CasesHelper/OpenCloseTab'
+import CreateCModal from './Modal/CreateCModal';
 
 const CreateCases = () => {
 
@@ -29,7 +29,7 @@ const [closeCases, setCloseCases] = useState([]);
 const clength=cases.length;
 const [Caseslength, setCaseslength] = useState(clength);
 const [currentPage, setCurrentPage] = useState(1);
-const [cardPerPages, setCardPerPages] = useState(5);
+const [cardPerPages, setCardPerPages] = useState(10);
 const lastPostIndex = cardPerPages * currentPage;
 const firstPostIndex = lastPostIndex - cardPerPages;
 const currentOpenCard = openCases.slice(firstPostIndex,lastPostIndex);
@@ -239,7 +239,7 @@ const filterByCloseStatus =async()=>{
   };
 /*Effect */
   useEffect(() => {
-    if(AllCases.length===0)
+    if(cases?.length===0)
     {
       Swal.fire({
         title: `Loading...`,
@@ -319,11 +319,9 @@ const filterByCloseStatus =async()=>{
               
             </Grid>
             <Grid>
-            
-      
-            <Grid container direction={"row"} justifyContent="flex-end" alignItems="center">
-                <SelectCardPerPage handleChangeSelect= {handleChangeSelect} cardPerPages={cardPerPages}/>
-            </Grid>
+                {/* <Grid container direction={"row"} justifyContent="flex-end" alignItems="center">
+                    <SelectCardPerPage handleChangeSelect= {handleChangeSelect} cardPerPages={cardPerPages}/>
+                </Grid> */}
             </Grid>
             
             <br/>
@@ -335,12 +333,11 @@ const filterByCloseStatus =async()=>{
            <Grid container direction={"row"} justifyContent="center" alignItems="center">
               <CardPagination Caseslength={Math.ceil(Caseslength / cardPerPages)} setCurrentPage={setCurrentPage}  />
             </Grid>
-            
-         {/*Modals */}
-         
-          <CreateCasesModal
-            open ={openCreateModal} 
-            onClose={() => setOpenCreateModal(false)}
+     
+          <CreateCModal
+          open ={openCreateModal} 
+          onClose={() => setOpenCreateModal(false)}
+          />
           
             />
            
