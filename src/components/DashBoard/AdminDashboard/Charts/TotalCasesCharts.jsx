@@ -2,6 +2,7 @@
 import { Tooltip } from '@mui/material';
 import React, { useEffect,useMemo } from 'react'
 import { PieChart, Pie,  Cell, ResponsiveContainer, Legend } from 'recharts';
+import Swal from 'sweetalert2';
 import { useCasesStore } from '../../../../store/cases/useCasesStore';
 
 const TotalCasesCharts = ({setOpenCasesCount,}) => {
@@ -27,9 +28,18 @@ useEffect(() => {
     onGetCases();
   }, []);
 
-useEffect(() => {
-    openCases()
-  }, [AllCases]);
+  useEffect(() => {
+    if(AllCases?.length===0)
+    {
+      Swal.fire({
+        title: `Loading...`,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        },})
+    }
+  }, [AllCases]); 
 
 useEffect(() => {
   setOpenCasesCount({

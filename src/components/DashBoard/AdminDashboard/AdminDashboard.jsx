@@ -7,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 const AdminDashboard = () => {
 
  const [CasesCount, setCasesCount] = useState({});
-    
+    const iconSize= 19;
     return (
         <div>
             <br/>
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
                         <CardContent>
                         {CasesCount.HpriorityCases >= 20 ? <Alert variant="filled"  sx={{mb:2}} severity="warning"><b>Muchos casos de alta prioridad en la cola!!</b></Alert>:<div></div>}
                         <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
-                                <span><InfoIcon sx={{ fontSize: 15, color:"#b2102f" }}/></span> Casos Priodad Alta :
+                                <span><InfoIcon sx={{ fontSize: iconSize, color:"#b2102f" }}/></span> Casos Priodad Alta :
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h5">
                                    <b>{CasesCount.HpriorityCases}</b>. 
@@ -54,13 +54,13 @@ const AdminDashboard = () => {
                             </Typography>
                             
                             <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
-                            <span><InfoIcon sx={{ fontSize: 15, color:"#ffb300" }}/></span> Casos Prioridad Media :
+                            <span><InfoIcon sx={{ fontSize: iconSize, color:"#ffb300" }}/></span> Casos Prioridad Media :
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h5" >
                                 <b>{CasesCount.MpriorityCases}</b>.
                             </Typography>
                             <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
-                            <span><InfoIcon sx={{ fontSize: 15, color:"#27632a" }}/></span> Casos Prioridad Baja:
+                            <span><InfoIcon sx={{ fontSize: iconSize, color:"#27632a" }}/></span> Casos Prioridad Baja:
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} variant="h5" >
                                 <b>{CasesCount.LpriorityCases}</b>.
