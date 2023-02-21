@@ -2,6 +2,7 @@ import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import TotalCasesCharts from './Charts/TotalCasesCharts';
+import InfoIcon from '@mui/icons-material/Info';
 
 const AdminDashboard = () => {
 
@@ -64,46 +65,44 @@ const AdminDashboard = () => {
                         <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
                                 Casos Abiertos:
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4">
-                                    {CasesCount.OpenCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5">
+                                   <b>{CasesCount.OpenCases} </b> 
                             </Typography>
                             <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
                                 En Verificacion:
-
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.verificateCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5" >
+                                <b>{CasesCount.verificateCases}</b> 
                             </Typography>
                             <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
                                 Cerrados Satisfactorios:
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.CloseSasCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5" >
+                                <b>{CasesCount.CloseSasCases}</b>
                             </Typography>
                         </CardContent>
                         </Card>
                     </Grid> 
-                    <Grid item xs={3} md={6}>
+                    <Grid item xs={1} md={6}>
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
                         <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
-                                Casos Abiertos:
+                                <span><InfoIcon sx={{ fontSize: 15, color:"#b2102f" }}/></span> Casos Priodad Alta :
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4">
-                                    {CasesCount.OpenCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5">
+                                   <b>{CasesCount.HpriorityCases}</b>
                             </Typography>
                             <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
-                                En Verificacion:
-
+                            <span><InfoIcon sx={{ fontSize: 15, color:"#ffb300" }}/></span> Casos Prioridad Media :
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.verificateCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5" >
+                                <b>{CasesCount.MpriorityCases}</b>
                             </Typography>
                             <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
-                                Cerrados Satisfactorios:
+                            <span><InfoIcon sx={{ fontSize: 15, color:"#27632a" }}/></span> Casos Prioridad Baja:
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.CloseSasCases}
+                            <Typography sx={{ mb: 1.5 }} variant="h5" >
+                                <b>{CasesCount.LpriorityCases}</b>
                             </Typography>
                         </CardContent>
                         </Card>
@@ -146,7 +145,7 @@ const AdminDashboard = () => {
                                     justifyContent="center"
                                     alignItems="center">
                                 <Grid item>
-                                    <Box width={730} height={540}>
+                                    <Box width={730} height={510}>
                                         <TotalCasesCharts setOpenCasesCount={setCasesCount}/>
                                     </Box>
                                 </Grid>

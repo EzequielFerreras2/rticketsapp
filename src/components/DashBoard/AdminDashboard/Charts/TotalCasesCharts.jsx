@@ -1,37 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Tooltip } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect,useMemo } from 'react'
 import { PieChart, Pie,  Cell, ResponsiveContainer, Legend } from 'recharts';
 import { useCasesStore } from '../../../../store/cases/useCasesStore';
 
 const TotalCasesCharts = ({setOpenCasesCount,}) => {
 
   const {AllCases,onGetCases}=useCasesStore();
-
   const TotalCases= AllCases.length;
-
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#834bff','#33bfff','#ff4569','#af52bf'];
 
-    const openCases =()=>{
-      const opl = AllCases.filter(res=> res.status==="Abierto");
-      return opl.length;
-    };
-    const verificateCases =()=>{
-      const vcl = AllCases.filter(res=> res.status==="En Verificacion");
-      return vcl.length;
-    };
-    const closeSasCases =()=>{
-      const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");
-      return csl.length;
-    };
-    const closeIncCases =()=>{
-      const cil = AllCases.filter(res=> res.status==="Cerrado Incorrecto");
-      return cil.length;
-    };
-    const closeNrCases =()=>{
-      const cnrl = AllCases.filter(res=> res.status==="Cerrado No Resuelto");
-      return cnrl.length;
-    };
+    const openCases =()=>{const opl = AllCases.filter(res=> res.status==="Abierto");return opl.length;};
+    const verificateCases =()=>{const vcl = AllCases.filter(res=> res.status==="En Verificacion");return vcl.length;};
+    const closeSasCases =()=>{const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");return csl.length;};
+    const closeIncCases =()=>{const cil = AllCases.filter(res=> res.status==="Cerrado Incorrecto");return cil.length;};
+    const closeNrCases =()=>{const cnrl = AllCases.filter(res=> res.status==="Cerrado No Resuelto");return cnrl.length;};
+    const hpriorityCasesOpen =()=>{const hpc = AllCases.filter(res=> res.casesCategory.priority==="Alta" && res.status==="Abierto");return hpc.length;};
+    const mpriorityCasesOpen =()=>{const mpc = AllCases.filter(res=> res.casesCategory.priority==="Media" && res.status==="Abierto");return mpc.length;};
+    const lpriorityCasesOpen =()=>{const lpc = AllCases.filter(res=> res.casesCategory.priority==="Baja" && res.status==="Abierto");return lpc.length;};
+    const hpriorityCasesVery =()=>{const hpc = AllCases.filter(res=> res.casesCategory.priority==="Alta" && res.status==="En Verificacion");return hpc.length;};
+    const mpriorityCasesVery =()=>{const mpc = AllCases.filter(res=> res.casesCategory.priority==="Media" && res.status==="En Verificacion");return mpc.length;};
+    const lpriorityCasesVery =()=>{const lpc = AllCases.filter(res=> res.casesCategory.priority==="Baja" && res.status==="En Verificacion");return lpc.length;};
+
 
 useEffect(() => {
     onGetCases();
@@ -48,11 +38,14 @@ useEffect(() => {
     verificateCases:verificateCases(),
     CloseSasCases:closeSasCases(),
     CloseIncCases:closeIncCases(),
+    HpriorityCases:hpriorityCasesOpen()+hpriorityCasesVery(),
+    MpriorityCases:mpriorityCasesOpen()+mpriorityCasesVery(),
+    LpriorityCases:lpriorityCasesOpen()+lpriorityCasesVery(),
   })
 }, [AllCases]);
 
   const data = [
-    { name: 'Abierto', value: openCases()},
+    { name: `Abiertos ${openCases()*100/TotalCases}%`, value: openCases()},
     { name: 'En Verificacion', value: verificateCases()},
     { name: 'Cerrado Satidfactorio', value: closeSasCases()},
     { name: 'Cerrado Incorrecto', value: closeIncCases()},

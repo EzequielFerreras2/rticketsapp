@@ -171,7 +171,7 @@ const openCloseCases =(data,open,action)=>{
                                             aria-controls="panel1a-content"
                                             id="panel1a-header"
                                             >
-                                            <Typography sx={{ fontSize: 20 }}><b>Nostas del Soporte:</b></Typography>
+                                            <Typography sx={{ fontSize: 20 }}><b>Notas del Soporte:</b></Typography>
                                             </AccordionSummary>
                                             <AccordionDetails>
                                              
