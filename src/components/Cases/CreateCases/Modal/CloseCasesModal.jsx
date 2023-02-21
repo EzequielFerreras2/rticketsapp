@@ -70,16 +70,21 @@ const CloseCasesModal = ({open, onClose,onOpen,actionName }) => {
 
             onClose()
             Swal.fire({
-                title: 'Deseas Cerrar El Caso ?',
+                title: `Esta seguro que desea ${actionName} Caso.`,
                 showDenyButton: true,
-                confirmButtonText: 'Cerrar Caso',
-                denyButtonText: `No Cerrar`,
+                confirmButtonText: `${actionName} Caso.`,
+                denyButtonText: `No ${actionName} Caso.`,
               }).then((result) => {
 
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-
-                  Swal.fire('Caso Cerrado!', '', 'success')
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Listo.',
+                        showConfirmButton: false,
+                        timer: 2500,   
+                    })
                   onCloseCases(data);
                   reset();
                   setReasonS("");

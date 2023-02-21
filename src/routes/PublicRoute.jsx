@@ -8,7 +8,7 @@ const PublicRoute = (updateNavbar) => {
     const {status}= useAtuhStore();
 
        // not-authenticated //checking //authenticated
-    return ( status === 'not-authenticated'  ? <Outlet/> : <Navigate to="/home"/>)   ;
+    return ( status === 'not-authenticated'  ? <Outlet/> : <Navigate to="/dashboard"/>)   ;
 
     
 }

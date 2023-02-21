@@ -108,19 +108,7 @@ export const useCasesStore = () => {
 const onCloseCases = async(val)=>{
 
   try {
-      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);
-      if (data.ok === true)
-      {
-      Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Caso Cerrado.',
-          showConfirmButton: false,
-          timer: 2500,
-          
-      })
-      }
-         
+      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);   
   } 
   catch ({response})
    {

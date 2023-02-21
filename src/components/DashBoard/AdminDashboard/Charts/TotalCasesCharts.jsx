@@ -46,10 +46,10 @@ useEffect(() => {
 
   const data = [
     { name: `Abiertos ${openCases()*100/TotalCases}%`, value: openCases()},
-    { name: 'En Verificacion', value: verificateCases()},
-    { name: 'Cerrado Satidfactorio', value: closeSasCases()},
-    { name: 'Cerrado Incorrecto', value: closeIncCases()},
-    { name: 'Cerrado No Resuelto', value: closeNrCases()},
+    { name: `En Verificacion ${verificateCases()*100/TotalCases}%`, value: verificateCases()},
+    { name: `Cerrado Satidfactorio ${closeSasCases()*100/TotalCases}%`, value: closeSasCases()},
+    { name: `Cerrado Incorrecto ${closeIncCases()*100/TotalCases}%`, value: closeIncCases()},
+    { name: `Cerrado No Resuelto ${closeNrCases()*100/TotalCases}%`, value: closeNrCases()},
     
   ];
 
