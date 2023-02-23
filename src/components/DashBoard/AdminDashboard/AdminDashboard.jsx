@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import TotalCasesCharts from './Charts/TotalCasesCharts';
 import InfoIcon from '@mui/icons-material/Info';
+import DaysOfCases from './Charts/DaysOfCases';
 
 const AdminDashboard = () => {
 
@@ -71,25 +72,12 @@ const AdminDashboard = () => {
                     <Grid item xs={3} md={12}>
                         <Card sx={{ minWidth: 275 ,  background: "#eeeeee"}}>
                         <CardContent>
-                        <Typography sx={{ fontSize: 18,color:"white"}} color="white" gutterBottom>
-                                Casos Abiertos:
+                        <Typography sx={{ fontSize: 22  }} color="text.secondary" gutterBottom>
+                                    Dias De Casos
                             </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4">
-                                    {CasesCount.OpenCases}
-                            </Typography>
-                            <Typography sx={{ fontSize: 18,color:"white" }} color="white" gutterBottom>
-                                En Verificacion:
-
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.verificateCases}
-                            </Typography>
-                            <Typography sx={{ fontSize: 18, color:"white" }} color="white" gutterBottom>
-                                Cerrados Satisfactorios:
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }} variant="h4" >
-                                {CasesCount.CloseSasCases}
-                            </Typography>
+                            <Box width={"100%"} height={250}>
+                                <DaysOfCases/>
+                            </Box>
                         </CardContent>
                         </Card>
                     </Grid> 
@@ -106,7 +94,7 @@ const AdminDashboard = () => {
                                     justifyContent="center"
                                     alignItems="center">
                                 <Grid item>
-                                    <Box width={730} height={510}>
+                                    <Box width={730} height={536}>
                                         <TotalCasesCharts setOpenCasesCount={setCasesCount}/>
                                     </Box>
                                 </Grid>

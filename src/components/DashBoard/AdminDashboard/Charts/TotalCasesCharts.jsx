@@ -11,6 +11,10 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
   const TotalCases= AllCases.length;
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#834bff','#33bfff','#ff4569','#af52bf'];
 
+  console.log(AllCases)
+
+
+
     const openCases =()=>{const opl = AllCases.filter(res=> res.status==="Abierto");return opl.length;};
     const verificateCases =()=>{const vcl = AllCases.filter(res=> res.status==="En Verificacion");return vcl.length;};
     const closeSasCases =()=>{const csl = AllCases.filter(res=> res.status==="Cerrado Satisfactorio");return csl.length;};
@@ -22,16 +26,11 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
     const hpriorityCasesVery =()=>{const hpc = AllCases.filter(res=> res.casesCategory.priority==="Alta" && res.status==="En Verificacion");return hpc.length;};
     const mpriorityCasesVery =()=>{const mpc = AllCases.filter(res=> res.casesCategory.priority==="Media" && res.status==="En Verificacion");return mpc.length;};
     const lpriorityCasesVery =()=>{const lpc = AllCases.filter(res=> res.casesCategory.priority==="Baja" && res.status==="En Verificacion");return lpc.length;};
+  
 
-  const calculateDate =(data)=>{
-    const today = new Date();
-    const yday = new Date(data);
-    console.log(yday);
-    const ct =today.getTime()-yday.getTime();
-    const CreationPassDate= Math.round(ct/(1000*60*60*24))-1;
-    console.log(CreationPassDate);
-    return CreationPassDate;
-  };
+
+
+  
 
 
     
@@ -54,7 +53,6 @@ useEffect(() => {
   }, [AllCases]); 
 
 useEffect(() => {
-  calculateDate("2/20/23");
   setOpenCasesCount({
     TotalCases:TotalCases,
     OpenCases:openCases(),
