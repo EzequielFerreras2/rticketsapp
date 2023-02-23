@@ -26,11 +26,12 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
   const calculateDate =(data)=>{
     const today = new Date();
     const yday = new Date(data);
-    console.log(yday)
-    const ct =today.getTime()-yday.getTime()
-    const CreationPassDate= Math.round(ct/(1000*60*60*24))
+    console.log(yday);
+    const ct =today.getTime()-yday.getTime();
+    const CreationPassDate= Math.round(ct/(1000*60*60*24))-1;
     console.log(CreationPassDate);
-  }
+    return CreationPassDate;
+  };
 
 
     
@@ -53,7 +54,7 @@ useEffect(() => {
   }, [AllCases]); 
 
 useEffect(() => {
-  calculateDate("2/21/23");
+  calculateDate("2/20/23");
   setOpenCasesCount({
     TotalCases:TotalCases,
     OpenCases:openCases(),
