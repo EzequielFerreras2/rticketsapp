@@ -11,9 +11,6 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
   const TotalCases= AllCases.length;
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#834bff','#33bfff','#ff4569','#af52bf'];
 
-
-
-
     const openCases =()=>{const opl = AllCases?.filter(res=> res.status==="Abierto");return opl.length;};
     const verificateCases =()=>{const vcl = AllCases?.filter(res=> res.status==="En Verificacion");return vcl.length;};
     const closeSasCases =()=>{const csl = AllCases?.filter(res=> res.status==="Cerrado Satisfactorio");return csl.length;};
@@ -59,8 +56,6 @@ useEffect(() => {
     { name: `Cerrado Satidfactorio ${closeSasCases()*100/TotalCases}%`, value: closeSasCases()},
     { name: `Cerrado Incorrecto ${closeIncCases()*100/TotalCases}%`, value: closeIncCases()},
     { name: `Cerrado No Resuelto ${closeNrCases()*100/TotalCases}%`, value: closeNrCases()},
-    
-    
   ];
 
   return (
