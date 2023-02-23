@@ -26,7 +26,8 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
   const calculateDate =(data)=>{
     const today = new Date();
     const yday = new Date(data);
-    const ct =today-yday
+    console.log(yday)
+    const ct =today.getTime()-yday.getTime()
     const CreationPassDate= Math.round(ct/(1000*60*60*24))
     console.log(CreationPassDate);
   }
@@ -52,7 +53,7 @@ useEffect(() => {
   }, [AllCases]); 
 
 useEffect(() => {
-  calculateDate("2020-05-12T23:50:21.817Z");
+  calculateDate("2/21/23");
   setOpenCasesCount({
     TotalCases:TotalCases,
     OpenCases:openCases(),
