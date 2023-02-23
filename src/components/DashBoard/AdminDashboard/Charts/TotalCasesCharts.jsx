@@ -23,6 +23,16 @@ const TotalCasesCharts = ({setOpenCasesCount,}) => {
     const mpriorityCasesVery =()=>{const mpc = AllCases.filter(res=> res.casesCategory.priority==="Media" && res.status==="En Verificacion");return mpc.length;};
     const lpriorityCasesVery =()=>{const lpc = AllCases.filter(res=> res.casesCategory.priority==="Baja" && res.status==="En Verificacion");return lpc.length;};
 
+  const calculateDate =(data)=>{
+    const today = new Date();
+    const yday = new Date(data);
+    const ct =today-yday
+    const CreationPassDate= Math.round(ct/(1000*60*60*24))
+    console.log(CreationPassDate);
+  }
+
+
+    
 
 useEffect(() => {
     onGetCases();
@@ -42,6 +52,7 @@ useEffect(() => {
   }, [AllCases]); 
 
 useEffect(() => {
+  calculateDate("2020-05-12T23:50:21.817Z");
   setOpenCasesCount({
     TotalCases:TotalCases,
     OpenCases:openCases(),
@@ -60,6 +71,7 @@ useEffect(() => {
     { name: `Cerrado Satidfactorio ${closeSasCases()*100/TotalCases}%`, value: closeSasCases()},
     { name: `Cerrado Incorrecto ${closeIncCases()*100/TotalCases}%`, value: closeIncCases()},
     { name: `Cerrado No Resuelto ${closeNrCases()*100/TotalCases}%`, value: closeNrCases()},
+    
     
   ];
 
