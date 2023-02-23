@@ -1,14 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Alert, Card, CardContent, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TotalCasesCharts from './Charts/TotalCasesCharts';
 import InfoIcon from '@mui/icons-material/Info';
 import DaysOfCases from './Charts/DaysOfCases';
+import { useCasesStore } from '../../../store/cases/useCasesStore';
 
 const AdminDashboard = () => {
 
+    const {onGetCases}=useCasesStore();
+
  const [CasesCount, setCasesCount] = useState({});
     const iconSize= 19;
+
+
+useEffect(() => {
+   onGetCases()
+}, []);
+
+
     return (
         <div>
             <br/>

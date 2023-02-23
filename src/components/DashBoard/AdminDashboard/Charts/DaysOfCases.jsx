@@ -6,15 +6,12 @@ import { useCasesStore } from '../../../../store/cases/useCasesStore';
 
 const DaysOfCases  = ()  => {
 
-const {AllCases,onGetCases}=useCasesStore();
+const {AllCases}=useCasesStore();
 const [Cases, setCases] = useState([]);
 
-
 const filterOpenCases =(data)=>{
-
     const fOpenCases = data?.filter(res=> res.status==="Abierto" || res.status==="En Verificacion");
     setCases(fOpenCases)
-
 }
 
 
@@ -28,11 +25,11 @@ const calculateDate =(data)=>{
   };
 
 
-  const tenDaysOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) > 10 && calculateDate(res.openDate) <= 19); console.log("a"+tdom); return tdom.length}
-  const twentyDaysOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 20 && calculateDate(res.openDate) <= 29 ); console.log("b"+tdom); return tdom.length}
-  const oneMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 30 && calculateDate(res.openDate) <= 92 ); console.log("c"+tdom); return tdom.length}
-  const threeMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 93 && calculateDate(res.openDate) <= 185 ); console.log("d"+tdom); return tdom.length}
-  const sixMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 186 && calculateDate(res.openDate) <= 365 ); console.log("e"+tdom); return tdom.length}
+  const tenDaysOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) > 10 && calculateDate(res.openDate) <= 19);  return tdom.length}
+  const twentyDaysOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 20 && calculateDate(res.openDate) <= 29 );  return tdom.length}
+  const oneMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 30 && calculateDate(res.openDate) <= 92 );  return tdom.length}
+  const threeMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 93 && calculateDate(res.openDate) <= 185 );  return tdom.length}
+  const sixMonthOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) >= 186 && calculateDate(res.openDate) <= 365 );  return tdom.length}
   const oneYearOrMore =()=>{ const tdom= Cases?.filter(res=> calculateDate(res.openDate) > 366 ); return tdom.length}
 
 
