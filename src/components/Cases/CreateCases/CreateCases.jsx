@@ -253,7 +253,7 @@ const filterByCloseStatus =async()=>{
   }, []);
 
   useEffect(() => {
-    if(CasesByUser.length===0)
+    if(CasesByUser?.length===0)
     {
       Swal.fire({
         title: `Loading...`,

@@ -52,7 +52,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
 
         const acc = await data;
 
-        if(acc.length !== 0)
+        if(acc?.length !== 0)
         {
             setValue("name", data.name)
             setValue("email", data.email)

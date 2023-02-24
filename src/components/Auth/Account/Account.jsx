@@ -56,16 +56,16 @@ const Account = ({handleClose}) => {
                 
                 <Grid  item xs={3}>
                 <Typography  sx={{textAlign:"center"}} variant="h5" >
-                      {Account.name}
+                      {Account?.name}
                     </Typography>
                     <Typography sx={{textAlign:"center"}} variant="body2"   color="text.secondary">
-                      {Account.email}
+                      {Account?.email}
                     </Typography>
                     <Typography sx={{textAlign:"center"}} variant="body2"  color="text.secondary">
-                      {Account.company}
+                      {Account?.company}
                     </Typography>
                     <Typography sx={{textAlign:"center"}}  variant="body2"  color="text.secondary">
-                      {Account.departament}
+                      {Account?.departament}
                     </Typography>
                 </Grid>
 

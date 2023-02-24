@@ -5,6 +5,7 @@ import { useAccountStore } from '../../../../store/accounts/useAccountStore'
 import BasicButton from '../../../common/BasicButton/BasicButton';
 import AmdAccTable from './AmdAccTable';
 import CachedTwoToneIcon from '@mui/icons-material/CachedTwoTone';
+import Swal from 'sweetalert2';
 const AdminAccount = () => {
 
 
@@ -15,6 +16,19 @@ const upDateUsers =()=>{
   onGetUsers();
 
 };
+
+useEffect(() => {
+  if(accounts?.length===0)
+  {
+    Swal.fire({
+      title: `Loading...`,
+      timerProgressBar: true,
+      allowOutsideClick: false,
+      didOpen: () => {
+          Swal.showLoading()
+      },})
+  }
+}, [accounts]);
 
 useEffect(() => {
   onGetUsers();
