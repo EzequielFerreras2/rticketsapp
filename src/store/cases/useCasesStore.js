@@ -78,6 +78,10 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+            
+        console.log("OnCreateCases Store")
+        console.log(data.Case)
+
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -87,7 +91,7 @@ export const useCasesStore = () => {
             
         })
         }
-           
+        
     } 
     catch ({response})
      {
@@ -108,7 +112,16 @@ export const useCasesStore = () => {
 const onCloseCases = async(val)=>{
 
   try {
-      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);   
+      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);
+      
+      if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
+      {
+        console.log("onCloseCases Store")
+        console.log(val)
+        console.log(data);
+      }
+
+      
   } 
   catch ({response})
    {
