@@ -117,7 +117,6 @@ const onCloseCases = async(val)=>{
       if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
       {
         console.log("onCloseCases Store")
-        console.log(val)
         console.log(data);
       }
 
