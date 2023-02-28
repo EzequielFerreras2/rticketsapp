@@ -78,7 +78,8 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
-            
+
+        const {sendEmailData} = await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
         console.log("OnCreateCases Store")
         console.log(data.Case)
 
@@ -116,8 +117,10 @@ const onCloseCases = async(val)=>{
       
       if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
       {
+
+        const sendEmailData = await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
         console.log("onCloseCases Store")
-        console.log(data);
+        console.log(sendEmailData);
       }
 
       
