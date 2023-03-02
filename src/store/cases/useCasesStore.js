@@ -1,12 +1,14 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
+import { useAtuhStore } from '../auth/useAuthStore';
 import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
 
     const { Case,AllCases,CasesByUser } =  useSelector( state => state.cases );
     const dispatch = useDispatch();
+    const {user}= useAtuhStore();
 
     const onGetCases =async() =>{
 
@@ -78,8 +80,16 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+          
+        // if(user.rol==="Admin")
+        // {
+          
+        //   await rticketsApp.post(`/email/createcasesemail`,data.Case);
 
-        const {sendEmailData} = await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
+        // }
+
+        //   await rticketsApp.post(`/email/createcasesemail`,data.Case);
+
         console.log("OnCreateCases Store")
         console.log(data.Case)
 
@@ -118,9 +128,8 @@ const onCloseCases = async(val)=>{
       if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
       {
 
-        const sendEmailData = await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
-        console.log("onCloseCases Store")
-        console.log(sendEmailData);
+        await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
+        
       }
 
       
