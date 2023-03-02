@@ -81,14 +81,14 @@ export const useCasesStore = () => {
         if (data.ok === true)
         {
           
-        // if(user.rol==="Admin")
-        // {
+        if(user.rol==="Admin")
+        {
           
-        //   await rticketsApp.post(`/email/createcasesemail`,data.Case);
+          await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
 
-        // }
+        }
 
-        //   await rticketsApp.post(`/email/createcasesemail`,data.Case);
+          await rticketsApp.post(`/email/createcasesemail`,data.Case);
 
         console.log("OnCreateCases Store")
         console.log(data.Case)
