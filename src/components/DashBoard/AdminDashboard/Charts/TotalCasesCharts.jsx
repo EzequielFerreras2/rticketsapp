@@ -51,11 +51,11 @@ useEffect(() => {
 }, [AllCases]);
 
   const data = [
-    { name: `Abiertos ${openCases()*100/TotalCases}%`, value: openCases()},
-    { name: `En Verificacion ${verificateCases()*100/TotalCases}%`, value: verificateCases()},
-    { name: `Cerrado Satidfactorio ${closeSasCases()*100/TotalCases}%`, value: closeSasCases()},
-    { name: `Cerrado Incorrecto ${closeIncCases()*100/TotalCases}%`, value: closeIncCases()},
-    { name: `Cerrado No Resuelto ${closeNrCases()*100/TotalCases}%`, value: closeNrCases()},
+    { name: `Abiertos ${Math.round(openCases()*100/TotalCases)}%`, value: openCases()},
+    { name: `En Verificacion ${Math.round(verificateCases()*100/TotalCases)}%`, value: verificateCases()},
+    { name: `Cerrado Satidfactorio ${ Math.round(closeSasCases()*100/TotalCases)}%`, value: closeSasCases()},
+    { name: `Cerrado Incorrecto ${Math.round(closeIncCases()*100/TotalCases)}%`, value: closeIncCases()},
+    { name: `Cerrado No Resuelto ${Math.round(closeNrCases()*100/TotalCases)}%`, value: closeNrCases()},
   ];
 
   return (

@@ -46,7 +46,6 @@ export default function BasicTabs(props) {
     setValue(newValue);
   };
 
-console.log(openCases,closeCases)
 
   return (
     <Box sx={{ width: '100%' }}>

@@ -1,12 +1,14 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
+import { useAtuhStore } from '../auth/useAuthStore';
 import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
 
     const { Case,AllCases,CasesByUser } =  useSelector( state => state.cases );
     const dispatch = useDispatch();
+    const {user}= useAtuhStore();
 
     const onGetCases =async() =>{
 
@@ -78,6 +80,14 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+
+          
+          
+
+          const {}= await rticketsApp.post(`/email/createcasesemail`,data.Case);
+          console.log("admin Email");
+          const {}= await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
+
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -87,7 +97,7 @@ export const useCasesStore = () => {
             
         })
         }
-           
+        
     } 
     catch ({response})
      {
@@ -108,7 +118,16 @@ export const useCasesStore = () => {
 const onCloseCases = async(val)=>{
 
   try {
-      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);   
+      const {data} = await rticketsApp.put(`/cases/admin/${val.id}`,val);
+      
+      if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
+      {
+
+        const {}= await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
+        
+      }
+
+      
   } 
   catch ({response})
    {
