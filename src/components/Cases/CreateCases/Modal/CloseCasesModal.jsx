@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
-const CloseCasesModal = ({open, onClose,onOpen,actionName }) => {
+const CloseCasesModal = ({open, onClose,onOpen,actionName,getCasesByRol }) => {
 
     const {Case,onCloseCases} = useCasesStore();
     const {user}= useAtuhStore();

@@ -159,7 +159,6 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
 
 
   const filterByStatus  =async(status)=>{
-console.log(status)
     if(rol==="Admin"){
       const fbs = await AllCases.filter( res => res.status === status);
       if(fbs.length===0){
@@ -237,6 +236,7 @@ const filterByCloseStatus =async()=>{
   const handleChangeSelect = (event) => {
     setCardPerPages(event.target.value);
   };
+  
 /*Effect */
   useEffect(() => {
     if(cases?.length===0)
@@ -326,7 +326,7 @@ const filterByCloseStatus =async()=>{
             
             <br/>
             
-                <OpenCloseTab setCaseslength={setCaseslength} openCases={currentOpenCard} closeCases={currentCloseCard}/>
+                <OpenCloseTab getCasesByRol={getCasesByRol} setCaseslength={setCaseslength} openCases={currentOpenCard} closeCases={currentCloseCard}/>
                 
            <br/>
            

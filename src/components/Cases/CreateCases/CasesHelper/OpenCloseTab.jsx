@@ -41,7 +41,7 @@ function a11yProps(index) {
 
 export default function BasicTabs(props) {
   const [value, setValue] = React.useState(0);
-  const {openCases,closeCases,setCaseslength}= props;
+  const {openCases,closeCases,setCaseslength,getCasesByRol}= props;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -51,8 +51,8 @@ export default function BasicTabs(props) {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Casos Abiartos" {...a11yProps(0)} onClick={()=>setCaseslength(openCases.length)} />
-          <Tab label="Casos Cerrados" {...a11yProps(1)}onClick={()=>setCaseslength(closeCases.length)} />
+          <Tab label="Casos Abiartos" {...a11yProps(0)} onClick={()=>{setCaseslength(openCases.length);}} />
+          <Tab label="Casos Cerrados" {...a11yProps(1)}onClick={()=>{setCaseslength(closeCases.length);}} />
 
         </Tabs>
       </Box>
@@ -62,7 +62,7 @@ export default function BasicTabs(props) {
           ?
           <Typography sx={{color:'black'}} variant='h1'>No Hay Casos Para Mostrar.</Typography>
           :
-          <Cases AllCases={openCases}/>
+          <Cases getCasesByRol={getCasesByRol} AllCases={openCases}/>
         }
       
       </TabPanel>
@@ -73,7 +73,7 @@ export default function BasicTabs(props) {
           ?
           <Typography sx={{color:'black'}} variant='h1'>No Hay Casos Cerrados Para Mostrar.</Typography>
           :
-          <Cases AllCases={closeCases}/>
+          <Cases getCasesByRol={getCasesByRol} AllCases={closeCases}/>
         }
      
       </TabPanel>
