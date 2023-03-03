@@ -80,13 +80,11 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+          /*Post user email*/
+          await rticketsApp.post(`/email/createcasesemail`,data.Case);
 
-          
-          
-
-          const {}= await rticketsApp.post(`/email/createcasesemail`,data.Case);
-          console.log("admin Email");
-          const {}= await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
+          /*Post admin email*/
+          await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
 
         Swal.fire({
             position: 'center',
@@ -123,7 +121,7 @@ const onCloseCases = async(val)=>{
       if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
       {
 
-        const {}= await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
+        await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
         
       }
 
