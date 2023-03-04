@@ -71,7 +71,6 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
 
 
   const filterByUser=async(user)=>{
-   
     if(user.type ==="Id"){
       if(rol === "Admin")
       {
@@ -83,7 +82,6 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
             title: 'Error...',
             text: `No existen Casos Con el ID: ${user.value.search}`
           });
-
         }
         else{
           setCases(fbu);
@@ -151,7 +149,8 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
       setCases(fbp);
 
     }
-    else{
+    else
+    {
     const fbp = await CasesByUser.filter( res => res.casesCategory.priority === prority);
     setCases(fbp);
    }
@@ -236,7 +235,7 @@ const filterByCloseStatus =async()=>{
   const handleChangeSelect = (event) => {
     setCardPerPages(event.target.value);
   };
-  
+
 /*Effect */
   useEffect(() => {
     if(cases?.length===0)
