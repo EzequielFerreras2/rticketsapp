@@ -16,7 +16,7 @@ import { useCasesStore } from '../../../store/cases/useCasesStore';
 import DeleteCasesModal from './Modal/DeleteCasesModal';
 import CloseCasesModal from './Modal/CloseCasesModal';
 
-const Cases = ({AllCases}) => {
+const Cases = ({AllCases,getCasesByRol}) => {
   const{onGetCasesById}= useCasesStore();
 const {user}=useAtuhStore();
 const [actionName, setActionName] = useState("");
@@ -283,12 +283,14 @@ const openCloseCases =(data,open,action)=>{
           <DeleteCasesModal
           open ={openDeleteModal} 
           onClose={() => setOpenDeleteModal(false)}
+          getCasesByRol={getCasesByRol}
           />
           <CloseCasesModal
            open ={openCloseCasesModal} 
            onClose={() => setOpenCloseCasesModal(false)}
            onOpen={()=> setOpenCloseCasesModal(true)}
            actionName={actionName}
+           getCasesByRol={getCasesByRol}
           />
         </div>
     );

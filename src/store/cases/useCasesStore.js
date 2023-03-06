@@ -2,6 +2,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
 import { useAtuhStore } from '../auth/useAuthStore';
+
 import {getCase,getCases,getCasesByUser} from '../cases/casesSlice'
 
 export const useCasesStore = () => {
@@ -9,6 +10,7 @@ export const useCasesStore = () => {
     const { Case,AllCases,CasesByUser } =  useSelector( state => state.cases );
     const dispatch = useDispatch();
     const {user}= useAtuhStore();
+
 
     const onGetCases =async() =>{
 
@@ -75,32 +77,37 @@ export const useCasesStore = () => {
 };
 
   const onCreateCases = async(val)=>{
-
     try {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+          /*Post user email*/
+          await rticketsApp.post(`/email/createcasesemail`,data.Case);
 
+          /*Post admin email*/
+          await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
+
+          if(user.rol==="Admin")
+          {
+            onGetCases();
+          }
+          else{
+            onGetCasesByUser();
+          };
           
-          
 
-          const {}= await rticketsApp.post(`/email/createcasesemail`,data.Case);
-          console.log("admin Email");
-          const {}= await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
+          Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Caso Creado.',
+              showConfirmButton: false,
+              timer: 2500,
 
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Caso Creado.',
-            showConfirmButton: false,
-            timer: 2500,
-            
-        })
-        }
-        
+          })
+        };
     } 
     catch ({response})
-     {
+    {
         const{data} = response;
         if(data.ok === false)
         {
@@ -110,7 +117,7 @@ export const useCasesStore = () => {
                 text: `${data.msg}.!!!`,
               })
         };
-        }
+      }
         
         
 };
@@ -122,9 +129,15 @@ const onCloseCases = async(val)=>{
       
       if(val.status==="Cerrado Incorrecto" || val.status==="Cerrado No Resuelto"|| val.status==="Cerrado Satisfactorio")
       {
-
-        const {}= await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
-        
+        await rticketsApp.post(`/email/closecasesemail`,data.updatedCases);
+        if(user.rol==="Admin")
+          {
+            onGetCases();
+          }
+          else{
+            onGetCasesByUser();
+          };
+          
       }
 
       
