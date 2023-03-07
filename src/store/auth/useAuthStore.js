@@ -9,7 +9,7 @@ export const useAtuhStore = () =>{
 
     const {status, user, errorMessage } =  useSelector( state => state.auth );
     const dispatch = useDispatch();
-    
+
 
     const startLogin = async({email,password}) =>{
 
@@ -23,7 +23,7 @@ export const useAtuhStore = () =>{
             localStorage.setItem('id',data.uid);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(
-            
+
                 logIn({
                     id:data.uid,
                     name:data.name,
@@ -33,7 +33,7 @@ export const useAtuhStore = () =>{
                     company:data.company
                 }
                 ));
-            
+
         } catch ({response}) {
 
             const{data} = response;
@@ -51,7 +51,7 @@ export const useAtuhStore = () =>{
 
             setTimeout(() => {
                 dispatch(clearErrorMessage());
-            }, 1000);    
+            }, 1000);
         }
 
     };
@@ -67,22 +67,22 @@ export const useAtuhStore = () =>{
             localStorage.setItem('id',data.uid);
             localStorage.setItem('rol',data.rol);
             localStorage.setItem('token-init-date', new Date().getTime());
-            dispatch(
-            
-                logIn({
-                    id:data.uid,
-                    name:data.name,
-                    email:data.email,
-                    rol:data.rol,
-                    departament:data.departament,
-                    company:data.company
-                }
-                ));
-            
+            // dispatch(
+
+            //     logIn({
+            //         id:data.uid,
+            //         name:data.name,
+            //         email:data.email,
+            //         rol:data.rol,
+            //         departament:data.departament,
+            //         company:data.company
+            //     }
+            //     ));
+
         } catch ({response}) {
 
             const{data} = response;
-            dispatch(logOut(data.msg));
+            // dispatch(logOut(data.msg));
 
             if(data.ok === false)
             {
@@ -95,7 +95,7 @@ export const useAtuhStore = () =>{
 
             setTimeout(() => {
                 dispatch(clearErrorMessage());
-            }, 1000);    
+            }, 1000);
         }
 
 
@@ -109,7 +109,7 @@ const token = localStorage.getItem('token');
 if(!token)
 {
     return dispatch(logOut('Token no Valido o Expirado'));
-    
+
 }
 else{
 
@@ -133,7 +133,7 @@ else{
     } catch ({response}) {
         const{data} = response;
         localStorage.clear();
-        dispatch(logOut(data.msg));   
+        dispatch(logOut(data.msg));
     }
 }
 
