@@ -5,7 +5,7 @@ import SyncLockTwoToneIcon from '@mui/icons-material/SyncLockTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import ChangePassAccModal from './AccountModals/ChangePassAccModal';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import EditAccModal from './AccountModals/EditAccModal';
+import EditModal from './AccountModals/EditModal';
 import DeleteAccModal from './AccountModals/DeleteAccModal';
 
 const AmdAccTable = ({Account}) => {
@@ -89,7 +89,7 @@ const AmdAccTable = ({Account}) => {
       getAccount={getAccount}
       />
 
-      <EditAccModal 
+      <EditModal 
       open ={openEditModal} 
       onClose={() => setOpenEditModal(false)}  
       getAccount={getAccount}
