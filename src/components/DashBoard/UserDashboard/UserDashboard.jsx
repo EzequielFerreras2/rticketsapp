@@ -9,7 +9,7 @@ import CasesAcordeon from './DashboardHelpers/CasesAcordeon';
 
 const UserDashboard = () => {
 
-const {cases, onGetCasesByUser}= useCasesStore();
+const {CasesByUser, onGetCasesByUser}= useCasesStore();
 const {user}=useAtuhStore();
 
 useEffect(() => {
@@ -39,7 +39,7 @@ useEffect(() => {
                                 <Typography variant="h5" component="div">
                                 Casos Resueltos Recientes
                                 </Typography>
-                                <CasesAcordeon Cases={cases}/>
+                                <CasesAcordeon Cases={CasesByUser}/>
                             </CardContent>
                             
                         </Card>
@@ -49,6 +49,24 @@ useEffect(() => {
                             <CardContent>
                                 <Typography variant="h5" comp2onent="div">
                                     Casos en proceso
+                                </Typography>
+                                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                adjective
+                                </Typography>
+                                <Typography variant="body2">
+                                well meaning and kindly.
+                                <br />
+                                {'"a benevolent smile"'}
+                                </Typography>
+                            </CardContent>
+                            
+                        </Card>
+                    </Grid>
+                    <Grid item xs={1} md={6}>
+                    <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
+                            <CardContent>
+                                <Typography variant="h5" comp2onent="div">
+                                    Casos Cerrados
                                 </Typography>
                                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                 adjective
