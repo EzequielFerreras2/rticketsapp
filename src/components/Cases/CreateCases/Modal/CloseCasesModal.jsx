@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { useAtuhStore } from '../../../../store/auth/useAuthStore';
 
 
-const CloseCasesModal = ({open, onClose,onOpen,actionName,getCasesByRol }) => {
+const CloseCasesModal = ({open, onClose,onOpen,actionName }) => {
 
     const {Case,onCloseCases} = useCasesStore();
     const {user}= useAtuhStore();
@@ -37,9 +37,6 @@ const CloseCasesModal = ({open, onClose,onOpen,actionName,getCasesByRol }) => {
             },
         };
 
-
-     
-    
         const validationSchema = Yup.object().shape({
             status: Yup.string().required('Campo requerido'),
             notesSuport: Yup.string().required('Campo requerido').max(140,"Las notas no puede tener mas de 140 caracteres."),  

@@ -240,9 +240,9 @@ const openCloseCases =(data,open,action)=>{
                                        endIcon={<AssignmentTurnedInTwoToneIcon/> }
                                        size="medium"  
                                        sx={{ color: "white", backgroundColor: "#0d47a1", height:100}}
-                                       onClick={()=>openCloseCases(res,true, res.status==="Abierto"? "Cerrar":"Cambiar estatus del" )}
+                                       onClick={()=>openCloseCases(res,true, res.status==="Abierto"? "Cerrar":"Cambiar estatus" )}
                                        >
-                                        {res.status==="Abierto"? "Cerrar":"Cambiar estatus del"} Caso
+                                        {res.status==="Abierto"? "Cerrar":"Cambiar estatus"} Caso
                                       </Button>
                                     :
                                     <Button

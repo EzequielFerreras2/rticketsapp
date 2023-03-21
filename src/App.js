@@ -28,8 +28,6 @@ useEffect(() => {
 useEffect(() => {
  
   check()
-  
-  
  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [status]);
 
@@ -39,10 +37,14 @@ const check =()=>{
 
     checkToken();
    
-    setUsers(accId);
- 
+    if(status ==="authenticated")
+    {
+      setUsers(accId);
+    }
     
    } catch (error) {
+
+
     
    }
   

@@ -2,7 +2,7 @@
 import {useSelector,useDispatch} from 'react-redux'
 import Swal from 'sweetalert2';
 import  rticketsApp from '../../api/RticketsAppApi'
-import { chekingCredentials, clearErrorMessage, logIn, logOut } from './authSlice';
+import { chekingCredentials, logIn, logOut } from './authSlice';
 
 
 export const useAtuhStore = () =>{
@@ -38,20 +38,25 @@ export const useAtuhStore = () =>{
 
             const{data} = response;
 
-            dispatch(logOut(data.msg));
+            console.log("Auth data");
+            console.log(data);
+
+            
 
             if(data.ok === false)
             {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
+                    showCloseButton: true,
                     text: `${data.msg}.!!!`,
+                    
                   })
             };
 
-            setTimeout(() => {
-                dispatch(clearErrorMessage());
-            }, 1000);
+            // dispatch(logOut(data.msg));
+
+            
         }
 
     };
@@ -97,9 +102,7 @@ export const useAtuhStore = () =>{
                   })
             };
 
-            setTimeout(() => {
-                dispatch(clearErrorMessage());
-            }, 1000);
+            
         }
 
 
