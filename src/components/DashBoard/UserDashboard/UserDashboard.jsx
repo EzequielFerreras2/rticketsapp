@@ -37,11 +37,11 @@ useEffect(() => {
                container
                direction="row"
                justifyContent="center"
-               alignItems="center"
+               
                spacing={2}
                >
                     <Grid item xs={1} md={6}>
-                        <Card sx={{ minWidth: 275,background: "#eeeeee" }}>
+                        <Card sx={{ minWidth: 275,background: "#eeeeee"  }}>
                             <CardContent>
                                 <Typography variant="h5" component="div">
                                 Casos Abiertos Recientes
