@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect } from 'react';
 
@@ -7,16 +7,17 @@ import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
 import CasesAcordeon from './DashboardHelpers/CasesAcordeon';
 import {calculateDate} from '../../../helpers/calculateDate'
+import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
 
 const {CasesByUser, onGetCasesByUser}= useCasesStore();
 const {user}=useAtuhStore();
+const navigate = useNavigate();
 
 const casesV = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion");
 const casesO = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Abierto");
-console.log(casesV)
-console.log(casesO)
+
 
 useEffect(() => {
     onGetCasesByUser(user.id);
@@ -47,7 +48,9 @@ useEffect(() => {
                                 </Typography>
                                 <CasesAcordeon Cases={casesO}/>
                             </CardContent>
-                            
+                            <CardActions>
+                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                            </CardActions>
                         </Card>
                     </Grid>
                     <Grid item xs={1} md={6}>
@@ -58,7 +61,9 @@ useEffect(() => {
                                 </Typography>
                                 <CasesAcordeon Cases={casesV}/>
                             </CardContent>
-                            
+                            <CardActions>
+                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                            </CardActions>
                         </Card>
                     </Grid>
                     <Grid item xs={1} md={6}>
@@ -69,7 +74,9 @@ useEffect(() => {
                                 </Typography>
                                 <CasesAcordeon Cases={CasesByUser}/>
                             </CardContent>
-                            
+                            <CardActions>
+                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                            </CardActions>
                         </Card>
                     </Grid>
                </Grid>

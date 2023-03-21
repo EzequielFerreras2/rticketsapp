@@ -4,8 +4,9 @@ import { GridExpandMoreIcon } from '@mui/x-data-grid'
 
 const CasesAcordeon = ({Cases}) => {
    
+const sliceCases = Cases?.slice(0,5);
 
-
+console.log(sliceCases);
 
   return (
     <div>
