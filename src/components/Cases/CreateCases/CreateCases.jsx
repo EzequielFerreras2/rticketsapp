@@ -7,7 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Swal from 'sweetalert2';
 import SpeedDialMenuCases from './CasesHelper/SpeedDialMenuCases';
 import CardPagination from './CasesHelper/CardPagination';
-import SelectCardPerPage from './CasesHelper/SelectCardPerPage';
+// import SelectCardPerPage from './CasesHelper/SelectCardPerPage';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 
 import OpenCloseTab  from '../CreateCases/CasesHelper/OpenCloseTab'
@@ -233,9 +233,9 @@ const filterByCloseStatus =async()=>{
     }
   };
 
-  const handleChangeSelect = (event) => {
-    setCardPerPages(event.target.value);
-  };
+  // const handleChangeSelect = (event) => {
+  //   setCardPerPages(event.target.value);
+  // };
 
 /*Effect */
   useEffect(() => {
