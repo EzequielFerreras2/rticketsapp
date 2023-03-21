@@ -10,6 +10,7 @@ export const useCasesStore = () => {
     const { Case,AllCases,CasesByUser } =  useSelector( state => state.cases );
     const dispatch = useDispatch();
     const {user}= useAtuhStore();
+    const id= user.id;
 
 
     const onGetCases =async() =>{
@@ -92,7 +93,7 @@ export const useCasesStore = () => {
             onGetCases();
           }
           else{
-            onGetCasesByUser();
+            onGetCasesByUser(id);
           };
           
 
@@ -135,7 +136,8 @@ const onCloseCases = async(val)=>{
             onGetCases();
           }
           else{
-            onGetCasesByUser();
+          
+            onGetCasesByUser(id);
           };
           
       }

@@ -21,7 +21,7 @@ const {AllCases, onGetCases,onGetCasesByUser,CasesByUser}= useCasesStore();
 var acorColors ="#e0e0e0";
 const{user}=useAtuhStore();
 const rol = user.rol;
-const id = user.id;
+const id = user?.id;
 
 const [cases, setCases] = useState([]);
 const [openCases, setOpenCases] = useState([]);
@@ -228,6 +228,7 @@ const filterByCloseStatus =async()=>{
     }
     else
     {
+
       onGetCasesByUser(id)
     }
   };

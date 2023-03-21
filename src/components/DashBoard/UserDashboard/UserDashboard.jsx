@@ -6,11 +6,17 @@ import React, { useEffect } from 'react';
 import { useAtuhStore } from '../../../store/auth/useAuthStore';
 import { useCasesStore } from '../../../store/cases/useCasesStore';
 import CasesAcordeon from './DashboardHelpers/CasesAcordeon';
+import {calculateDate} from '../../../helpers/calculateDate'
 
 const UserDashboard = () => {
 
 const {CasesByUser, onGetCasesByUser}= useCasesStore();
 const {user}=useAtuhStore();
+
+const casesV = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion");
+const casesO = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Abierto");
+console.log(casesV)
+console.log(casesO)
 
 useEffect(() => {
     onGetCasesByUser(user.id);
@@ -37,9 +43,9 @@ useEffect(() => {
                         <Card sx={{ minWidth: 275,background: "#eeeeee" }}>
                             <CardContent>
                                 <Typography variant="h5" component="div">
-                                Casos Resueltos Recientes
+                                Casos Abiertos Recientes
                                 </Typography>
-                                <CasesAcordeon Cases={CasesByUser}/>
+                                <CasesAcordeon Cases={casesO}/>
                             </CardContent>
                             
                         </Card>
@@ -50,14 +56,7 @@ useEffect(() => {
                                 <Typography variant="h5" comp2onent="div">
                                     Casos en proceso
                                 </Typography>
-                                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                adjective
-                                </Typography>
-                                <Typography variant="body2">
-                                well meaning and kindly.
-                                <br />
-                                {'"a benevolent smile"'}
-                                </Typography>
+                                <CasesAcordeon Cases={casesV}/>
                             </CardContent>
                             
                         </Card>
@@ -66,16 +65,9 @@ useEffect(() => {
                     <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
                             <CardContent>
                                 <Typography variant="h5" comp2onent="div">
-                                    Casos Cerrados
+                                    Casos Cerrados o Resueltos Recientes
                                 </Typography>
-                                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                adjective
-                                </Typography>
-                                <Typography variant="body2">
-                                well meaning and kindly.
-                                <br />
-                                {'"a benevolent smile"'}
-                                </Typography>
+                                <CasesAcordeon Cases={CasesByUser}/>
                             </CardContent>
                             
                         </Card>

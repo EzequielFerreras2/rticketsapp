@@ -1,12 +1,11 @@
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material'
 import { GridExpandMoreIcon } from '@mui/x-data-grid'
-import {calculateDate} from '../../../../helpers/calculateDate'
+
 
 const CasesAcordeon = ({Cases}) => {
    
-const casesFilter = Cases?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion")
 
-console.log(casesFilter);
+
 
   return (
     <div>
