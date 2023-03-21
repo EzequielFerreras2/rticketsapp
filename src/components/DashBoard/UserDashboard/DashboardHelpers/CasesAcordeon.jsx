@@ -10,18 +10,13 @@ const sliceCases = Cases?.slice(0,5);
 const {user}=useAtuhStore();
 const rol = user.rol;
 
-
-
-
-console.log(sliceCases);
-
   return (
     <div>
         {
             sliceCases.map( (res) =>{
                 const minCasesID= res.id?.slice(-7);
                 var statusChange = false;
-                var acorColors ="#e0e0e0";
+                var acorColors ="#bdbdbd";
 
                 if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto")
               {
@@ -30,7 +25,7 @@ console.log(sliceCases);
 
 
            return(
-            <Accordion key={res?.id}  sx={{mt:2,mb:2 ,backgroundColor: "#eeeeee" }}>
+            <Accordion key={res?.id}  sx={{mt:2,mb:2 ,backgroundColor: "#e0e0e0" }}>
                 <AccordionSummary
                 expandIcon={<GridExpandMoreIcon />}
                 aria-controls="panel1a-content"

@@ -43,9 +43,11 @@ useEffect(() => {
                     <Grid item xs={1} md={6}>
                         <Card sx={{ minWidth: 275,background: "#eeeeee"  }}>
                             <CardContent>
+                                <br/>
                                 <Typography variant="h5" component="div">
-                                Casos Abiertos Recientes
+                                    Casos Abiertos Recientes
                                 </Typography>
+                                <br/>
                                 <CasesAcordeon Cases={casesO}/>
                             </CardContent>
                             <CardActions>
@@ -56,9 +58,11 @@ useEffect(() => {
                     <Grid item xs={1} md={6}>
                     <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
                             <CardContent>
+                                <br/>
                                 <Typography variant="h5" comp2onent="div">
                                     Casos en proceso
                                 </Typography>
+                                <br/>
                                 <CasesAcordeon Cases={casesV}/>
                             </CardContent>
                             <CardActions>
@@ -69,9 +73,11 @@ useEffect(() => {
                     <Grid item xs={1} md={6}>
                     <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
                             <CardContent>
+                                <br/>
                                 <Typography variant="h5" comp2onent="div">
                                     Casos Cerrados o Resueltos Recientes
                                 </Typography>
+                                <br/>
                                 <CasesAcordeon Cases={CasesByUser}/>
                             </CardContent>
                             <CardActions>
