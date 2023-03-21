@@ -17,8 +17,9 @@ const navigate = useNavigate();
 
 const casesV = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion");
 const casesO = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Abierto");
+const casesC = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Cerrado Satisfactorio");
 
-
+console.log(casesC?.length)
 useEffect(() => {
     onGetCasesByUser(user.id);
 }, []);
@@ -41,14 +42,20 @@ useEffect(() => {
                spacing={2}
                >
                     <Grid item xs={1} md={6}>
-                        <Card sx={{ minWidth: 275,background: "#eeeeee"  }}>
+                        <Card sx={{ minWidth: 275,background: "#e3f2fd"  }}>
                             <CardContent>
                                 <br/>
                                 <Typography variant="h5" component="div">
                                     Casos Abiertos Recientes
                                 </Typography>
                                 <br/>
-                                <CasesAcordeon Cases={casesO}/>
+                                {
+                                    casesO?.length === 0?
+                                    <h1>No hay casos Abiertos.</h1>
+                                    :
+                                    <CasesAcordeon Cases={casesO}/>
+                                }
+                                
                             </CardContent>
                             <CardActions>
                                 <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
@@ -56,14 +63,21 @@ useEffect(() => {
                         </Card>
                     </Grid>
                     <Grid item xs={1} md={6}>
-                    <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
+                    <Card sx={{ minWidth: 275 ,background: "#e3f2fd"}}>
                             <CardContent>
                                 <br/>
                                 <Typography variant="h5" comp2onent="div">
                                     Casos en proceso
                                 </Typography>
                                 <br/>
-                                <CasesAcordeon Cases={casesV}/>
+                                {
+                                    casesV?.length === 0?
+                                    <h1>No hay casos en Verificacion.</h1>
+                                    :
+                                    <CasesAcordeon Cases={casesV}/>
+                                }
+                               
+                                
                             </CardContent>
                             <CardActions>
                                 <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
@@ -71,14 +85,20 @@ useEffect(() => {
                         </Card>
                     </Grid>
                     <Grid item xs={1} md={6}>
-                    <Card sx={{ minWidth: 275 ,background: "#eeeeee"}}>
+                    <Card sx={{ minWidth: 275 ,background: "#e3f2fd"}}>
                             <CardContent>
                                 <br/>
                                 <Typography variant="h5" comp2onent="div">
                                     Casos Cerrados o Resueltos Recientes
                                 </Typography>
                                 <br/>
-                                <CasesAcordeon Cases={CasesByUser}/>
+                                {
+                                    casesC?.length === 0?
+                                    <h1>No hay casos Cerrado.</h1>
+                                    :
+                                    <CasesAcordeon Cases={casesC}/>
+                                }
+                                
                             </CardContent>
                             <CardActions>
                                 <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>

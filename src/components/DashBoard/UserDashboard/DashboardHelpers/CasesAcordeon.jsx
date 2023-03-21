@@ -13,19 +13,19 @@ const rol = user.rol;
   return (
     <div>
         {
-            sliceCases.map( (res) =>{
+            sliceCases?.map( (res) =>{
                 const minCasesID= res.id?.slice(-7);
                 var statusChange = false;
-                var acorColors ="#bdbdbd";
+                var acorColors ="#e0e0e0";
 
-                if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto")
+                if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto" || res.status==="En Verificacion")
               {
                 statusChange=true;
               }
 
 
            return(
-            <Accordion key={res?.id}  sx={{mt:2,mb:2 ,backgroundColor: "#e0e0e0" }}>
+            <Accordion key={res?.id}  sx={{mt:2,mb:2 ,backgroundColor: "#eeeeee" }}>
                 <AccordionSummary
                 expandIcon={<GridExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -46,7 +46,7 @@ const rol = user.rol;
                                 {
                                   statusChange? 
                                     <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                    <b>Soporte:</b> {res.closeCaseUser.name}.
+                                    <b>Soporte Asignado:</b> {res.closeCaseUser.name}.
                                   </Typography>
                                   :<div></div>
                                 }
