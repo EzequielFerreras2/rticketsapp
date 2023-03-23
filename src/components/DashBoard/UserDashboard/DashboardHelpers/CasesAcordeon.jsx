@@ -17,7 +17,6 @@ const rol = user.rol;
                 const minCasesID= res.id?.slice(-7);
                 var statusChange = false;
                 var acorColors ="#e0e0e0";
-
                 if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto" || res.status==="En Verificacion")
               {
                 statusChange=true;
@@ -50,10 +49,16 @@ const rol = user.rol;
                                   </Typography>
                                   :<div></div>
                                 }
-  
+                                {
+                                  res.status ==="En Verificacion"?
+                                  <div></div>
+                                  :
                                   <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Fecha de Cierre:</b> {  statusChange===false || res.closeDate === null ?  <span>Caso Status: <b>{res.status}</b> Aun Sin Fecha de Cierre.</span> :res.closeDate}
                                   </Typography>
+
+                                }
+                                  
                         
                                 <Grid key={res.id}  item xs={6}>
                                    { 
